@@ -4,4 +4,14 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>ControllerBd</servlet-name>
+  	<display-name>ControllerBd</display-name>
+  	<description></description>
+  	<servlet-class>com.unab.edu.Controladores.ControllerBd</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ControllerBd</servlet-name>
+  	<url-pattern>/ControllerBd</url-pattern>
+  </servlet-mapping>
 </web-app>

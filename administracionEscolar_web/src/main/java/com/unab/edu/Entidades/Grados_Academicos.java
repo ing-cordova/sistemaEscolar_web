@@ -6,16 +6,46 @@
 package com.unab.edu.Entidades;
 
 import java.util.Date;
-import lombok.Data;
 
 /**
  *
  * @author BetoCalderon
  */
-@Data
 public class Grados_Academicos {
-    protected int idGradoAcademico;
-    protected String Nombre_GradoAcad;
-    protected Date Ultima_Modificacion;
-    protected int Estado;
+	protected int idGradoAcademico;
+	protected String Nombre_GradoAcad;
+	protected Date Ultima_Modificacion;
+	protected int Estado;
+
+	public int getIdGradoAcademico() {
+		return idGradoAcademico;
+	}
+
+	public void setIdGradoAcademico(int idGradoAcademico) {
+		this.idGradoAcademico = idGradoAcademico;
+	}
+
+	public String getNombre_GradoAcad() {
+		return Nombre_GradoAcad;
+	}
+
+	public void setNombre_GradoAcad(String nombre_GradoAcad) {
+		Nombre_GradoAcad = nombre_GradoAcad;
+	}
+
+	public Date getUltima_Modificacion() {
+		return Ultima_Modificacion;
+	}
+
+	public void setUltima_Modificacion(Date ultima_Modificacion) {
+		Ultima_Modificacion = ultima_Modificacion;
+	}
+
+	public int getEstado() {
+		return Estado;
+	}
+
+	public void setEstado(int estado) {
+		Estado = estado;
+	}
 }
