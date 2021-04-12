@@ -40,8 +40,17 @@ CREATE TABLE `actividades` (
   KEY `Fk_idMateria5_idx` (`idMateria`),
   CONSTRAINT `FK_idDocente3` FOREIGN KEY (`idDocente`) REFERENCES `docentes` (`idDocente`),
   CONSTRAINT `Fk_idMateria5` FOREIGN KEY (`idMateria`) REFERENCES `materias` (`idMateria`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `actividades`
+--
+
+LOCK TABLES `actividades` WRITE;
+/*!40000 ALTER TABLE `actividades` DISABLE KEYS */;
+/*!40000 ALTER TABLE `actividades` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `actividades_estudiantes`
@@ -67,8 +76,17 @@ CREATE TABLE `actividades_estudiantes` (
   CONSTRAINT `FK_idActividad` FOREIGN KEY (`idActividad`) REFERENCES `actividades` (`idActividad`),
   CONSTRAINT `FK_idEstudiante` FOREIGN KEY (`idEstudiante`) REFERENCES `estudiantes` (`idEstudiante`),
   CONSTRAINT `FK_idMateria` FOREIGN KEY (`idMateria`) REFERENCES `materias` (`idMateria`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `actividades_estudiantes`
+--
+
+LOCK TABLES `actividades_estudiantes` WRITE;
+/*!40000 ALTER TABLE `actividades_estudiantes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `actividades_estudiantes` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `docentes`
@@ -88,8 +106,18 @@ CREATE TABLE `docentes` (
   PRIMARY KEY (`idDocente`),
   KEY `FK_idPersona_idx` (`idPersona`),
   CONSTRAINT `FK_idPersona` FOREIGN KEY (`idPersona`) REFERENCES `personas` (`idPersona`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `docentes`
+--
+
+LOCK TABLES `docentes` WRITE;
+/*!40000 ALTER TABLE `docentes` DISABLE KEYS */;
+INSERT INTO `docentes` VALUES (1,6,'docente@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db','Ingeniero en Sistemas','2021-04-11',1),(2,7,'docente@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db','Ingeniero en Sistemas','2021-04-11',1),(3,8,'docente@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db','Ingeniero en Sistemas','2021-04-11',1),(4,9,'docente@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db','Ingeniero en Sistemas','2021-04-11',1);
+/*!40000 ALTER TABLE `docentes` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `estudiantes`
@@ -111,8 +139,18 @@ CREATE TABLE `estudiantes` (
   KEY `FK_idGradoAcademico_idx` (`idGradoAcademico`),
   CONSTRAINT `FK_idGradoAcademico` FOREIGN KEY (`idGradoAcademico`) REFERENCES `grados_academicos` (`idGradoAcademico`),
   CONSTRAINT `FK_idPersona1` FOREIGN KEY (`idPersona`) REFERENCES `personas` (`idPersona`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `estudiantes`
+--
+
+LOCK TABLES `estudiantes` WRITE;
+/*!40000 ALTER TABLE `estudiantes` DISABLE KEYS */;
+INSERT INTO `estudiantes` VALUES (1,1,'andres@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db',1,'2021-04-11',1),(2,1,'fatima@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db',1,'2021-04-11',1),(3,1,'joshua@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db',1,'2021-04-11',1),(4,1,'emanuel@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db',1,'2021-04-11',1),(5,1,'marcos@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db',1,'2021-04-11',1);
+/*!40000 ALTER TABLE `estudiantes` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `grados_academicos`
@@ -127,8 +165,18 @@ CREATE TABLE `grados_academicos` (
   `Ultima_Modificacion` date DEFAULT NULL,
   `Estado` int DEFAULT NULL,
   PRIMARY KEY (`idGradoAcademico`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `grados_academicos`
+--
+
+LOCK TABLES `grados_academicos` WRITE;
+/*!40000 ALTER TABLE `grados_academicos` DISABLE KEYS */;
+INSERT INTO `grados_academicos` VALUES (1,'Ingeniería en Sistemas y Computación','2021-03-15',1),(2,'Licenciatura en Computación','2021-03-15',1),(3,'Técnico en Redes Informáticas','2021-03-15',1),(4,'Técnico en Diseño Gráfico','2021-03-15',1),(5,'Técnico en Mantenimiento de Computadoras','2021-03-15',1),(6,'Licenciatura en Enfermería','2021-04-11',1);
+/*!40000 ALTER TABLE `grados_academicos` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `materias`
@@ -147,8 +195,18 @@ CREATE TABLE `materias` (
   KEY `fk_idMateria_idx` (`idMateria`),
   KEY `FK_idGradoAcademico4_idx` (`idGradoAcademico`),
   CONSTRAINT `FK_idGradoAcademico4` FOREIGN KEY (`idGradoAcademico`) REFERENCES `grados_academicos` (`idGradoAcademico`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `materias`
+--
+
+LOCK TABLES `materias` WRITE;
+/*!40000 ALTER TABLE `materias` DISABLE KEYS */;
+INSERT INTO `materias` VALUES (1,1,'Programación III','2021-03-15',1),(2,1,'Física II','2021-03-15',1),(3,1,'Redes I','2021-03-15',1),(4,1,'Matemática Financiera','2021-03-15',1),(5,1,'Sistemas Operativos II','2021-03-15',1),(6,2,'Matemática I','2021-03-15',1),(7,2,'Mantenimiento de Computadoras','2021-03-15',1),(8,2,'Fundamentos de Programación','2021-03-15',1),(9,3,'Redes I','2021-03-15',1),(10,3,'Instalación de Cableado','2021-03-15',1),(11,3,'Hardware de Redes','2021-03-15',1);
+/*!40000 ALTER TABLE `materias` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `materias_docentes`
@@ -168,8 +226,17 @@ CREATE TABLE `materias_docentes` (
   KEY `FK_idMateria4_idx` (`idMateria`),
   CONSTRAINT `FK_idDocente` FOREIGN KEY (`idDocente`) REFERENCES `docentes` (`idDocente`),
   CONSTRAINT `FK_idMateria4` FOREIGN KEY (`idMateria`) REFERENCES `materias` (`idMateria`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `materias_docentes`
+--
+
+LOCK TABLES `materias_docentes` WRITE;
+/*!40000 ALTER TABLE `materias_docentes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `materias_docentes` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `notas`
@@ -194,8 +261,17 @@ CREATE TABLE `notas` (
   KEY `FK_idMateria_idx` (`idMateria`),
   CONSTRAINT `FK_idEstudiante2` FOREIGN KEY (`idEstudiante`) REFERENCES `estudiantes` (`idEstudiante`),
   CONSTRAINT `FK_idMateria3` FOREIGN KEY (`idMateria`) REFERENCES `materias` (`idMateria`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `notas`
+--
+
+LOCK TABLES `notas` WRITE;
+/*!40000 ALTER TABLE `notas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `notas` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `personas`
@@ -215,8 +291,18 @@ CREATE TABLE `personas` (
   `Ultima_Modificacion` date DEFAULT NULL,
   `Estado` int DEFAULT NULL,
   PRIMARY KEY (`idPersona`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `personas`
+--
+
+LOCK TABLES `personas` WRITE;
+/*!40000 ALTER TABLE `personas` DISABLE KEYS */;
+INSERT INTO `personas` VALUES (1,'Andrés Eduardo','Córdova Orellana','M','08568978-2','0407-060301-102-8','2001-03-06','2021-04-11',1),(2,'Fatima Marlene','Cruz Calles','F','08568978-2','0407-060301-102-8','2001-07-24','2021-04-11',1),(3,'Joshua Alexander','Galdámez García','M','08568978-2','0407-060301-102-8','2001-03-12','2021-04-11',1),(4,'Enmanuel Enrique','Orellana Serrano','M','08568978-2','0407-060301-102-8','2001-04-11','2021-04-11',1),(5,'Marcos Antonio','Mejía Miranda','M','08568978-2','0407-060301-102-8','2001-01-27','2021-04-11',1),(6,'Julio David','Gutierrez Gomez','M','08568978-2','0407-060301-102-8','2001-01-27','2021-04-11',1),(7,'Iris Gabriela','Mendez Perez','F','08568978-2','0407-060301-102-8','2001-01-27','2021-04-11',1),(8,'Samanta Liliana','Lopez Galdamez','F','08568978-2','0407-060301-102-8','2001-01-27','2021-04-11',1),(9,'Gabriel Isaias','Orellana Perez','M','08568978-2','0407-060301-102-8','2001-01-27','2021-04-11',1);
+/*!40000 ALTER TABLE `personas` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Dumping routines for database 'administracionescolar'
@@ -1562,4 +1648,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-14 19:50:17
+-- Dump completed on 2021-04-11 21:23:06

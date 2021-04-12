@@ -10,8 +10,38 @@
   	<description></description>
   	<servlet-class>com.unab.edu.Controladores.ControllerBd</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ControllerAcceso</servlet-name>
+  	<display-name>ControllerAcceso</display-name>
+  	<description></description>
+  	<servlet-class>com.unab.edu.Controladores.ControllerAcceso</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>clsLogin</servlet-name>
+  	<display-name>clsLogin</display-name>
+  	<description></description>
+  	<servlet-class>com.unab.edu.Negocio.clsLogin</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ControllerGradoAcademico</servlet-name>
+  	<display-name>ControllerGradoAcademico</display-name>
+  	<description></description>
+  	<servlet-class>com.unab.edu.Controladores.ControllerGradoAcademico</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>ControllerBd</servlet-name>
   	<url-pattern>/ControllerBd</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ControllerAcceso</servlet-name>
+  	<url-pattern>/ControllerAcceso</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>clsLogin</servlet-name>
+  	<url-pattern>/clsLogin</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ControllerGradoAcademico</servlet-name>
+  	<url-pattern>/ControllerGradoAcademico</url-pattern>
   </servlet-mapping>
 </web-app>
