@@ -11,6 +11,9 @@ import java.sql.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
 
 /**
  *
@@ -41,8 +44,33 @@ public class CLSMateria {
             }
             conectar.close();
         } catch (Exception e) {
+            //JOptionPane.showMessageDialog(null, e);
+        }
+        return Materias;
+   }
+    
+    public ArrayList<Materia> MostrarTodasMateria() {
+        ArrayList<Materia> Materias = new ArrayList<>();
+
+        try {
+            CallableStatement Statement = conectar.prepareCall("call SP_S_MATERIAS_ALL()");
+            ResultSet resultadoConsulta = Statement.executeQuery();
+
+            while (resultadoConsulta.next()) {
+                Materia mat1 = new Materia();
+                mat1.setIdMateria(resultadoConsulta.getInt("idMateria"));
+                mat1.setNombre_GradoAcad(resultadoConsulta.getString("Nombre_GradoAcad"));
+                mat1.setNombre_Materia(resultadoConsulta.getString("Nombre_Materia"));
+                mat1.setUltima_Modificacion(resultadoConsulta.getDate("Ultima_Modificacion"));
+                mat1.setEstado(resultadoConsulta.getInt("Estado"));
+
+                Materias.add(mat1);
+            }
+            conectar.close();
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
+        
         return Materias;
     }
     

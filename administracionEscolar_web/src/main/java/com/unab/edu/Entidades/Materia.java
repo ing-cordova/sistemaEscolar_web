@@ -12,8 +12,8 @@ import java.util.Date;
  * @author BetoCalderon
  */
 public class Materia extends Grados_Academicos {
-	private int idMateria;
-	private String Nombre_Materia;
+	protected int idMateria;
+	protected String Nombre_Materia;
 	protected Date Ultima_Modificacion;
 	protected int Estado;
 
