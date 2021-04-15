@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.unab.edu.DAO;
 
 import com.unab.edu.Conexion.ConexionBD;
@@ -11,10 +6,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author dayan
- */
 public class CLSDocente {
 
     ConexionBD claseConectar = new ConexionBD();
@@ -182,7 +173,7 @@ public class CLSDocente {
 
     public ArrayList<Docente> MostrarJoinDocentePersona(Docente Dos) {
 
-        ArrayList<Docente> lista = new ArrayList();
+        ArrayList<Docente> lista = new ArrayList<>();
         try {
             CallableStatement st = conectar.prepareCall("Call SP_S_JOIN_DOCENTEPERSONA(?)");
             st.setInt("PidDocente",Dos.getIdDocente());
