@@ -173,7 +173,7 @@ public class CLSDocente {
 
     public ArrayList<Docente> MostrarJoinDocentePersona(Docente Dos) {
 
-        ArrayList<Docente> lista = new ArrayList();
+        ArrayList<Docente> lista = new ArrayList<>();
         try {
             CallableStatement st = conectar.prepareCall("Call SP_S_JOIN_DOCENTEPERSONA(?)");
             st.setInt("PidDocente",Dos.getIdDocente());
