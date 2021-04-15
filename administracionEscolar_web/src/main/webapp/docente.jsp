@@ -16,12 +16,15 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-	<script src="http://code.jquery.com/jquery-latest.js"></script>
-	<script type="text/javascript">
-	%(document).ready(function(){
-		$.post('ControllerDocente',{},function(response){
-			let datos = JSON.parse(response);
-			console.log(datos);
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+%(document).ready(function(){
+	$.post('ControllerDocente',{
+		
+	},function(response){
+		let datos = JSON.parse(response);
+		console.log(datos);
+			
 	});
 	});
 	</script>
