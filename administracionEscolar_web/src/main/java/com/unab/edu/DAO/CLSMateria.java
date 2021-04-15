@@ -68,7 +68,8 @@ public class CLSMateria {
             }
             conectar.close();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+            //JOptionPane.showMessageDialog(null, e);
+        	System.out.println(e);
         }
         
         return Materias;

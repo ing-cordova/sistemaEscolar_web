@@ -1,8 +1,6 @@
 package com.unab.edu.Controladores;
 
 import java.io.IOException;
-import java.util.Iterator;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -42,13 +40,7 @@ public class ControllerMateria extends HttpServlet {
 		
 		Gson json = new Gson();
 		CLSMateria clsMateria = new CLSMateria();
-		
 		response.getWriter().append(json.toJson(clsMateria.MostrarTodasMateria()));
-		//var datos = clsMateria.MostrarTodasMateria();
-		//for (var iterar : datos) {
-			//System.out.println(iterar.getNombre_Materia());
-			
-		//}
 	}
 
 }
