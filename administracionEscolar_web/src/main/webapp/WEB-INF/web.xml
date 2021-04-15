@@ -34,6 +34,12 @@
   	<description></description>
   	<servlet-class>com.unab.edu.Controladores.ControllerPersona</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ControllerDocente</servlet-name>
+  	<display-name>ControllerDocente</display-name>
+  	<description></description>
+  	<servlet-class>com.unab.edu.Controladores.ControllerDocente</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>ControllerBd</servlet-name>
   	<url-pattern>/ControllerBd</url-pattern>
@@ -53,5 +59,9 @@
   <servlet-mapping>
   	<servlet-name>ControllerPersona</servlet-name>
   	<url-pattern>/ControllerPersona</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ControllerDocente</servlet-name>
+  	<url-pattern>/ControllerDocente</url-pattern>
   </servlet-mapping>
 </web-app>
