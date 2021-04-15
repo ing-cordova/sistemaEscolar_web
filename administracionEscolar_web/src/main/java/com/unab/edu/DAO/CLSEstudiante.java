@@ -24,7 +24,7 @@ public class CLSEstudiante {
         ArrayList<Estudiante> Estudiantes = new ArrayList<>();
 
         try {
-            CallableStatement Statement = conectar.prepareCall("call SP_S_Estudiante()");
+            CallableStatement Statement = conectar.prepareCall("call SP_S_ESTUDIANTES()");
             ResultSet resultadoConsulta = Statement.executeQuery();
             while (resultadoConsulta.next()) {
                 Estudiante est = new Estudiante();
@@ -34,7 +34,7 @@ public class CLSEstudiante {
                 est.setCorreo_Electronico(resultadoConsulta.getString("CorreoElectronico"));
                 est.setPass(resultadoConsulta.getString("Pass"));
                 est.setIdGradoAcademico(resultadoConsulta.getInt("idGradoAcademico"));
-                est.setUltima_Modificacion(resultadoConsulta.getDate("Fecha"));
+                est.setUltima_Modificacion(resultadoConsulta.getDate("Ultima_Modificacion"));
                 est.setEstado(resultadoConsulta.getInt("Estado"));
 
                 Estudiantes.add(est);
@@ -45,6 +45,7 @@ public class CLSEstudiante {
         }
         return Estudiantes;
     }
+
 
     public void BorrarEstudiante(Estudiante est) {
         try {
