@@ -4,4 +4,24 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>ControllerGradoAcademico</servlet-name>
+  	<display-name>ControllerGradoAcademico</display-name>
+  	<description></description>
+  	<servlet-class>com.unab.edu.Controladores.ControllerGradoAcademico</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ControllerPersona</servlet-name>
+  	<display-name>ControllerPersona</display-name>
+  	<description></description>
+  	<servlet-class>com.unab.edu.Controladores.ControllerPersona</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ControllerGradoAcademico</servlet-name>
+  	<url-pattern>/ControllerGradoAcademico</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ControllerPersona</servlet-name>
+  	<url-pattern>/ControllerPersona</url-pattern>
+  </servlet-mapping>
 </web-app>
