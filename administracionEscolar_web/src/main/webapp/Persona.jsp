@@ -48,8 +48,8 @@
                 <th>SEXO</th>
                 <th>DUI</th>
                 <th>NIT</th>
-                <th>NOMBRES</th>
                 <th>FECHA DE NACIMIENTO</th>
+                <th>ULTIMA MODIFICACION</th>
                 <th>ESTADO</th>
             </thead>
         </table>

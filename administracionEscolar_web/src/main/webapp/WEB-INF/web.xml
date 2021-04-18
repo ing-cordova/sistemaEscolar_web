@@ -16,6 +16,24 @@
   	<description></description>
   	<servlet-class>com.unab.edu.Controladores.ControllerPersona</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ControllerMateria</servlet-name>
+  	<display-name>ControllerMateria</display-name>
+  	<description></description>
+  	<servlet-class>com.unab.edu.Controladores.ControllerMateria</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ControllerDocente</servlet-name>
+  	<display-name>ControllerDocente</display-name>
+  	<description></description>
+  	<servlet-class>com.unab.edu.Controladores.ControllerDocente</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ControllerEstudiante</servlet-name>
+  	<display-name>ControllerEstudiante</display-name>
+  	<description></description>
+  	<servlet-class>com.unab.edu.Controladores.ControllerEstudiante</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>ControllerGradoAcademico</servlet-name>
   	<url-pattern>/ControllerGradoAcademico</url-pattern>
@@ -23,5 +41,17 @@
   <servlet-mapping>
   	<servlet-name>ControllerPersona</servlet-name>
   	<url-pattern>/ControllerPersona</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ControllerMateria</servlet-name>
+  	<url-pattern>/ControllerMateria</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ControllerDocente</servlet-name>
+  	<url-pattern>/ControllerDocente</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ControllerEstudiante</servlet-name>
+  	<url-pattern>/ControllerEstudiante</url-pattern>
   </servlet-mapping>
 </web-app>
