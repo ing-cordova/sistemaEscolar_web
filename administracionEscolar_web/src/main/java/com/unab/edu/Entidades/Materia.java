@@ -14,8 +14,8 @@ import java.util.Date;
 public class Materia extends Grados_Academicos {
 	protected int idMateria;
 	protected String Nombre_Materia;
-	protected Date Ultima_Modificacion;
-	protected int Estado;
+	protected Date mtrUltima_Modificacion;
+	protected int mtrEstado;
 
 	public int getIdMateria() {
 		return idMateria;
@@ -32,20 +32,19 @@ public class Materia extends Grados_Academicos {
 	public void setNombre_Materia(String nombre_Materia) {
 		Nombre_Materia = nombre_Materia;
 	}
-
-	public Date getUltima_Modificacion() {
-		return Ultima_Modificacion;
+	public Date getMtrUltima_Modificacion() {
+		return mtrUltima_Modificacion;
 	}
 
-	public void setUltima_Modificacion(Date ultima_Modificacion) {
-		Ultima_Modificacion = ultima_Modificacion;
+	public void setMtrUltima_Modificacion(Date mtrUltima_Modificacion) {
+		this.mtrUltima_Modificacion = mtrUltima_Modificacion;
 	}
 
-	public int getEstado() {
-		return Estado;
+	public int getMtrEstado() {
+		return mtrEstado;
 	}
 
-	public void setEstado(int estado) {
-		Estado = estado;
+	public void setMtrEstado(int mtrEstado) {
+		this.mtrEstado = mtrEstado;
 	}
 }

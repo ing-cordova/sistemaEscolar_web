@@ -20,13 +20,26 @@
                 }, function (response) {
                     let datos = JSON.parse(response);
                     console.log(datos);
+                    
+                    var tabla = document.getElementById('tablaDatos');
+                    for (let item of datos) {
+                        tabla.innerHTML +=
+                            `
+                        <td>${item.idMateria}</td>
+                        <td>${item.Nombre_Materia}</td>
+                        <td>${item.Nombre_GradoAcad}</td>
+                        <td>${item.mtrUltima_Modificacion}</td>
+                        <td>${item.mtrEstado}</td>
+                        `
+                    }
                 });
             });
         </script>
-        <h1 align="center">Grados academicos existentes</h1>
+        <h1 align="center">Materias existentes</h1>
         <table class="table table-dark table-striped" id="tablaDatos">
             <thead>
-                <th>ID_GRADO</th>
+                <th>ID_MATERIA</th>
+                <th>NOMBRE MATERIA</th>
                 <th>GRADO ACADEMICO</th>
                 <th>ULTIMA MODIFICACION</th>
                 <th>ESTADO</th>

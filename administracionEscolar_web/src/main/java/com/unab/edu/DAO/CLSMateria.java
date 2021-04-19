@@ -61,8 +61,8 @@ public class CLSMateria {
                 mat1.setIdMateria(resultadoConsulta.getInt("idMateria"));
                 mat1.setNombre_GradoAcad(resultadoConsulta.getString("Nombre_GradoAcad"));
                 mat1.setNombre_Materia(resultadoConsulta.getString("Nombre_Materia"));
-                mat1.setUltima_Modificacion(resultadoConsulta.getDate("Ultima_Modificacion"));
-                mat1.setEstado(resultadoConsulta.getInt("Estado"));
+                mat1.setMtrUltima_Modificacion(resultadoConsulta.getDate("Ultima_Modificacion"));
+                mat1.setMtrEstado(resultadoConsulta.getInt("Estado"));
 
                 Materias.add(mat1);
             }
