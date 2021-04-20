@@ -6,6 +6,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+import com.unab.edu.DAO.CLSEstudiante;
+import com.unab.edu.DAO.CLSGradoAcademico;
+
 /**
  * Servlet implementation class ControllerEstudiante
  */
@@ -33,7 +37,12 @@ public class ControllerEstudiante extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		//doGet(request, response);
+				
+				Gson json = new Gson();
+				CLSEstudiante clsestudiante = new CLSEstudiante();
+				
+				response.getWriter().append(json.toJson(clsestudiante.MostrarEstudiante()));
 	}
 
 }

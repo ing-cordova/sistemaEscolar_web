@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.unab.edu.DAO.CLSEstudiante;
 import com.unab.edu.DAO.CLSGradoAcademico;
 
 /**
