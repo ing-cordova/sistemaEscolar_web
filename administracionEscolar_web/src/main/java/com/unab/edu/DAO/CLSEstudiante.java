@@ -24,7 +24,7 @@ public class CLSEstudiante {
         ArrayList<Estudiante> Estudiantes = new ArrayList<>();
 
         try {
-            CallableStatement Statement = conectar.prepareCall("call SP_S_Estudiante()");
+            CallableStatement Statement = conectar.prepareCall("call SP_S_ESTUDIANTES()");
             ResultSet resultadoConsulta = Statement.executeQuery();
             while (resultadoConsulta.next()) {
                 Estudiante est = new Estudiante();
