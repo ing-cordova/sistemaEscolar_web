@@ -22,13 +22,14 @@
                 <form action="ControllerLogin" method="post">
                     <img src="Imagenes/male_avatar.svg">
                     <h2 class="title">Bienvenido</h2>
+                    <h3 class="title">Instituto Nacional <br>"Dr. Francísco Martínez Suárez" <br>Chalatenango.</h3>
                     <div class="input-div one">
                         <div class="i">
                             <i class="fas fa-user"></i>
                         </div>
                         <div class="div">
                             <h5>E-mail</h5>
-                            <input type="email" name="email" class="input">
+                            <input type="email" name="email" class="input" required>
                         </div>
                     </div>
                     <div class="input-div pass">
@@ -37,10 +38,10 @@
                         </div>
                         <div class="div">
                             <h5>Password</h5>
-                            <input type="password" name="password" class="input">
+                            <input type="password" name="password" class="input" required>
                         </div>
                     </div>
-                    <input type="submit" class="btn" value="Iniciar Sesion">
+                    <input type="submit" class="btn" value="Iniciar Sesión">
                 </form>
             </div>
         </div>
