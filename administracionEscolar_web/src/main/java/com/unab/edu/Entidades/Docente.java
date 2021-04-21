@@ -13,12 +13,11 @@ import java.util.Date;
  */
 public class Docente extends Persona {
 	protected int idDocente;
-	protected int idPersona;
 	protected String Correo_Electronico;
 	protected String Pass;
 	protected String Especialidad;
-	protected Date Ultima_Modificacion;
-	protected int Estado;
+	protected Date docUltima_Modificacion;
+	protected int docEstado;
 
 	public int getIdDocente() {
 		return idDocente;
@@ -26,14 +25,6 @@ public class Docente extends Persona {
 
 	public void setIdDocente(int idDocente) {
 		this.idDocente = idDocente;
-	}
-
-	public int getIdPersona() {
-		return idPersona;
-	}
-
-	public void setIdPersona(int idPersona) {
-		this.idPersona = idPersona;
 	}
 
 	public String getCorreo_Electronico() {
@@ -60,19 +51,19 @@ public class Docente extends Persona {
 		Especialidad = especialidad;
 	}
 
-	public Date getUltima_Modificacion() {
-		return Ultima_Modificacion;
+	public Date getDocUltima_Modificacion() {
+		return docUltima_Modificacion;
 	}
 
-	public void setUltima_Modificacion(Date ultima_Modificacion) {
-		Ultima_Modificacion = ultima_Modificacion;
+	public void setDocUltima_Modificacion(Date docUltima_Modificacion) {
+		this.docUltima_Modificacion = docUltima_Modificacion;
 	}
 
-	public int getEstado() {
-		return Estado;
+	public int getDocEstado() {
+		return docEstado;
 	}
 
-	public void setEstado(int estado) {
-		Estado = estado;
+	public void setDocEstado(int docEstado) {
+		this.docEstado = docEstado;
 	}
 }

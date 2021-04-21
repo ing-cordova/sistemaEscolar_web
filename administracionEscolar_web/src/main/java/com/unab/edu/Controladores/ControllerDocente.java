@@ -38,16 +38,9 @@ public class ControllerDocente extends HttpServlet {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		
-		Gson json = new Gson();
-		
+		Gson json = new Gson();	
 		CLSDocente clsDoc= new CLSDocente();		
-		response.getWriter().append(json.toJson(clsDoc.MostrarDocente()));
-		
-		/*var datos = clsDoc.MostrarDocente();
-		for(var iterar : datos) {
-			System.out.println("Docente: " + iterar.getEspecialidad());
-		}*/
-		
+		response.getWriter().append(json.toJson(clsDoc.JoinDocentes()));
 	}
 
 }

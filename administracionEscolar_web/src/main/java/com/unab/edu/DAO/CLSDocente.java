@@ -218,4 +218,30 @@ public class CLSDocente {
 
         return ID;
     }
+    
+    public ArrayList<Docente> JoinDocentes() {
+
+        ArrayList<Docente> lista = new ArrayList<>();
+        try {
+            CallableStatement st = conectar.prepareCall("call SP_S_JOINDOCENTES()");
+            ResultSet rs = st.executeQuery();
+            System.out.println("> Paso 1");
+            while (rs.next()) {
+            	System.out.println("> Paso 2 " + rs.getString("Nombre"));
+                Docente Do = new Docente();
+                Do.setIdDocente(rs.getInt("idDocente"));
+                Do.setNombre(rs.getString("Nombre"));
+                Do.setApellido(rs.getString("Apellido"));
+                Do.setCorreo_Electronico(rs.getString("Correo_Electronico"));
+                Do.setEspecialidad(rs.getString("Especialidad"));
+                Do.setDocUltima_Modificacion(rs.getDate("Ultima_Modificacion"));
+                Do.setDocEstado(rs.getInt("Estado"));
+                lista.add(Do);
+            }
+            System.out.println("> Paso 3");
+        } catch (Exception e) {
+            System.out.println("> Algo salio mal en: CLSDocente.");
+        }
+        return lista;
+    }
 }
