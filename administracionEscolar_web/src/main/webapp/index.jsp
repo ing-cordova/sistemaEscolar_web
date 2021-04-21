@@ -19,7 +19,7 @@
                 <img src="Imagenes/teaching.svg">
             </div>
             <div class="login-content">
-                <form action="" method="">
+                <form action="ControllerLogin" method="post">
                     <img src="Imagenes/male_avatar.svg">
                     <h2 class="title">Bienvenido</h2>
                     <div class="input-div one">

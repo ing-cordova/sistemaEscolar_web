@@ -34,6 +34,12 @@
   	<description></description>
   	<servlet-class>com.unab.edu.Controladores.ControllerEstudiante</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ControllerLogin</servlet-name>
+  	<display-name>ControllerLogin</display-name>
+  	<description></description>
+  	<servlet-class>com.unab.edu.Controladores.ControllerLogin</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>ControllerGradoAcademico</servlet-name>
   	<url-pattern>/ControllerGradoAcademico</url-pattern>
@@ -53,5 +59,9 @@
   <servlet-mapping>
   	<servlet-name>ControllerEstudiante</servlet-name>
   	<url-pattern>/ControllerEstudiante</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ControllerLogin</servlet-name>
+  	<url-pattern>/ControllerLogin</url-pattern>
   </servlet-mapping>
 </web-app>
