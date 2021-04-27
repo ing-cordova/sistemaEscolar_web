@@ -34,9 +34,8 @@ public class CLSEstudiante {
                 est.setCorreo_Electronico(resultadoConsulta.getString("CorreoElectronico"));
                 est.setPass(resultadoConsulta.getString("Pass"));
                 est.setIdGradoAcademico(resultadoConsulta.getInt("idGradoAcademico"));
-                est.setUltima_Modificacion(resultadoConsulta.getDate("Fecha"));
-                est.setEstado(resultadoConsulta.getInt("Estado"));
-
+                est.setEstUltima_Modificacion(resultadoConsulta.getDate("Ultima_Modificacion"));
+                est.setEstEstado(resultadoConsulta.getInt("Estado"));
                 Estudiantes.add(est);
             }
             conectar.close();
@@ -249,4 +248,29 @@ public class CLSEstudiante {
         } 
         return lista;
     }
+    
+    public ArrayList<Estudiante> JoinEstudiante(){
+        
+        ArrayList <Estudiante> lista =  new ArrayList();
+            try {
+                CallableStatement st = conectar.prepareCall("call SP_S_JOINESTUDIANTE()");
+                ResultSet rs = st.executeQuery();
+                while (rs.next ()){
+                    Estudiante es = new Estudiante();
+                    es.setIdEstudiante(rs.getInt("idEstudiante"));
+                    es.setNombre(rs.getString("Nombre"));
+                    es.setApellido(rs.getString("Apellido"));
+                    es.setCorreo_Electronico(rs.getString("Correo_Electronico"));
+                    es.setNombre_GradoAcad(rs.getString("Nombre_GradoAcad"));
+                    es.setEstUltima_Modificacion(rs.getDate("Ultima_Modificacion"));
+                    es.setEstEstado(rs.getInt("Estado"));
+                    lista.add(es);
+                    
+                }
+                conectar.close();
+            } catch (Exception e) {
+            	System.out.println("> Algo salio mal en: CLSEstudiante.");
+            } 
+            return lista;
+        }
 }

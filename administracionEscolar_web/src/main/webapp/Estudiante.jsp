@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
         <title>Estudiantes</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
@@ -26,12 +26,12 @@
                             `
                     <tr>
                         <td>${item.idEstudiante}</td>
-                        <td>${item.idPersona}</td>
+                        <td>${item.Nombre}</td>
+                        <td>${item.Apellido}</td>
                         <td>${item.Correo_Electronico}</td>
-                        <td>${item.Pass}</td>
-                        <td>${item.idGradoAcademico}</td>
-                        <td>${item.Fecha}</td>
-                        <td>${item.Estado}</td>
+                        <td>${item.Nombre_GradoAcad}</td>
+                        <td>${item.estUltima_Modificacion}</td>
+                        <td>${item.estEstado}</td>
                     </tr>
                     `
                         console.log(item.idEstudiante);
@@ -39,14 +39,14 @@
                 });
             });
         </script>
-        <h1 align="center">Estudiantes</h1>
+        <h1 align="center">Estudiantes existentes</h1>
         <table class="table table-dark table-striped" id="tablaDatos">
             <thead>
                 <th>ID_ESTUDIANTE</th>
-                <th>ID_PERSONA</th>
-                <th>CORREO_ELECTRONICO</th>
-                <th>PASS</th>
-                <th>IDGRADOACADEMICO</th>
+                <th>NOMBRES</th>
+                <th>APELLIDOS</th>
+                <th>E-MAIL</th>
+                <th>GRADO ACAD.</th>
                 <th>ULTIMA MODIFICACION</th>
                 <th>ESTADO</th>
             </thead>
