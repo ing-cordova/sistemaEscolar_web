@@ -28,8 +28,8 @@
 		<br>
 			<select class="controls" required>
 				<option>Seleccione una opcion</option>
-				<option>Masculino</option>
-				<option>Femenino</option>
+				<option value="">M</option>
+				<option value="">F</option>
 			</select>
 			<!-- Aqui va el combobox de Sexo -->
 			<label>Grado Académico:</label>

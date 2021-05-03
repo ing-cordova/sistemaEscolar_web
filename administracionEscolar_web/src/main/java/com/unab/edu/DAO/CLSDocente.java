@@ -26,8 +26,8 @@ public class CLSDocente {
                 prof.setCorreo_Electronico(resultadoConsulta.getString("Correo_Electronico"));
                 prof.setPass(resultadoConsulta.getString("Pass"));
                 prof.setEspecialidad(resultadoConsulta.getString("Especialidad"));
-                prof.setUltima_Modificacion(resultadoConsulta.getDate("Ultima_Modificacion"));
-                prof.setEstado(resultadoConsulta.getInt("Estado"));
+                prof.setDocUltima_Modificacion(resultadoConsulta.getDate("Ultima_Modificacion"));
+                prof.setDocEstado(resultadoConsulta.getInt("Estado"));
 
                 Docentes.add(prof);
             }
