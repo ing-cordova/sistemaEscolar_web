@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <link rel="icon" href="Imagenes/school.ico">
-<title>Nuevo Grado Académico</title>
+<title>Nuevo Grado AcadÃ©mico</title>
 <link rel="stylesheet" href="Styles/style_addgradocademico.css">
 <script src="https://kit.fontawesome.com/dab6165ace.js"
 	crossorigin="anonymous"></script>
@@ -25,10 +25,10 @@
 	}
 	%>
 	<section class="form-register">
-		<h1>Registros de Grados Académicos</h1>
+		<h1>Registros de Grados AcadÃ©micos</h1>
 		<form action="ControllerGradoAcademico" method="get">
 		<input type="hidden" name="Id" value=<%=Id%>> 
-		<label>Nombre del Grado académico:</label>
+		<label>Nombre del Grado acadÃ©mico:</label>
 		<br>
 			<input class="controls" type="text" value="<%=GradoAcad%>" name="GradoAcad"  required> 
 		<br>

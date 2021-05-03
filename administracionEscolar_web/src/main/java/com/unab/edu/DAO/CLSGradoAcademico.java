@@ -67,17 +67,17 @@ public class CLSGradoAcademico {
         try {
             CallableStatement Statement = conectar.prepareCall("call SP_U_GRADOS_ACADEMICOS(?,?,?,?)");
             
-            Statement.setInt("PIdGradoAcademico", gradAca.getIdGradoAcademico());
-            Statement.setString("PNombreGradoAcademico", gradAca.getNombre_GradoAcad());
-            Statement.setDate("PUltimaModificacion", new java.sql.Date(gradAca.getUltima_Modificacion().getTime())); 
+            Statement.setInt("PidGradoAcademico", gradAca.getIdGradoAcademico());
+            Statement.setString("PNombre_GradoAcad", gradAca.getNombre_GradoAcad());
+            Statement.setDate("PUltima_Modificacion", new java.sql.Date(gradAca.getUltima_Modificacion().getTime())); 
             Statement.setInt("PEstado", gradAca.getEstado());
             
             Statement.execute();
-            JOptionPane.showMessageDialog(null, "Datos actualizados con éxito");
+            System.out.println("Actualizado con exito");
             
             conectar.close();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        	System.out.println("Ocurrio un error en CLSGradoAcademico/ActualizarGradoAcademico");
         }
     }
     
@@ -92,8 +92,8 @@ public class CLSGradoAcademico {
             Statement.setInt("PEstado", gradAca.getEstado());
             
             Statement.execute();
-            System.out.println("Guardado");
-            JOptionPane.showMessageDialog(null, "Datos agregados con éxito");
+            System.out.println("Guardado con exito");
+           // JOptionPane.showMessageDialog(null, "Datos agregados con éxito");
             
             conectar.close();
         } catch (Exception e) {
