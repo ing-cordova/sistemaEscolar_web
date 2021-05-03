@@ -32,6 +32,8 @@
                         <td>${item.Nombre_GradoAcad}</td>
                         <td>${item.estUltima_Modificacion}</td>
                         <td>${item.estEstado}</td>
+                        <td><a href="ControllerEstudiante?IdEstudiante=${item.idEstudiante}&Eliminar=btne" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
+						<a href="AddEstudiante.jsp?IdEstudiante=${item.idEstudiante}&Estudiante=${item.Nombre_Estudiante}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
                     </tr>
                     `
                         console.log(item.idEstudiante);
@@ -40,6 +42,10 @@
             });
         </script>
         <h1 align="center">Estudiantes existentes</h1>
+        <div class="botones">
+        	<a href="Administrador.jsp" class="btn btn-secondary btn-lg">Regresar al menú principal</a>
+        	<a href="AddEstudiante.jsp" class="btn btn-success btn-lg">Agregar nuevo</a>
+        </div>
         <table class="table table-dark table-striped" id="tablaDatos">
             <thead>
                 <th>ID_ESTUDIANTE</th>

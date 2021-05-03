@@ -1,6 +1,9 @@
 package com.unab.edu.Controladores;
 
 import java.io.IOException;
+import java.util.Date;
+
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -8,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.unab.edu.DAO.CLSEstudiante;
-import com.unab.edu.DAO.CLSGradoAcademico;
+import com.unab.edu.Entidades.Estudiante;
+import com.unab.edu.Entidades.Grados_Academicos;
 
 /**
  * Servlet implementation class ControllerEstudiante
@@ -31,7 +35,7 @@ public class ControllerEstudiante extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

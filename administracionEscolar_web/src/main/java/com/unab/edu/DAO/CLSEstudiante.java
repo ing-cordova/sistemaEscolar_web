@@ -47,7 +47,7 @@ public class CLSEstudiante {
 
     public void BorrarEstudiante(Estudiante est) {
         try {
-            CallableStatement Statement = conectar.prepareCall("call SP_D_Estudiante(?)");
+            CallableStatement Statement = conectar.prepareCall("call SP_D_ESTUDIANTES(?)");
 
             Statement.setInt("PIdEstudiante", est.getIdEstudiante());
 
@@ -62,7 +62,7 @@ public class CLSEstudiante {
 
     public void ActualizarEstudiante(Estudiante est) {
         try {
-            CallableStatement Statement = conectar.prepareCall("call SP_U_Estudiante(?,?,?,?,?,?,?)");
+            CallableStatement Statement = conectar.prepareCall("call SP_U_ESTUDIANTE(?,?,?,?,?,?,?)");
             Statement.setInt("PIdEstudiante", est.getIdEstudiante());
             Statement.setInt("PIdPersona", est.getIdPersona());
             Statement.setString("PCorreoElectronico", est.getCorreo_Electronico());
