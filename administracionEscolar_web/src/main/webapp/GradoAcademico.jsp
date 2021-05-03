@@ -35,8 +35,8 @@
                         <td>${item.idGradoAcademico}</td>
                         <td>${item.Nombre_GradoAcad}</td>
                         <td>${item.Ultima_Modificacion}</td>
-                        <td><a href="ControllerGradoAcademico?IdGrado=${item.idGradoAcademico}&Eliminar=btne" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
-						<a href="AddGradoAcademico.jsp?IdGrado=${item.idGradoAcademico}&GradoAcad=${item.Nombre_GradoAcad}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                        <td><a href="ControllerGradoAcademico?Id=${item.idGradoAcademico}&Eliminar=btne" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
+						<a href="AddGradoAcademico.jsp?Id=${item.idGradoAcademico}&GradoAcad=${item.Nombre_GradoAcad}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
 						</td>
                     </tr>
                     `

@@ -92,6 +92,7 @@ public class CLSGradoAcademico {
             Statement.setInt("PEstado", gradAca.getEstado());
             
             Statement.execute();
+            System.out.println("Guardado");
             JOptionPane.showMessageDialog(null, "Datos agregados con éxito");
             
             conectar.close();

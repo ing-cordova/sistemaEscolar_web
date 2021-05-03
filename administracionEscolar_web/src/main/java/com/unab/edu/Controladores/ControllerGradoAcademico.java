@@ -37,15 +37,15 @@ public class ControllerGradoAcademico extends HttpServlet {
 		String Evaluar = request.getParameter("Eliminar");
 		String Agregar = request.getParameter("Guardar");
 
-		String IdGrado = request.getParameter("IdGradoAcademico");
-		String GradoAcad = request.getParameter("gradoacademico");
+		String Id = request.getParameter("Id");
+		String GradoAcad = request.getParameter("GradoAcad");
 
 		Grados_Academicos grado = new Grados_Academicos();
 		CLSGradoAcademico clsGrado = new CLSGradoAcademico();
 
 		if (Evaluar != null) {
 			if (Evaluar.equals("btne")) {
-				grado.setIdGradoAcademico(Integer.parseInt(IdGrado));
+				grado.setIdGradoAcademico(Integer.parseInt(Id));
 				clsGrado.BorrarGradoAcademico(grado);
 				response.sendRedirect("GradoAcademico.jsp");
 			}
@@ -56,15 +56,15 @@ public class ControllerGradoAcademico extends HttpServlet {
 			grado.setUltima_Modificacion(date);
 			grado.setEstado(1);
 			
-			System.out.println(IdGrado);
+			System.out.println(Id);
 			
-			if(IdGrado == "" || IdGrado == null) {
+			if(Id == "" || Id == null) {
 				
 				clsGrado.AgregarGradoAcademico(grado);
 				response.sendRedirect("GradoAcademico.jsp");
 			}
 			else {
-				grado.setIdGradoAcademico(Integer.parseInt(IdGrado));
+				grado.setIdGradoAcademico(Integer.parseInt(Id));
 				clsGrado.ActualizarGradoAcademico(grado);
 				response.sendRedirect("GradoAcademico.jsp");
 			}

@@ -16,21 +16,21 @@
 </head>
 <body>
 	<%
-	String Id = request.getParameter("IdGrado");
-	String GradoAcadem = request.getParameter("GradoAcad");
+	String Id = request.getParameter("Id");
+	String GradoAcad = request.getParameter("GradoAcad");
 
 	if (Id == null) {
 		Id = "";
-		GradoAcadem = "";
+		GradoAcad = "";
 	}
 	%>
 	<section class="form-register">
-	<h1>Registros de Grados Académicos</h1>
+		<h1>Registros de Grados Académicos</h1>
 		<form action="ControllerGradoAcademico" method="get">
-		<input type="text" name="IdGradoAcademico" value=<%=Id%>> 
+		<input type="hidden" name="Id" value=<%=Id%>> 
 		<label>Nombre del Grado académico:</label>
 		<br>
-			<input class="controls" type="text" value="<%=GradoAcadem%>" name="gradoacademico"  required> 
+			<input class="controls" type="text" value="<%=GradoAcad%>" name="GradoAcad"  required> 
 		<br>
 			<button name="Guardar" value="btna" class="boton">Guardar/Actualizar</button>
 		</form>
