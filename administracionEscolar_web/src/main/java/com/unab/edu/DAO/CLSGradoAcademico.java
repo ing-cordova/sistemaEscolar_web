@@ -53,11 +53,12 @@ public class CLSGradoAcademico {
            Statement.setInt("PIdGradoAcademico", gradAca.getIdGradoAcademico());
            
            Statement.execute();
-           JOptionPane.showMessageDialog(null, "Datos eliminados con éxito");
+           System.out.println("> Eliminado con exito");
+           //JOptionPane.showMessageDialog(null, "Datos eliminados con éxito");
            
            conectar.close();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+            System.out.println("Ha ocurrido un error, vendo de CLSGradoAcademico/BorrarGradoAcademico" + e);
         }
     }
     
@@ -84,11 +85,10 @@ public class CLSGradoAcademico {
     
         try {
             
-            CallableStatement Statement = conectar.prepareCall("call SP_I_GRADOS_ACADEMICOS(?,?,?,?,?)");
+            CallableStatement Statement = conectar.prepareCall("call SP_I_GRADOS_ACADEMICOS(?,?,?)");
             
-            Statement.setInt("PIdGradoAcademico", gradAca.getIdGradoAcademico());
-            Statement.setString("PNombreGradoAcademico", gradAca.getNombre_GradoAcad());
-            Statement.setDate("PUltimaModificacion", new java.sql.Date(gradAca.getUltima_Modificacion().getTime())); 
+            Statement.setString("PNombre_GradoAcad", gradAca.getNombre_GradoAcad());
+            Statement.setDate("PUltima_Modificacion", new java.sql.Date(gradAca.getUltima_Modificacion().getTime())); 
             Statement.setInt("PEstado", gradAca.getEstado());
             
             Statement.execute();
@@ -96,6 +96,7 @@ public class CLSGradoAcademico {
             
             conectar.close();
         } catch (Exception e) {
+        	System.out.println("Ha ocurrido un error en CLSGradoAcademico" + e);
       }
     }
 }

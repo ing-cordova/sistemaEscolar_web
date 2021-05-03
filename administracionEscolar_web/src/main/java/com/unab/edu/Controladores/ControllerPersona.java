@@ -40,14 +40,9 @@ public class ControllerPersona extends HttpServlet {
 		
 		Gson json = new Gson();
 		CLSPersona clsPersona = new CLSPersona();
-		response.getWriter().append(json.toJson(clsPersona.MostrarPersona()));
 		
-		//Imprime y se comprueba que se esta comunicando con la capa Entidad y DAO
-		/*
-		var datos = clsPersona.MostrarPersona();
-		for(var iterar : datos) {
-			System.out.println("Nombre de la persona: " + iterar.getNombre());
-		}*/
+		response.setCharacterEncoding("UTF8");
+		response.getWriter().append(json.toJson(clsPersona.MostrarPersona()));
 	}
 
 }

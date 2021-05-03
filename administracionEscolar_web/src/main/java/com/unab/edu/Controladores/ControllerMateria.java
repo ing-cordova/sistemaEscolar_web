@@ -44,6 +44,8 @@ public class ControllerMateria extends HttpServlet {
 
 		Gson json = new Gson();
 		CLSMateria clsMateria = new CLSMateria();
+		
+		response.setCharacterEncoding("UTF8");
 		response.getWriter().append(json.toJson(clsMateria.MostrarTodasMateria()));
 	}
 

@@ -39,7 +39,9 @@ public class ControllerDocente extends HttpServlet {
 		//doGet(request, response);
 		
 		Gson json = new Gson();	
-		CLSDocente clsDoc= new CLSDocente();		
+		CLSDocente clsDoc= new CLSDocente();	
+		
+		response.setCharacterEncoding("UTF8");
 		response.getWriter().append(json.toJson(clsDoc.JoinDocentes()));
 	}
 

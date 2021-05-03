@@ -89,6 +89,36 @@ LOCK TABLES `actividades_estudiantes` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `administradores`
+--
+
+DROP TABLE IF EXISTS `administradores`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `administradores` (
+  `idAdministrador` int NOT NULL AUTO_INCREMENT,
+  `idPersona` int DEFAULT NULL,
+  `Correo_Electronico` varchar(45) DEFAULT NULL,
+  `Pass` varchar(600) DEFAULT NULL,
+  `Ultima_Modificacion` varchar(45) DEFAULT NULL,
+  `Estado` int DEFAULT NULL,
+  PRIMARY KEY (`idAdministrador`),
+  KEY `FK_idPersonaA_idx` (`idPersona`),
+  CONSTRAINT `FK_idPersonaA` FOREIGN KEY (`idPersona`) REFERENCES `personas` (`idPersona`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `administradores`
+--
+
+LOCK TABLES `administradores` WRITE;
+/*!40000 ALTER TABLE `administradores` DISABLE KEYS */;
+INSERT INTO `administradores` VALUES (1,10,'daniel@admin.com','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db','2021-04-27',1),(2,1,'andres@admin.com','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db','2021-05-02',1);
+/*!40000 ALTER TABLE `administradores` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `docentes`
 --
 
@@ -115,7 +145,7 @@ CREATE TABLE `docentes` (
 
 LOCK TABLES `docentes` WRITE;
 /*!40000 ALTER TABLE `docentes` DISABLE KEYS */;
-INSERT INTO `docentes` VALUES (1,6,'docente@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db','Ingeniero en Sistemas','2021-04-11',1),(2,7,'docente@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db','Ingeniero en Sistemas','2021-04-11',1),(3,8,'docente@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db','Ingeniero en Sistemas','2021-04-11',1),(4,9,'docente@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db','Ingeniero en Sistemas','2021-04-11',1);
+INSERT INTO `docentes` VALUES (1,6,'ingcordova@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db','Ingeniero en Sistemas','2021-04-20',1),(2,7,'docente@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db','Ingeniero en Sistemas','2021-04-11',1),(3,8,'docente@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db','Ingeniero en Sistemas','2021-04-11',1),(4,9,'docente@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db','Licenciatura en Computacion','2021-04-11',1);
 /*!40000 ALTER TABLE `docentes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -148,7 +178,7 @@ CREATE TABLE `estudiantes` (
 
 LOCK TABLES `estudiantes` WRITE;
 /*!40000 ALTER TABLE `estudiantes` DISABLE KEYS */;
-INSERT INTO `estudiantes` VALUES (1,1,'andres@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db',1,'2021-04-11',1),(2,1,'fatima@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db',1,'2021-04-11',1),(3,1,'joshua@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db',1,'2021-04-11',1),(4,1,'emanuel@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db',1,'2021-04-11',1),(5,1,'marcos@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db',1,'2021-04-11',1);
+INSERT INTO `estudiantes` VALUES (1,1,'andres@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db',1,'2021-04-11',1),(2,2,'fatima@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db',1,'2021-04-11',1),(3,3,'joshua@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db',1,'2021-04-11',1),(4,4,'emanuel@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db',1,'2021-04-11',1),(5,5,'marcos@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db',1,'2021-04-11',1);
 /*!40000 ALTER TABLE `estudiantes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -165,7 +195,7 @@ CREATE TABLE `grados_academicos` (
   `Ultima_Modificacion` date DEFAULT NULL,
   `Estado` int DEFAULT NULL,
   PRIMARY KEY (`idGradoAcademico`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -174,7 +204,7 @@ CREATE TABLE `grados_academicos` (
 
 LOCK TABLES `grados_academicos` WRITE;
 /*!40000 ALTER TABLE `grados_academicos` DISABLE KEYS */;
-INSERT INTO `grados_academicos` VALUES (1,'Ingeniería en Sistemas y Computación','2021-03-15',1),(2,'Licenciatura en Computación','2021-03-15',1),(3,'Técnico en Redes Informáticas','2021-03-15',1),(4,'Técnico en Diseño Gráfico','2021-03-15',1),(5,'Técnico en Mantenimiento de Computadoras','2021-03-15',1),(6,'Licenciatura en Enfermería','2021-04-11',1);
+INSERT INTO `grados_academicos` VALUES (1,'Ingeniería en Sistemas y Computación','2021-03-15',1),(2,'Licenciatura en Computación','2021-03-15',1),(3,'Técnico en Redes Informáticas','2021-03-15',1),(4,'Técnico en Diseño Gráfico','2021-03-15',1),(5,'Técnico en Mantenimiento de Computadoras','2021-03-15',1),(6,'Licenciatura en Enfermería','2021-04-11',1),(7,'T�cnico en Ingenier�a Civ�l','2021-05-02',1),(8,'T�cnico en Ingenier�a Civ�l','2021-05-02',1),(9,'T�cnico en Ingenier�a Civ�l','2021-05-02',1),(10,'Holaaaaaa','2021-05-02',1),(11,'Holaaaaaa','2021-05-02',1);
 /*!40000 ALTER TABLE `grados_academicos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -291,7 +321,7 @@ CREATE TABLE `personas` (
   `Ultima_Modificacion` date DEFAULT NULL,
   `Estado` int DEFAULT NULL,
   PRIMARY KEY (`idPersona`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -300,7 +330,7 @@ CREATE TABLE `personas` (
 
 LOCK TABLES `personas` WRITE;
 /*!40000 ALTER TABLE `personas` DISABLE KEYS */;
-INSERT INTO `personas` VALUES (1,'Andrés Eduardo','Córdova Orellana','M','08568978-2','0407-060301-102-8','2001-03-06','2021-04-11',1),(2,'Fatima Marlene','Cruz Calles','F','08568978-2','0407-060301-102-8','2001-07-24','2021-04-11',1),(3,'Joshua Alexander','Galdámez García','M','08568978-2','0407-060301-102-8','2001-03-12','2021-04-11',1),(4,'Enmanuel Enrique','Orellana Serrano','M','08568978-2','0407-060301-102-8','2001-04-11','2021-04-11',1),(5,'Marcos Antonio','Mejía Miranda','M','08568978-2','0407-060301-102-8','2001-01-27','2021-04-11',1),(6,'Julio David','Gutierrez Gomez','M','08568978-2','0407-060301-102-8','2001-01-27','2021-04-11',1),(7,'Iris Gabriela','Mendez Perez','F','08568978-2','0407-060301-102-8','2001-01-27','2021-04-11',1),(8,'Samanta Liliana','Lopez Galdamez','F','08568978-2','0407-060301-102-8','2001-01-27','2021-04-11',1),(9,'Gabriel Isaias','Orellana Perez','M','08568978-2','0407-060301-102-8','2001-01-27','2021-04-11',1);
+INSERT INTO `personas` VALUES (1,'Andrés Eduardo','Córdova Orellana','M','08568978-2','0407-060301-102-8','2001-03-06','2021-04-11',1),(2,'Fatima Marlene','Cruz Calles','F','08568978-2','0407-060301-102-8','2001-07-24','2021-04-11',1),(3,'Joshua Alexander','Galdámez García','M','08568978-2','0407-060301-102-8','2001-03-12','2021-04-11',1),(4,'Enmanuel Enrique','Orellana Serrano','M','08568978-2','0407-060301-102-8','2001-04-11','2021-04-11',1),(5,'Marcos Antonio','Mejía Miranda','M','08568978-2','0407-060301-102-8','2001-01-27','2021-04-11',1),(6,'Julio David','Gutierrez Gomez','M','08568978-2','0407-060301-102-8','2001-01-27','2021-04-11',1),(7,'Iris Gabriela','Mendez Perez','F','08568978-2','0407-060301-102-8','2001-01-27','2021-04-11',1),(8,'Samanta Liliana','Lopez Galdamez','F','08568978-2','0407-060301-102-8','2001-01-27','2021-04-11',1),(9,'Gabriel Isaias','Orellana Perez','M','08568978-2','0407-060301-102-8','2001-01-27','2021-04-11',1),(10,'Daniel Armando','Serrano Zelaya','M','05287895-8','0407-080206-102-8','2001-04-30','2021-04-27',1);
 /*!40000 ALTER TABLE `personas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -569,6 +599,31 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_I_ADMINISTRADORES` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_I_ADMINISTRADORES`(
+PidPersona int,
+PCorreo_Electronico varchar(50),
+PPass varchar(600),
+PUltima_Modificacion date
+)
+BEGIN
+Insert into administradores(idPersona, Correo_Electronico, Pass, Ultima_Modificacion, Estado)
+values (PidPersona, PCorreo_Electronico, sha2(PPass, 512), PUltima_Modificacion, 1);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `SP_I_DOCENTES` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -818,6 +873,27 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_S_APELLIDOSNOMBRES_A` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_S_APELLIDOSNOMBRES_A`(PCorreo varchar (50), Ppass varchar(600))
+BEGIN
+Select concat_ws(' ', p.Nombre, p.Apellido) As Nombres_Completos, d.idAdministrador from administradores d
+inner join personas p on d.idPersona = p.idPersona
+where d.Correo_Electronico = PCorreo and d.Pass = sha2(Ppass, 512);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `SP_S_APELLIDOSNOMBRES_D` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -938,6 +1014,49 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_S_JOINDOCENTES` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_S_JOINDOCENTES`()
+BEGIN
+SELECT d.idDocente, p.Nombre, p.Apellido, d.Correo_Electronico,
+d.Especialidad, d.Ultima_Modificacion, d.Estado FROM docentes as d
+inner join personas as p on d.idPersona = p.idPersona;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_S_JOINESTUDIANTE` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_S_JOINESTUDIANTE`()
+BEGIN
+Select e.idEstudiante, p.Nombre, p.Apellido, e.Correo_Electronico, g.Nombre_GradoAcad,
+e.Ultima_Modificacion, e.Estado from estudiantes as e
+inner join personas as p on e.idPersona = p.idPersona
+inner join grados_academicos as g on e.idGradoAcademico = g.idGradoAcademico;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `SP_S_JOINESTUDIANTEPERSONA` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -977,6 +1096,30 @@ BEGIN
 select p.Nombre, p.Apellido, p.Sexo,p.Dui, p.Nit, d.Especialidad,d.Correo_Electronico from docentes as d
 inner join personas as p on d.idPersona = p.idPersona
 where d.idDocente = PidDocente;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_S_LOGUIN_ADMINISTRADOR` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_S_LOGUIN_ADMINISTRADOR`(
+PCorreo_Electronico varchar (100), 
+Ppass varchar(600)
+)
+BEGIN
+select * from administradores
+ where Correo_Electronico = PCorreo_Electronico 
+ and Pass = sha2(Ppass,512) and Estado = 1;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1668,4 +1811,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-15  7:59:52
+-- Dump completed on 2021-05-02 23:02:27

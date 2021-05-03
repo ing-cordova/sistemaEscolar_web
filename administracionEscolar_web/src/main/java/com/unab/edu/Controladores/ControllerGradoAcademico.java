@@ -1,14 +1,16 @@
 package com.unab.edu.Controladores;
 
 import java.io.IOException;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.unab.edu.DAO.CLSEstudiante;
 import com.unab.edu.DAO.CLSGradoAcademico;
+import com.unab.edu.Entidades.Grados_Academicos;
 
 /**
  * Servlet implementation class ControllerGradoAcademico
@@ -29,7 +31,44 @@ public class ControllerGradoAcademico extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		Date date = new Date();
+		String Evaluar = request.getParameter("Eliminar");
+		String Agregar = request.getParameter("Guardar");
+
+		String IdGrado = request.getParameter("IdGradoAcademico");
+		String GradoAcad = request.getParameter("gradoacademico");
+
+		Grados_Academicos grado = new Grados_Academicos();
+		CLSGradoAcademico clsGrado = new CLSGradoAcademico();
+
+		if (Evaluar != null) {
+			if (Evaluar.equals("btne")) {
+				grado.setIdGradoAcademico(Integer.parseInt(IdGrado));
+				clsGrado.BorrarGradoAcademico(grado);
+				response.sendRedirect("GradoAcademico.jsp");
+			}
+		}
+		else if(Agregar.equals("btna")) {
+			
+			grado.setNombre_GradoAcad(GradoAcad);
+			grado.setUltima_Modificacion(date);
+			grado.setEstado(1);
+			
+			System.out.println(IdGrado);
+			
+			if(IdGrado == "" || IdGrado == null) {
+				
+				clsGrado.AgregarGradoAcademico(grado);
+				response.sendRedirect("GradoAcademico.jsp");
+			}
+			else {
+				grado.setIdGradoAcademico(Integer.parseInt(IdGrado));
+				clsGrado.ActualizarGradoAcademico(grado);
+				response.sendRedirect("GradoAcademico.jsp");
+			}
+		}
 	}
 
 	/**
@@ -42,6 +81,7 @@ public class ControllerGradoAcademico extends HttpServlet {
 		Gson json = new Gson();
 		CLSGradoAcademico clsGradoAcad = new CLSGradoAcademico();
 		
+		response.setCharacterEncoding("UTF8");
 		response.getWriter().append(json.toJson(clsGradoAcad.MostrarGradoAcademico()));
 	}
 

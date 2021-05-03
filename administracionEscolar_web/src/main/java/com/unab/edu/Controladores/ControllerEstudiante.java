@@ -46,6 +46,7 @@ public class ControllerEstudiante extends HttpServlet {
 		Gson json = new Gson();
 		CLSEstudiante clsestudiante = new CLSEstudiante();
 
+		response.setCharacterEncoding("UTF8");
 		response.getWriter().append(json.toJson(clsestudiante.JoinEstudiante()));
 	}
 
