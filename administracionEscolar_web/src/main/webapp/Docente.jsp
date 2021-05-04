@@ -38,6 +38,7 @@
 						</td>
 					</tr>
                     `
+						console.log(item.idDocente);
 				}
 			});
 		});
