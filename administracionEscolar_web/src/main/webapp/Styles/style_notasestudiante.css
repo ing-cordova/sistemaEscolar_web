@@ -1,0 +1,67 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Montserrat", sans-serif;
+}
+
+body {
+	background: #31464F;
+}
+
+.header {
+	width: 100%;
+	height: 100px;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+.container {
+	width: 90%;
+	max-width: 1200px;
+	margin: auto;
+}
+
+.container .btn-menu {
+	padding-top: 10px;
+	padding-right: 10px;
+}
+
+.container .btn-menu, .logo {
+	float: left;
+	line-height: 100px;
+}
+
+.logo h1 {
+	color: #fff;
+	font-weight: 400;
+	font-size: 22px;
+	margin-left: 10px;
+}
+
+.container .menu {
+	float: right;
+	line-height: 100px;
+}
+
+.container .menu a {
+	display: inline-block;
+	padding: 15px;
+	line-height: normal;
+	text-decoration: none;
+	color: #fff;
+	transition: all 0.3s ease;
+	border-bottom: 2px solid transparent;
+	font-size: 15px;
+	margin-right: 5px;
+}
+
+.container .menu a:hover {
+	border-bottom: 2px solid #c7c7c7;
+	padding-bottom: 5px;
+}
+
+.out-header {
+	margin-top: 110px;
+}

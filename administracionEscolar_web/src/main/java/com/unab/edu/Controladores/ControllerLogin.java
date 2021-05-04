@@ -1,6 +1,8 @@
 package com.unab.edu.Controladores;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.unab.edu.DAO.CLSAdministrador;
+import com.unab.edu.DAO.CLSDocente;
+import com.unab.edu.DAO.CLSEstudiante;
 import com.unab.edu.Entidades.Administradores;
 import com.unab.edu.Negocio.clsLogin;
 
@@ -56,24 +60,35 @@ public class ControllerLogin extends HttpServlet {
 			String email = request.getParameter("email");
 			String password = request.getParameter("password");
 			String fullname = "";
+			String fullnameEst = "";
+			String fullnameDoc = "";
 			
 			CLSAdministrador clsAdmin  = new CLSAdministrador();
+			CLSEstudiante clsEst = new CLSEstudiante();
+			CLSDocente clsDoc = new CLSDocente();
+			
 			clsLogin login = new clsLogin();
 			Administradores admin = new Administradores();
 			admin.setCorreo_Electronico(email);
 			admin.setPass(password);
 			
 			fullname = clsAdmin.MostrarAdministrador(admin);
+			fullnameEst = clsEst.RetornoFullName(email, password);
+			fullnameDoc = clsDoc.RetornoFullName(email, password);
 			
-			
-
 			int access = login.TipoUsuario(email, password);
 
 			if (access == 1) {
-				response.sendRedirect("Estudiante.jsp");
+				//response.sendRedirect("Estudiante.jsp");
+				response.sendRedirect("DashboardEstudiante.jsp");
+				session.setAttribute("dashboardEst", access);
+				session.setAttribute("fullnameEst", fullnameEst);
 				System.out.println("> Usted es un Estudiante.");
 			} else if (access == 2) {
-				response.sendRedirect("Docente.jsp");
+				//response.sendRedirect("Docente.jsp");
+				response.sendRedirect("DashboardDocente.jsp");
+				session.setAttribute("dashboardDoc", access);
+				session.setAttribute("fullnameDoc", fullnameDoc);
 				System.out.println("> Usted es un Docente.");
 			} else if (access == 3) {
 				response.sendRedirect("Administrador.jsp");

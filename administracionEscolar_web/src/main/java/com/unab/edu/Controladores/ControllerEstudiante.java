@@ -36,6 +36,7 @@ public class ControllerEstudiante extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
+
 	}
 
 	/**
@@ -52,6 +53,7 @@ public class ControllerEstudiante extends HttpServlet {
 
 		response.setCharacterEncoding("UTF8");
 		response.getWriter().append(json.toJson(clsestudiante.JoinEstudiante()));
+		
 	}
 
 }
