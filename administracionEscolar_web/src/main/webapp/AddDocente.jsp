@@ -35,12 +35,21 @@
 		<h1>Registro de Docente</h1>
 		<form action="ControllerDocente" method="get">
 		<input type="hidden" name="Id" value=<%=Id%>> 
-		<label>Nombre de Docente:</label>
+		<label>Nombre del Docente:</label>
 		<br>
-			<input class="controls" type="text" value="<%=Nombre%>" name="nombre"  required>
-			<input class="controls" type="text" value="<%=Apellido%>" name="apellido"  required>
-			<input class="controls" type="text" value="<%=Correo_Electronico%>" name="correo_electronico"  required>
-			<input class="controls" type="text" value="<%=Especialidad%>" name="especialidad"  required> 
+		<input class="controls" type="text" value="<%=Nombre%>" name="nombre"  required>			 
+		<br>
+		<label>Apellido del Docente:</label>
+		<br>
+		<input class="controls" type="text" value="<%=Apellido%>" name="apellido"  required>
+		<br>
+		<label>Correo Electronico del Docente:</label>
+		<br>
+		<input class="controls" type="text" value="<%=Correo_Electronico%>" name="correo_electronico"  required>
+		<br>
+		<label>Especialidad del Docente:</label>
+		<br>
+		<input class="controls" type="text" value="<%=Especialidad%>" name="especialidad"  required>
 		<br>
 			<button name="Guardar" value="btna" class="boton">Guardar/Actualizar</button>
 		</form>
