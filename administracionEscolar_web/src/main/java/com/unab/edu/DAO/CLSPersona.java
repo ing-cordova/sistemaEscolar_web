@@ -48,7 +48,6 @@ public class CLSPersona {
             System.out.println("> Paso 4.");
             conectar.close();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
         }
         return Personas;
     }
@@ -66,7 +65,7 @@ public class CLSPersona {
                 retorno = resultado.getInt("idPersona");
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Ha ocurrido un error en: \n\n\n\n" + e);
+        	System.out.println("Ha ocurrido un error en CLSPersona" + e);
         }
         
         return retorno;
@@ -81,18 +80,19 @@ public class CLSPersona {
             Statement.setInt("PidPersona", per.getIdPersona());
 
             Statement.execute();
-            JOptionPane.showMessageDialog(null, "Persona eliminada");
+            System.out.println("Persona Eliminada");
+            //JOptionPane.showMessageDialog(null, "Persona eliminada");
 
             conectar.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
+        	System.out.println("Ha ocurrido un error en CLSPersona" + e);
         }
     }
 
     public void ActualizarPersona(Persona per) {
 
         try {
-            CallableStatement Statement = conectar.prepareCall("call SP_U_PERSONAS ?,?,?,?,?,?,?,?,?)");
+            CallableStatement Statement = conectar.prepareCall("call SP_U_PERSONAS (?,?,?,?,?,?,?,?,?)");
 
             Statement.setInt("PidPersona", per.getIdPersona());
             Statement.setString("PNombre", per.getNombre());
@@ -105,12 +105,13 @@ public class CLSPersona {
             Statement.setInt("PEstado", per.getEstado());
 
             Statement.execute();
-            JOptionPane.showMessageDialog(null, "Persona actualizada");
+            System.out.println("Persona Actualizada");
+            //JOptionPane.showMessageDialog(null, "Persona actualizada");
 
             conectar.close();
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
+        	System.out.println("Ha ocurrido un error en CLSPersona" + e);
         }
     }
 
@@ -133,7 +134,7 @@ public class CLSPersona {
 
             conectar.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
+        	System.out.println("Ha ocurrido un error en CLSPersona" + e);
         }
     }
 }
