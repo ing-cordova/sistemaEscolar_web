@@ -106,7 +106,8 @@ public class CLSMateria {
             Statement.setInt("PidMateria", mate.getIdMateria());
 
             Statement.execute();
-            JOptionPane.showMessageDialog(null, "Materia eliminada");
+            //JOptionPane.showMessageDialog(null, "Materia eliminada");
+            System.out.println("Materia eliminada");
 
             conectar.close();
         } catch (SQLException e) {
@@ -116,37 +117,42 @@ public class CLSMateria {
 
     public void ActualizarMateria(Materia mate) {
         try {
-            CallableStatement Statement = conectar.prepareCall("call SP_U_MATERIAS(?,?,?,?)");
+            CallableStatement Statement = conectar.prepareCall("call SP_U_MATERIAS(?,?,?,?,?)");
 
             Statement.setInt("PidMateria", mate.getIdMateria());
+            Statement.setInt("PidGradoAcademico", mate.getIdGradoAcademico());
             Statement.setString("PNombre_Materia", mate.getNombre_Materia());
             Statement.setDate("PUltima_Modificacion", new java.sql.Date(mate.getUltima_Modificacion().getTime()));
             Statement.setInt("PEstado", mate.getEstado());
 
             Statement.execute();
-            JOptionPane.showMessageDialog(null, "Materia actualizada");
+            //JOptionPane.showMessageDialog(null, "Materia actualizada");
+            System.out.println("Materia actualizada");
 
             conectar.close();
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
+            //JOptionPane.showMessageDialog(null, e);
+        	System.out.println("ERROR EN CLSMATERIA" + e);
         }
     }
 
     public void AgregarMateria(Materia mate) {
         try {
-            CallableStatement Statement = conectar.prepareCall("call SP_I_MATERIA(?,?,?,?)");
-            Statement.setInt("PidMateria", mate.getIdMateria());
+            CallableStatement Statement = conectar.prepareCall("call SP_I_MATERIAS(?,?,?,?)");
+            Statement.setInt("PidGradoAcademico", mate.getIdGradoAcademico());
             Statement.setString("PNombre_Materia", mate.getNombre_Materia());
             Statement.setDate("PUltima_Modificacion", new java.sql.Date(mate.getUltima_Modificacion().getTime()));
             Statement.setInt("PEstado", mate.getEstado());
 
             Statement.execute();
-            JOptionPane.showMessageDialog(null, "Materia guardada");
+            //JOptionPane.showMessageDialog(null, "Materia guardada");
+            System.out.println("Materia guardada");
 
             conectar.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
+            //JOptionPane.showMessageDialog(null, e);
+        	System.out.println("ERROR EN CLSMATERIA" + e);
         }
     }
 }
