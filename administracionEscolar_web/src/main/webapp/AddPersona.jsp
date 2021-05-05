@@ -46,7 +46,7 @@
 		<input class="controls" type="text" value="<%=Apellido%>" name="Apellido"  required> 
 		<br>
 		<label>Sexo:</label>
-		<select class="controls" name="sexo" required>
+		<select class="controls" name="Sexo" required>
 					<option>Seleccione una opcion</option>
 					<option>M</option>
 					<option>F</option>
