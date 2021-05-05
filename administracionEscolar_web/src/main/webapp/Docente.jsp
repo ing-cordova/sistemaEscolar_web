@@ -31,14 +31,16 @@
 						`
                     <tr>
                         <td>${item.idDocente}</td>
+                        <td style="display:none;">${item.idPersona}</td>
                         <td>${item.Nombre}</td>
                         <td>${item.Apellido}</td>
                         <td>${item.Correo_Electronico}</td>
+                        <td style="display:none;">${item.Pass}</td>
 						<td>${item.Especialidad}</td>
 						<td>${item.docUltima_Modificacion}</td>
 						<td>${item.docEstado}</td>
 						<td><a href="ControllerDocente?Id=${item.idDocente}&Eliminar=btne" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
-						<a href="AddDocente.jsp?Id=${item.idDocente}&nombre=${item.Nombre}&apellido=${item.Apellido}&correo_electronico=${item.Correo_Electronico}&especialidad=${item.Especialidad}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+						<a href="AddDocente.jsp?Id=${item.idDocente}&Id2=${item.idPersona}&Correo_Electronico=${item.Correo_Electronico}&Pass=${item.Pass}&Especialidad=${item.Especialidad}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
 						</td>
 					</tr>
                     `

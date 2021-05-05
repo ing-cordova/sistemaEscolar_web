@@ -230,9 +230,11 @@ public class CLSDocente {
             	System.out.println("> Paso 2 " + rs.getString("Nombre"));
                 Docente Do = new Docente();
                 Do.setIdDocente(rs.getInt("idDocente"));
+                Do.setIdPersona(rs.getInt("idPersona"));
                 Do.setNombre(rs.getString("Nombre"));
                 Do.setApellido(rs.getString("Apellido"));
                 Do.setCorreo_Electronico(rs.getString("Correo_Electronico"));
+                Do.setPass(rs.getString("Pass"));
                 Do.setEspecialidad(rs.getString("Especialidad"));
                 Do.setDocUltima_Modificacion(rs.getDate("Ultima_Modificacion"));
                 Do.setDocEstado(rs.getInt("Estado"));

@@ -17,39 +17,36 @@
 <body>
 	<%
 	String Id = request.getParameter("Id");
-	String Nombre = request.getParameter("nombre");
-	String Apellido = request.getParameter("apellido");
-	String Correo_Electronico = request.getParameter("correo_electronico");
-	String Especialidad = request.getParameter("especialidad");
+	String Id2 = request.getParameter("Id2");
+	String Correo_Electronico = request.getParameter("Correo_Electronico");
+	String Pass = request.getParameter("Pass");
+	String Especialidad = request.getParameter("Especialidad");
 	
 
-	if (Id == null) {
+	if (Id == null || Id2 == null) {
 		Id = "";
-		Nombre = "";
-		Apellido = "";
+		Id2 = "";
 		Correo_Electronico = "";
+		Pass = "";
 		Especialidad = "";
 	}
 	%>
 		<section class="form-register">
 		<h1>Registro de Docente</h1>
 		<form action="ControllerDocente" method="get">
-		<input type="hidden" name="Id" value=<%=Id%>> 
-		<label>Nombre del Docente:</label>
-		<br>
-		<input class="controls" type="text" value="<%=Nombre%>" name="nombre"  required>			 
-		<br>
-		<label>Apellido del Docente:</label>
-		<br>
-		<input class="controls" type="text" value="<%=Apellido%>" name="apellido"  required>
-		<br>
+		<input type="hidden" name="Id" value=<%=Id%>>
+		<input type="hidden" name="Id2" value=<%=Id2%>>
 		<label>Correo Electronico del Docente:</label>
 		<br>
-		<input class="controls" type="text" value="<%=Correo_Electronico%>" name="correo_electronico"  required>
+		<input class="controls" type="text" value="<%=Correo_Electronico%>" name="Correo_Electronico"  required>		 
+		<br>
+		<label>Contraseña del Docente:</label>
+		<br>
+		<input class="controls" type="text" value="<%=Pass%>" name="Pass"  required>
 		<br>
 		<label>Especialidad del Docente:</label>
 		<br>
-		<input class="controls" type="text" value="<%=Especialidad%>" name="especialidad"  required>
+		<input class="controls" type="text" value="<%=Especialidad%>" name="Especialidad"  required>
 		<br>
 			<button name="Guardar" value="btna" class="boton">Guardar/Actualizar</button>
 		</form>
