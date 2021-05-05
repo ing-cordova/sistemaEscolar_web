@@ -1,11 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <!DOCTYPE html>
     <html>
 
     <head>
         <script src="http://code.jquery.com/jquery-latest.js"></script>
-        <meta charset="ISO-8859-1">
+        <meta charset="UTF-8">
         <title>Personas</title>
+        <link rel="icon" href="Imagenes/school.ico">
+        <link rel="stylesheet" href="Styles/style_Persona.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
         <script
@@ -49,7 +51,7 @@
          <div class="container-table">
         <h1 align="center">Personas existentes</h1>
         <div class="botones">
-        	<a href="Administrador.jsp" class="btn btn-secondary btn-lg">Regresar al menú principal</a>
+        	<a href="Administrador.jsp" class="btn btn-secondary btn-lg">Regresar al menÃº principal</a>
         	<a href="AddPersona.jsp" class="btn btn-success btn-lg">Agregar nuevo</a>
         </div>
         

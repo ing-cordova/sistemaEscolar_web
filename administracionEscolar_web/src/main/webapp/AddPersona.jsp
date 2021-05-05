@@ -5,8 +5,8 @@
 <head>
 <meta charset="utf-8">
 <link rel="icon" href="Imagenes/school.ico">
-<title>Add Persona</title>
-<link rel="stylesheet" href="Styles/style_addgradocademico.css">
+<title>Nueva Persona</title>
+<link rel="stylesheet" href="Styles/style_addPersona.css">
 <script src="https://kit.fontawesome.com/dab6165ace.js"
 	crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -35,7 +35,7 @@
 	}
 	%>
 	<section class="form-register">
-		<h1>Registros de Persona</h1>
+		<h1>Registros de Personas</h1>
 		<form action="ControllerPersona" method="get">
 		<input type="hidden" name="Id" value=<%=Id%>> 
 		<label>Nombres:</label>
@@ -47,9 +47,9 @@
 		<br>
 		<label>Sexo:</label>
 		<select class="controls" name="Sexo" required>
-					<option>Seleccione una opcion</option>
-					<option>M</option>
-					<option>F</option>
+					<option>Seleccione una Opcion:</option>
+					<option>Masculino</option>
+					<option>Femenino</option>
 				</select>
 		<br>
 		<label>DUI:</label>
