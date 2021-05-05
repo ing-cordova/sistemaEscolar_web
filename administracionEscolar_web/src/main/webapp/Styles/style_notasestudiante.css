@@ -36,8 +36,8 @@ body {
 .logo h1 {
 	color: #fff;
 	font-weight: 400;
-	font-size: 22px;
-	margin-left: 10px;
+	font-size: 30px;
+	margin-left: 0px;
 }
 
 .container .menu {
@@ -64,4 +64,39 @@ body {
 
 .out-header {
 	margin-top: 110px;
+}
+
+.out-header h2{
+	color: #ffff;
+	margin-left: 50px;
+	margin-bottom: 10px;
+}
+.out-header .tabla{
+	margin: 0 50px;
+}
+
+table{
+	background-color: #ffff;
+	text-align: left;
+	border-collapse: collapse;
+	width: 100%;
+	
+	-webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+th, td{
+	padding: 15px;
+}
+
+thead{
+	background-color: #3886AA;
+	border-bottom: solid 5px #31464F;
+	color: #ffff;
+}
+
+tr:nth-child(even){
+	background-color: #BCD6E2;
 }

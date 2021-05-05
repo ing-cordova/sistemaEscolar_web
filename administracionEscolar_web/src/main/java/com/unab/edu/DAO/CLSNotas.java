@@ -118,9 +118,10 @@ public class CLSNotas {
             CallableStatement Statement = conectar.prepareCall("call SP_S_NOTAS_ALUMNO(?)");
             Statement.setInt("PidEstudiante", n.getIdEstudiante());
             ResultSet resultadoConsulta = Statement.executeQuery();
-
+            System.out.println("Paso 1: Antes del While");
             while (resultadoConsulta.next()) {
                 Notas nota = new Notas();
+                System.out.println("Paso 2: Dentro del While " + resultadoConsulta.getString("Nombre_Materia"));
                 nota.setIdMateria(resultadoConsulta.getInt("idMateria"));
                 nota.setNombre_Materia(resultadoConsulta.getString("Nombre_Materia"));
                 nota.setPeriodo1(resultadoConsulta.getDouble("Periodo1"));
@@ -131,9 +132,11 @@ public class CLSNotas {
 
                 Nota.add(nota);
             }
+            System.out.println("Paso 3: Fuera del While");
             conectar.close();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+            //JOptionPane.showMessageDialog(null, e);
+        	System.out.println("Ocurrio un problema en CLSNotas/MostrarNotaByStudente");
         }
         return Nota;
     }

@@ -81,6 +81,9 @@ public class ControllerLogin extends HttpServlet {
 			if (access == 1) {
 				//response.sendRedirect("Estudiante.jsp");
 				response.sendRedirect("DashboardEstudiante.jsp");
+				session.setAttribute("correo", email);
+				session.setAttribute("pass", password);
+				
 				session.setAttribute("dashboardEst", access);
 				session.setAttribute("fullnameEst", fullnameEst);
 				System.out.println("> Usted es un Estudiante.");

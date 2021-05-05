@@ -20,8 +20,8 @@ public class Notas extends Materia {
 	protected double Periodo3;
 	protected double NotaFinal;
 	protected double Recuperacion;
-	protected Date Ultima_Modificacion;
-	protected int Estado;
+	protected Date ntUltima_Modificacion;
+	protected int ntEstado;
 
 	public int getIdNota() {
 		return idNota;
@@ -87,19 +87,21 @@ public class Notas extends Materia {
 		Recuperacion = recuperacion;
 	}
 
-	public Date getUltima_Modificacion() {
-		return Ultima_Modificacion;
+	public Date getNtUltima_Modificacion() {
+		return ntUltima_Modificacion;
 	}
 
-	public void setUltima_Modificacion(Date ultima_Modificacion) {
-		Ultima_Modificacion = ultima_Modificacion;
+	public void setNtUltima_Modificacion(Date ntUltima_Modificacion) {
+		this.ntUltima_Modificacion = ntUltima_Modificacion;
 	}
 
-	public int getEstado() {
-		return Estado;
+	public int getNtEstado() {
+		return ntEstado;
 	}
 
-	public void setEstado(int estado) {
-		Estado = estado;
+	public void setNtEstado(int ntEstado) {
+		this.ntEstado = ntEstado;
 	}
+
+
 }

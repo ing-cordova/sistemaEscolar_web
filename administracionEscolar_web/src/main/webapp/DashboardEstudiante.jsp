@@ -28,7 +28,7 @@
 				<img alt="" src="Imagenes/school.ico">
 			</div>
 			<div class="logo">
-				<h1>Portal Estudiantil 2021 - <%=fullname%></h1>
+				<h1>Portal Estudiantil 2021</h1>
 			</div>
 			<nav class="menu">
 				<a href="#">Inicio</a> <a href="#">Materias</a>
