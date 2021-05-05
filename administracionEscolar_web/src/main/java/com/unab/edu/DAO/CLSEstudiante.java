@@ -6,6 +6,7 @@
 package com.unab.edu.DAO;
 
 import com.unab.edu.Conexion.ConexionBD;
+import com.unab.edu.Entidades.Docente;
 import com.unab.edu.Entidades.Estudiante;
 import java.sql.*;
 import java.util.ArrayList;
@@ -41,6 +42,7 @@ public class CLSEstudiante {
             conectar.close();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
+            System.out.println("Ha ocurrido un error en: ClsEstudiante/MostrarEstudiante" + e);
         }
         return Estudiantes;
     }
@@ -52,11 +54,12 @@ public class CLSEstudiante {
             Statement.setInt("PidEstudiante", est.getIdEstudiante());
 
             Statement.execute();
-            JOptionPane.showMessageDialog(null, "Estudiante eliminado");
+            JOptionPane.showMessageDialog(null, "Estudiante eliminado con exito");
 
             conectar.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
+            //JOptionPane.showMessageDialog(null, e);
+            System.out.println("Ha ocurrido un error, vendo de CLSEstudiante/BorrarEstudiante" + e);
         }
     }
 
@@ -68,16 +71,16 @@ public class CLSEstudiante {
             Statement.setString("PCorreoElectronico", est.getCorreo_Electronico());
             Statement.setString("PPass", est.getPass());
             Statement.setInt("PidGradoAcademico", est.getIdGradoAcademico());
-            Statement.setDate("PUltimaModificacion", new java.sql.Date(est.getUltima_Modificacion().getTime()));
-            Statement.setInt("PEstado", est.getEstado());
+            Statement.setDate("PUltimaModificacion", new java.sql.Date(est.getEstUltima_Modificacion().getTime()));
+            Statement.setInt("PEstado", est.getEstEstado());
 
             Statement.execute();
-            JOptionPane.showMessageDialog(null, "Estudiante actualizado");
-
+            System.out.println("Estudiante actualizado con exito");
             conectar.close();
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
+           
+        	System.out.println("Ocurrio un error en CLSEstudiante/ActualizarEstudiante");
         }
     }
 
@@ -93,11 +96,12 @@ public class CLSEstudiante {
             Statement.setInt("PEstado", est.getEstado());
 
             Statement.execute();
-            System.out.println("Estudiante guardado");
+            System.out.println("Estudiante guardado con Exito");
 
             conectar.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
+            //JOptionPane.showMessageDialog(null, e);
+            System.out.println("Ha ocurrido un error en CLSEstudiante/AgregarEstudiante" + e);
         }
     }
 
@@ -172,7 +176,7 @@ public class CLSEstudiante {
                 fullName = resultado.getString("Nombres_Completos");
             }
         } catch (Exception e) {
-            System.out.println("Ha ocurrido un error en: \n" + e);
+            System.out.println("Ha ocurrido un error en: RetornoFullName" + e);
         }
 
         return fullName;
@@ -194,7 +198,7 @@ public class CLSEstudiante {
                 ID = resultado.getInt("idGradoAcademico");
             }
         } catch (Exception e) {
-            System.out.println("Ha ocurrido un error en: \n" + e);
+            System.out.println("Ha ocurrido un error en: ReternoIdGrado" + e);
         }
 
         return ID;
@@ -216,7 +220,7 @@ public class CLSEstudiante {
                 ID = resultado.getInt("idEstudiante");
             }
         } catch (Exception e) {
-            System.out.println("Ha ocurrido un error en: \n" + e);
+            System.out.println("Ha ocurrido un error en: RetornoIdEstudiante" + e);
         }
 
         return ID;
@@ -245,6 +249,7 @@ public class CLSEstudiante {
             conectar.close();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, lista);
+            System.out.println("Ha ocurrido un error en: MostrarJoinEstudiantePersna" + e);
         } 
         return lista;
     }
@@ -255,9 +260,12 @@ public class CLSEstudiante {
             try {
                 CallableStatement st = conectar.prepareCall("call SP_S_JOINESTUDIANTE()");
                 ResultSet rs = st.executeQuery();
+                System.out.println("> Paso 1");
                 while (rs.next ()){
+                	System.out.println("> Paso 2 " + rs.getString("Nombre"));
                     Estudiante es = new Estudiante();
                     es.setIdEstudiante(rs.getInt("idEstudiante"));
+                    es.setIdPersona(rs.getInt("idPersona"));
                     es.setNombre(rs.getString("Nombre"));
                     es.setApellido(rs.getString("Apellido"));
                     es.setCorreo_Electronico(rs.getString("Correo_Electronico"));
@@ -267,9 +275,9 @@ public class CLSEstudiante {
                     lista.add(es);
                     
                 }
-                conectar.close();
+                System.out.println("> Paso 3");
             } catch (Exception e) {
-            	System.out.println("> Algo salio mal en: CLSEstudiante.");
+            	System.out.println("> Algo salio mal en: CLSEstudiante/JoinEstudiante.");
             } 
             return lista;
         }

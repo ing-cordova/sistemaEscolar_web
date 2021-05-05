@@ -31,14 +31,18 @@
                         tabla.innerHTML +=
                             `
                     <tr>
-                        <td>${item.idEstudiante}</td>
-                        <td>${item.Nombre}</td>
-                        <td>${item.Apellido}</td>
-                        <td>${item.Correo_Electronico}</td>
-                        <td>${item.Nombre_GradoAcad}</td>
-                        <td><a href="ControllerEstudiante?IdEstudiante=${item.idEstudiante}&Eliminar=btne" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
-						<a href="AddEstudiante.jsp?IdEstudiante=${item.idEstudiante}&Correo_Electronico=${item.Correo_Electronico}&Nombre_GradoAcad=${item.Nombre_GradoAcad}"
+                        	<td>${item.idEstudiante}</td>
+                            <td style="display:none;">${item.idPersona}</td>
+                            <td>${item.Nombre}</td>
+                            <td>${item.Apellido}</td>
+                            <td>${item.Correo_Electronico}</td>
+                            <td style="display:none;">${item.Pass}</td>
+    						<td>${item.Nombre_GradoAcad}</td>
+                        <td><a href="ControllerEstudiante?Id=${item.idEstudiante}&Eliminar=btne" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
+						<a href="AddEstudiante.jsp?Id=${item.idEstudiante}&Id2=${item.idPersona}&Correo_Electronico=${item.Correo_Electronico}&Pass=${item.Pass}&Nombre_GradoAcad=${item.Nombre_GradoAcad}"
 								class="btn btn-warning"><i class="fa fa-edit"></i></a>
+								
+								
 						</tr>
                     `
                         console.log(item.idEstudiante);
@@ -53,12 +57,13 @@
         </div>
         <table class="table table-dark table-striped" id="tablaDatos">
             <thead>
+                
                 <th>ID_ESTUDIANTE</th>
-                <th>NOMBRES</th>
-                <th>APELLIDOS</th>
-                <th>E-MAIL</th>
-                <th>GRADO ACAD.</th>
-                <th>ACCIONES</th>
+				<th>NOMBRE</th>
+				<th>APELLIDO</th>
+				<th>E-MAIL</th>
+				<th>GRADO ACAD</th>
+				<th>ACCIONES</th>
             </thead>
         </table>
 

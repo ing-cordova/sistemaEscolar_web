@@ -16,21 +16,38 @@
 </head>
 <body>
 	<%
-	String Id = request.getParameter("IdEstudiante");
-	String Estudiante = request.getParameter("Estudiante");
+	String Id = request.getParameter("Id");
+	String Id2 = request.getParameter("Id2");	
+	String Correo_Electronico = request.getParameter("Correo_Electronico");
+	String Pass = request.getParameter("Pass");
+	String Nombre_GradoAcad = request.getParameter("Nombre_GradoAcad");
+	
 
-	if (Id == null) {
+	if (Id == null || Id2 == null) {
 		Id = "";
-		Estudiante = "";
+		Id2 = "";
+		Correo_Electronico = "";
+		Pass = "";
+		Nombre_GradoAcad = "";
 	}
+
 	%>
 	<section class="form-register">
 	<h1>Registros de Estudiantes</h1>
 		<form action="ControllerEstudiante" method="get">
-		<input type="text" name="IdEstudiante" value=<%=Id%>> 
-		<label>Nombre del Estudiante:</label>
+		<input type="hidden" name="Id" value=<%=Id%>>
+		<input type="hidden" name="Id2" value=<%=Id2%>>
+		<label>Correo Electronico del Estudiante:</label>
 		<br>
-			<input class="controls" type="text" value="<%=Estudiante%>" name="estudiante"  required> 
+		<input class="controls" type="text" value="<%=Correo_Electronico%>" name="Correo_Electronico"  required>		 
+		<br>
+		<label>Contraseña del Estudiante:</label>
+		<br>
+		<input class="controls" type="text" value="<%=Pass%>" name="Pass"  required>
+		<br>
+		<label>Nombre del Grado Academico:</label>
+		<br>
+		<input class="controls" type="text" value="<%=Nombre_GradoAcad%>" name="Nombre_GradoAcad"  required>
 		<br>
 			<button name="Guardar" value="btna" class="boton">Guardar/Actualizar</button>
 		</form>
