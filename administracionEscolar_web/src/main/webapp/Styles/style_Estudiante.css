@@ -1,0 +1,20 @@
+body{
+	min-height: 100vh;
+	background-image: linear-gradient(125deg, #122C38, #255971, #3886AA);
+}
+
+.container-table h1{
+	display: block;
+	margin-top: 20px;
+	font-family: "Montserrat", sans-serif;
+	color: #ffff;
+}
+
+.container-table .botones{
+	text-align: center;
+	margin: 15px;
+}
+
+.container-table{
+	margin: 0px 60px;
+}

@@ -49,7 +49,7 @@ public class CLSEstudiante {
         try {
             CallableStatement Statement = conectar.prepareCall("call SP_D_ESTUDIANTES(?)");
 
-            Statement.setInt("PIdEstudiante", est.getIdEstudiante());
+            Statement.setInt("PidEstudiante", est.getIdEstudiante());
 
             Statement.execute();
             JOptionPane.showMessageDialog(null, "Estudiante eliminado");
