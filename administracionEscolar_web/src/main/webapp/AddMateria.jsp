@@ -28,7 +28,7 @@
                     	combo.innerHTML +=
                             `
                             <option value ="${item.idGradoAcademico}">${item.Nombre_GradoAcad}</option>
-                        
+                        	
                         `
                     }
                 
@@ -41,13 +41,14 @@
 	String Id = request.getParameter("Id");
 	String Materia = request.getParameter("Materia");
 	String GradoAcad = request.getParameter("GradoAcad");
+	String IdGrado = request.getParameter("IdGrado");
 	
 
-	if (Id == null) {
+	if (Id == null || IdGrado == null) {
 		Id = "";
 		Materia = "";
-		GradoAcad = "";
-		
+		GradoAcad = "Seleccione una opcion";
+		IdGrado = "";
 	}
 	%>
 	<section class="form-register">
@@ -61,7 +62,7 @@
 		<label>Seleccione el Grado Academico</label>
 		<br>
 		<select class="controls" name="GradoAcad"  id="TipoSelect" required>
-					<option>Seleccione una opcion</option>
+					<option value="<%=IdGrado%>" selected><%=GradoAcad%></option>
 				</select>
 				<br>
 			<button name="Guardar" value="btna" class="boton">Guardar/Actualizar</button>

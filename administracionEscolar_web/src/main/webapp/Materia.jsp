@@ -35,7 +35,7 @@
                         <td>${item.Nombre_Materia}</td>
                         <td>${item.Nombre_GradoAcad}</td>
                         <td><a href="ControllerMateria?Id=${item.idMateria}&Eliminar=btne" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
-						<a href="AddMateria.jsp?Id=${item.idMateria}&Materia=${item.Nombre_Materia}&GradoAcad=${item.Nombre_GradoAcad}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+						<a href="AddMateria.jsp?Id=${item.idMateria}&Materia=${item.Nombre_Materia}&IdGrado=${item.idGradoAcademico}&GradoAcad=${item.Nombre_GradoAcad}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
                         `
                     }
                 

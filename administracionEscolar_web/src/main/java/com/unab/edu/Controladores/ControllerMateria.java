@@ -42,7 +42,7 @@ public class ControllerMateria extends HttpServlet {
 		String Id = request.getParameter("Id");
 		String Materia = request.getParameter("Materia");
 		String GradoAcad = request.getParameter("GradoAcad");
-		
+		String IdGrado = request.getParameter("IdGrado");
 
 		Materia materia = new Materia();
 		CLSMateria clsMateria = new CLSMateria();

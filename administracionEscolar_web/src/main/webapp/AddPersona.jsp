@@ -48,8 +48,8 @@
 		<label>Sexo:</label>
 		<select class="controls" name="Sexo" required>
 					<option>Seleccione una Opcion:</option>
-					<option>Masculino</option>
-					<option>Femenino</option>
+					<option>M</option>
+					<option>F</option>
 				</select>
 		<br>
 		<label>DUI:</label>
