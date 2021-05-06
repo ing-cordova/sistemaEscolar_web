@@ -59,6 +59,7 @@ public class CLSMateria {
             while (resultadoConsulta.next()) {
                 Materia mat1 = new Materia();
                 mat1.setIdMateria(resultadoConsulta.getInt("idMateria"));
+                mat1.setIdGradoAcademico(resultadoConsulta.getInt("idGradoAcademico"));
                 mat1.setNombre_GradoAcad(resultadoConsulta.getString("Nombre_GradoAcad"));
                 mat1.setNombre_Materia(resultadoConsulta.getString("Nombre_Materia"));
                 mat1.setMtrUltima_Modificacion(resultadoConsulta.getDate("Ultima_Modificacion"));
