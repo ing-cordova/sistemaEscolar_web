@@ -92,8 +92,8 @@ public class CLSEstudiante {
             Statement.setString("PCorreo_Electronico", est.getCorreo_Electronico());
             Statement.setString("PPass", est.getPass());
             Statement.setInt("PidGradoAcademico", est.getIdGradoAcademico());
-            Statement.setDate("PUltima_Modificacion", new java.sql.Date(est.getUltima_Modificacion().getTime()));
-            Statement.setInt("PEstado", est.getEstado());
+            Statement.setDate("PUltima_Modificacion", new java.sql.Date(est.getEstUltima_Modificacion().getTime()));
+            Statement.setInt("PEstado", est.getEstEstado());
 
             Statement.execute();
             System.out.println("Estudiante guardado con Exito");

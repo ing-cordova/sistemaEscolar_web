@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,6 +32,28 @@
                     }
                 });
             });
+            
+            function ConfirmGuardar(){
+            	var respuesta = confirm("¿Estás seguro que quieres registrarte ahora?");
+            	var mensaje = confirm("¡Usted se ha registrado con éxito!");
+            	
+            	if(respuesta == true){
+            		return true;
+            		if(mensaje == true){
+            			return true;
+            		}
+            		else{
+            			return false;
+            		}
+            	}
+            	else{
+            		return false;
+            	}
+            }
+            
+            function Alerta(){
+            	alert("Guardadoooooooooo");
+            }
         </script>
 	<section class="form-register">
 	<h1>Formulario de Registro de Estudiantes</h1>
@@ -50,7 +72,7 @@
 					<option>F</option>
 				</select>
 				<!-- Aqui va el combobox de Sexo -->
-				<label>Grado Acad�mico:</label>
+				<label>Grado Académico:</label>
 			<br>
 				<select class="controls" name="carreras" id="TipoSeleccionGrados" required>
 					<option value="">Seleccione una opcion</option>
@@ -67,11 +89,11 @@
 				<!-- Aqui va el combobox de GradoAcademico -->
 				<label>E-mail:</label>
 			<br>
-				<input class="controls" type="email" placeholder="julio@unab.edu.sv" required> 
-				<label>Contrase�a:</label>
+				<input class="controls" type="email" name="email" placeholder="julio@unab.edu.sv" required> 
+				<label>Contraseña:</label>
 			<br>
-				<input class="controls" type="password" name="pass" placeholder="Contrase�a" required> 
-				<input class="boton" type="submit" value="�Registrar ahora!">
+				<input class="controls" type="password" name="pass" placeholder="Contraseña" required> 
+				<input class="boton" type="submit" onclick="return ConfirmGuardar()" onload="Alerta()" value="¡Registrar ahora!">
 				<p>
 					<a href="index.jsp">Ya tengo una cuenta...</a>
 				</p>
