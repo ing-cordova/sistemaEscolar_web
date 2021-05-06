@@ -38,6 +38,8 @@
                         <td>${item.DUI}</td>
                         <td>${item.NIT}</td>
                         <td>${item.Fecha_Nacimiento}</td>
+                        <td>${item.Ultima_Modificacion}</td>
+                        <td>${item.Estado}</td>
                         <td><a href="ControllerPersona?Id=${item.idPersona}&Eliminar=btne" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
 						<a href="AddPersona.jsp?Id=${item.idPersona}&Persona=${item.Nombre}&Apellido=${item.Apellido}&Sexo=${item.Sexo}&DUI=${item.DUI}&NIT=${item.NIT}&Fecha_Nacimiento=${item.Fecha_Nacimiento}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
 						</td>
@@ -62,6 +64,8 @@
                 <th>DUI</th>
                 <th>NIT</th>
                 <th>FECHA DE NACIMIENTO</th>
+                <th>ULTIMA MODIFICACION</th>
+                <th>ESTADO</th>
                 <th>ACCIONES</th>
             </thead>
         </table>
