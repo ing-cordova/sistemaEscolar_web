@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 <meta charset="utf-8">
 <link rel="icon" href="Imagenes/school.ico">
 <title>Formulario de Registro</title>
@@ -15,9 +16,26 @@
 	rel="stylesheet">
 </head>
 <body>
+<script type="text/javascript">
+            $(document).ready(function () {
+                $.post('ControllerGradoAcademico', {
+                }, function (response) {
+                    let datos = JSON.parse(response);
+                    console.log(datos);
+
+                    var tabla = document.getElementById('TipoSeleccionGrados');
+                    for (let item of datos) {
+                        tabla.innerHTML +=
+                            `
+                            <option value="${item.idGradoAcademico}">${item.Nombre_GradoAcad}</option>
+                    `
+                    }
+                });
+            });
+        </script>
 	<section class="form-register">
 	<h1>Formulario de Registro de Estudiantes</h1>
-		<form action="ControllerEstudiante" method="get">
+		<form action="ControllerRegistroEstudiante" method="get">
 			<label>Nombres:</label>
 			<br>
 				<input class="controls" type="text" name="nombres" placeholder="Julio David" required> 
@@ -34,7 +52,7 @@
 				<!-- Aqui va el combobox de Sexo -->
 				<label>Grado Académico:</label>
 			<br>
-				<select class="controls" name="carreras" id="Grados" >
+				<select class="controls" name="carreras" id="TipoSeleccionGrados" required>
 					<option value="">Seleccione una opcion</option>
 				</select>
 				<label for="birthdate">Fecha de Nacimiento:</label>
@@ -52,7 +70,7 @@
 				<input class="controls" type="email" placeholder="julio@unab.edu.sv" required> 
 				<label>Contraseña:</label>
 			<br>
-				<input class="controls" type="password" placeholder="Contraseña" required> 
+				<input class="controls" type="password" name="pass" placeholder="Contraseña" required> 
 				<input class="boton" type="submit" value="¡Registrar ahora!">
 				<p>
 					<a href="index.jsp">Ya tengo una cuenta...</a>

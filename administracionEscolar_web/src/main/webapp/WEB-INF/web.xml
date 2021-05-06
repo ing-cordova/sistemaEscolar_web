@@ -46,6 +46,12 @@
   	<description></description>
   	<servlet-class>com.unab.edu.Controladores.ControllerNotasEstudiante</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ControllerRegistroEstudiante</servlet-name>
+  	<display-name>ControllerRegistroEstudiante</display-name>
+  	<description></description>
+  	<servlet-class>com.unab.edu.Controladores.ControllerRegistroEstudiante</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>ControllerGradoAcademico</servlet-name>
   	<url-pattern>/ControllerGradoAcademico</url-pattern>
@@ -73,5 +79,9 @@
   <servlet-mapping>
   	<servlet-name>ControllerNotasEstudiante</servlet-name>
   	<url-pattern>/ControllerNotasEstudiante</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ControllerRegistroEstudiante</servlet-name>
+  	<url-pattern>/ControllerRegistroEstudiante</url-pattern>
   </servlet-mapping>
 </web-app>
