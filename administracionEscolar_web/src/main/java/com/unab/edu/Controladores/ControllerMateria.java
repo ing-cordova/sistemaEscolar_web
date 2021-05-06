@@ -41,6 +41,8 @@ public class ControllerMateria extends HttpServlet {
 
 		String Id = request.getParameter("Id");
 		String Materia = request.getParameter("Materia");
+		String GradoAcad = request.getParameter("GradoAcad");
+		
 
 		Materia materia = new Materia();
 		CLSMateria clsMateria = new CLSMateria();
@@ -54,7 +56,7 @@ public class ControllerMateria extends HttpServlet {
 		}
 		else if(Agregar.equals("btna")) {
 			
-			materia.setIdGradoAcademico(1);
+			materia.setIdGradoAcademico(Integer.parseInt(GradoAcad));
 			materia.setNombre_Materia(Materia);
 			materia.setUltima_Modificacion(date);
 			materia.setEstado(1);
@@ -86,8 +88,13 @@ public class ControllerMateria extends HttpServlet {
 		Gson json = new Gson();
 		CLSMateria clsMateria = new CLSMateria();
 		
+		String combo = request.getParameter("GradoAcad");
+		System.out.println(combo);
+		
+		
 		response.setCharacterEncoding("UTF8");
 		response.getWriter().append(json.toJson(clsMateria.MostrarTodasMateria()));
+		
 	}
 
 }
