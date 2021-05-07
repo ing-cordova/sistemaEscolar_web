@@ -1602,7 +1602,7 @@ PEstado int (11) )
 BEGIN
 update estudiantes set idPersona = PidPersona, 
  Correo_Electronico = PCorreo_Electronico, Pass = sha2(PPass,512), 
- idGradoAcademico = PidGradoAcademico, Ultima_modificacion = PUltima_Modificacion, 
+ idGradoAcademico = PidGradoAcademico, Ultima_Modificacion = PUltima_Modificacion, 
  Estado = PEstado
  where idEstudiante = PidEstudiante; 
 END ;;
@@ -1812,4 +1812,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-06 21:56:04
+-- Dump completed on 2021-05-07  1:36:12
