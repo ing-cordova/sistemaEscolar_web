@@ -41,7 +41,7 @@ public class CLSEstudiante {
             }
             conectar.close();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+            
             System.out.println("Ha ocurrido un error en: ClsEstudiante/MostrarEstudiante" + e);
         }
         return Estudiantes;
@@ -54,7 +54,8 @@ public class CLSEstudiante {
             Statement.setInt("PidEstudiante", est.getIdEstudiante());
 
             Statement.execute();
-            JOptionPane.showMessageDialog(null, "Estudiante eliminado con exito");
+            //JOptionPane.showMessageDialog(null, "Estudiante eliminado con exito");
+            System.out.println("Estudiante eliminado con exito");
 
             conectar.close();
         } catch (SQLException e) {
@@ -66,12 +67,12 @@ public class CLSEstudiante {
     public void ActualizarEstudiante(Estudiante est) {
         try {
             CallableStatement Statement = conectar.prepareCall("call SP_U_ESTUDIANTE(?,?,?,?,?,?,?)");
-            Statement.setInt("PIdEstudiante", est.getIdEstudiante());
-            Statement.setInt("PIdPersona", est.getIdPersona());
-            Statement.setString("PCorreoElectronico", est.getCorreo_Electronico());
+            Statement.setInt("PidEstudiante", est.getIdEstudiante());
+            Statement.setInt("PidPersona", est.getIdPersona());
+            Statement.setString("PCorreo_Electronico", est.getCorreo_Electronico());
             Statement.setString("PPass", est.getPass());
             Statement.setInt("PidGradoAcademico", est.getIdGradoAcademico());
-            Statement.setDate("PUltimaModificacion", new java.sql.Date(est.getEstUltima_Modificacion().getTime()));
+            Statement.setDate("PUltima_Modificacion", new java.sql.Date(est.getEstUltima_Modificacion().getTime()));
             Statement.setInt("PEstado", est.getEstEstado());
 
             Statement.execute();
@@ -80,7 +81,7 @@ public class CLSEstudiante {
 
         } catch (SQLException e) {
            
-        	System.out.println("Ocurrio un error en CLSEstudiante/ActualizarEstudiante");
+        	System.out.println("Ocurrio un error en CLSEstudiante/ActualizarEstudiante" + e);
         }
     }
 
@@ -100,7 +101,7 @@ public class CLSEstudiante {
 
             conectar.close();
         } catch (SQLException e) {
-            //JOptionPane.showMessageDialog(null, e);
+           
             System.out.println("Ha ocurrido un error en CLSEstudiante/AgregarEstudiante" + e);
         }
     }
@@ -268,7 +269,11 @@ public class CLSEstudiante {
                     es.setIdPersona(rs.getInt("idPersona"));
                     es.setNombre(rs.getString("Nombre"));
                     es.setApellido(rs.getString("Apellido"));
+                    es.setDUI(rs.getString("Dui"));
+                    es.setNIT(rs.getString("Nit"));
+                    es.setFecha_Nacimiento(rs.getDate("Fecha_Nacimiento"));
                     es.setCorreo_Electronico(rs.getString("Correo_Electronico"));
+                    es.setPass(rs.getString("Pass"));
                     es.setNombre_GradoAcad(rs.getString("Nombre_GradoAcad"));
                     es.setEstUltima_Modificacion(rs.getDate("Ultima_Modificacion"));
                     es.setEstEstado(rs.getInt("Estado"));
