@@ -44,11 +44,11 @@ public class CLSDocente {
             Statement.setInt("PidDocente", profe.getIdDocente());
 
             Statement.execute();
-            JOptionPane.showMessageDialog(null, "Docente eliminado");
+            System.out.println("DOCENTE ELIMINADO");
 
             conectar.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
+            System.out.println("ERROR AL ELIMINAR DOCENTE" + e);
         }
     }
 
@@ -61,15 +61,15 @@ public class CLSDocente {
             Statement.setString("PCorreo_Electronico", profe.getCorreo_Electronico());
             Statement.setString("PPass", profe.getPass());
             Statement.setString("PEspecialidad", profe.getEspecialidad());
-            Statement.setDate("PUltima_Modificacion", new java.sql.Date(profe.getUltima_Modificacion().getTime()));
-            Statement.setInt("PEstado", profe.getEstado());
+            Statement.setDate("PUltima_Modificacion", new java.sql.Date(profe.getDocUltima_Modificacion().getTime()));
+            Statement.setInt("PEstado", profe.getDocEstado());
 
             Statement.execute();
-            JOptionPane.showMessageDialog(null, "Docente actualizado");
+            System.out.println("ACTUALIZADO");
 
             conectar.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
+            System.out.println("ERROR" + e);
         }
     }
 
@@ -80,8 +80,8 @@ public class CLSDocente {
             Statement.setString("PCorreo_Electronico", profe.getCorreo_Electronico());
             Statement.setString("PPass", profe.getPass());
             Statement.setString("PEspecialidad", profe.getEspecialidad());
-            Statement.setDate("PUltima_Modificacion", new java.sql.Date(profe.getUltima_Modificacion().getTime()));
-            Statement.setInt("PEstado", profe.getEstado());
+            Statement.setDate("PUltima_Modificacion", new java.sql.Date(profe.getDocUltima_Modificacion().getTime()));
+            Statement.setInt("PEstado", profe.getDocEstado());
 
             Statement.execute();
             System.out.println("Docente guardado");
@@ -89,7 +89,7 @@ public class CLSDocente {
             conectar.close();
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
+            System.out.println("ERROR" + e);
         }
     }
 
@@ -233,6 +233,10 @@ public class CLSDocente {
                 Do.setIdPersona(rs.getInt("idPersona"));
                 Do.setNombre(rs.getString("Nombre"));
                 Do.setApellido(rs.getString("Apellido"));
+                Do.setSexo(rs.getString("Sexo"));
+                Do.setDUI(rs.getString("Dui"));
+                Do.setNIT(rs.getString("Nit"));
+                Do.setFecha_Nacimiento(rs.getDate("Fecha_Nacimiento"));
                 Do.setCorreo_Electronico(rs.getString("Correo_Electronico"));
                 Do.setPass(rs.getString("Pass"));
                 Do.setEspecialidad(rs.getString("Especialidad"));

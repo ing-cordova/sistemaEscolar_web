@@ -1,6 +1,7 @@
 package com.unab.edu.Controladores;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -10,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.unab.edu.DAO.CLSDocente;
+import com.unab.edu.DAO.CLSPersona;
 import com.unab.edu.Entidades.Docente;
+import com.unab.edu.Entidades.Persona;
 
 /**
  * Servlet implementation class ControllerDocente
@@ -31,8 +34,15 @@ public class ControllerDocente extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// response.getWriter().append("Served at: ").append(request.getContextPath());
+		// response.getWriter().append("Served at: ").append(request.getContextPath());		
+		
 		Date date = new Date();
+		CLSPersona clsPersona = new CLSPersona();
+		CLSDocente clsDoce = new CLSDocente();
+		
+		Persona persona = new Persona();
+		Docente Doce = new Docente();		
+		
 		String Evaluar = request.getParameter("Eliminar");
 		String Agregar = request.getParameter("Guardar");
 
@@ -41,10 +51,23 @@ public class ControllerDocente extends HttpServlet {
 		String Correo_Electronico = request.getParameter("Correo_Electronico");
 		String Pass = request.getParameter("Pass");
 		String Especialidad = request.getParameter("Especialidad");
+		
+		String Nombres = request.getParameter("nombres");
+		String Apellidos = request.getParameter("apellidos");
+		String Sexo = request.getParameter("sexo");
+		SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
+		String FechaNacimiento = request.getParameter("birthdate");
+		Date fecha = null;
+		try {
+			fecha = formatoDelTexto.parse(FechaNacimiento);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		String Dui = request.getParameter("Dui");
+		String Nit = request.getParameter("Nit");
+		int ultimo = clsPersona.RetornoLastID() + 1;
 
-		Docente Doce = new Docente();
-		CLSDocente clsDoce = new CLSDocente();
-
+		
 		if (Evaluar != null) {
 			if (Evaluar.equals("btne")) {
 				Doce.setIdDocente(Integer.parseInt(Id));
@@ -53,24 +76,39 @@ public class ControllerDocente extends HttpServlet {
 			}
 		}
 		else if(Agregar.equals("btna")) {
-			Doce.setIdPersona(Integer.parseInt(Id2));
+			
+			persona.setNombre(Nombres);
+			persona.setApellido(Apellidos);
+			persona.setSexo(Sexo);
+			persona.setDUI(Dui);
+			persona.setNIT(Nit);
+			persona.setFecha_Nacimiento(fecha);
+			persona.setUltima_Modificacion(date);
+			persona.setEstado(1);
+			
 			Doce.setCorreo_Electronico(Correo_Electronico);
 			Doce.setPass(Pass);
-			Doce.setEspecialidad(Especialidad);		
+			Doce.setEspecialidad(Especialidad);
+			Doce.setIdPersona(ultimo);
 			Doce.setDocUltima_Modificacion(date);
 			Doce.setDocEstado(1);
 			
 			System.out.println(Id);
 			System.out.println(Id2);
 			
-			if(Id == "" || Id == null || Id2 == "" || Id2 == null) {
+			if(Id2 == "" || Id2 == null || Id == "" || Id == null) {
 				
+				
+				clsPersona.AgregarPersona(persona);
 				clsDoce.AgregarDocente(Doce);
+				System.out.println(ultimo);
 				response.sendRedirect("Docente.jsp");
 			}
 			else {
+				persona.setIdPersona(Integer.parseInt(Id2));
+				clsPersona.ActualizarPersona(persona);
+				
 				Doce.setIdDocente(Integer.parseInt(Id));
-				Doce.setIdPersona(Integer.parseInt(Id2));			
 				clsDoce.ActualizarDocente(Doce);
 				response.sendRedirect("Docente.jsp");
 			}
