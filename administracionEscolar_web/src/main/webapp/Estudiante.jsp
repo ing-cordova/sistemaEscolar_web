@@ -30,26 +30,31 @@
                     for (let item of datos) {
                         tabla.innerHTML +=
                             `
-                    <tr>
-                        	<td>${item.idEstudiante}</td>
-                            <td style="display:none;">${item.idPersona}</td>
-                            <td>${item.Nombre}</td>
-                            <td>${item.Apellido}</td>
-                            <td>${item.Correo_Electronico}</td>
-                            <td style="display:none;">${item.Pass}</td>
-    						<td>${item.Nombre_GradoAcad}</td>
+                 
+                        <td>${item.idEstudiante}</td>
+                        <td style="display:none;">${item.idPersona}</td>
+                        <td>${item.Nombre}</td>
+                        <td>${item.Apellido}</td>
+                        <td style="display:none;">${item.Sexo}</td>
+                        <td style="display:none;">${item.DUI}</td>
+                        <td style="display:none;">${item.NIT}</td>
+                        <td>${item.Correo_Electronico}</td>
+                        <td style="display:none;">${item.Pass}</td>
+                        <td>${item.Nombre_GradoAcad}</td>
+                        <td style="display:none;">${item.Fecha_Nacimiento}</td>
+                        <td style="display:none;">${item.estUltima_Modificacion}</td>
+						<td style="display:none;">${item.estEstado}</td>
+                        
+                        
                         <td><a href="ControllerEstudiante?Id=${item.idEstudiante}&Eliminar=btne" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
-						<a href="AddEstudiante.jsp?Id=${item.idEstudiante}&Id2=${item.idPersona}&Correo_Electronico=${item.Correo_Electronico}&Pass=${item.Pass}&Nombre_GradoAcad=${item.Nombre_GradoAcad}"
-								class="btn btn-warning"><i class="fa fa-edit"></i></a>
-								
-								
-						</tr>
+						<a href="AddEstudiante.jsp?Id=${item.idEstudiante}&Id2=${item.idPersona}&Nombres=${item.Nombre}&Apellidos=${item.Apellido}&Email=${item.Correo_Electronico}&Pass=${item.Pass}&GradoAcad=${item.Nombre_GradoAcad}&Sexo=${item.Sexo}&dui=${item.DUI}&nit=${item.NIT}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
                     `
-                        console.log(item.idEstudiante);
+                        
                     }
                 });
             });
         </script>
+        <div class="container-table">
         <h1 align="center">Estudiantes existentes</h1>
         <div class="botones">
         	<a href="Administrador.jsp" class="btn btn-secondary btn-lg">Regresar al menú principal</a>
