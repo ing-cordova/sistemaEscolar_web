@@ -34,13 +34,17 @@
                         <td style="display:none;">${item.idPersona}</td>
                         <td>${item.Nombre}</td>
                         <td>${item.Apellido}</td>
+                        <td style="display:none;">${item.Sexo}</td>
+                        <td>${item.DUI}</td>
+                        <td>${item.NIT}</td>
+                        <td style="display:none;">${item.Fecha_Nacimiento}</td>                        
                         <td>${item.Correo_Electronico}</td>
                         <td style="display:none;">${item.Pass}</td>
 						<td>${item.Especialidad}</td>
-						<td>${item.docUltima_Modificacion}</td>
-						<td>${item.docEstado}</td>
+						<td style="display:none;">${item.docUltima_Modificacion}</td>
+						<td style="display:none;">${item.docEstado}</td>
 						<td><a href="ControllerDocente?Id=${item.idDocente}&Eliminar=btne" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
-						<a href="AddDocente.jsp?Id=${item.idDocente}&Id2=${item.idPersona}&Correo_Electronico=${item.Correo_Electronico}&Pass=${item.Pass}&Especialidad=${item.Especialidad}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+						<a href="AddDocente.jsp?Id=${item.idDocente}&Id2=${item.idPersona}&Nombres=${item.Nombre}&Apellidos=${item.Apellido}&Sexo=${item.Sexo}&Dui=${item.DUI}&Nit=${item.NIT}&Correo_Electronico=${item.Correo_Electronico}&Pass=${item.Pass}&Especialidad=${item.Especialidad}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
 						</td>
 					</tr>
                     `
@@ -60,10 +64,10 @@
 				<th>ID_DOCENTE</th>
 				<th>NOMBRE</th>
 				<th>APELLIDO</th>
+				<th>DUI</th>
+				<th>NIT</th>
 				<th>E-MAIL</th>
 				<th>ESPECIALIDAD</th>
-				<th>ULTIMA MODIFICACION</th>
-				<th>ESTADO</th>
 				<th>ACCIONES</th>
 			</thead>
 		</table>
