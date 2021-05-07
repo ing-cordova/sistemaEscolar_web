@@ -1,3 +1,5 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -23,12 +25,20 @@
 	String DUI = request.getParameter("DUI");
 	String NIT = request.getParameter("NIT");
 	String Fecha_Nacimiento = request.getParameter("Fecha_Nacimiento");
+	
+	SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/mm/aaaa");
+	Date fecha = null;
+	try {
+		fecha = formatoDelTexto.parse(Fecha_Nacimiento);
+	} catch (Exception e) {
+		// TODO: handle exception
+	}
 
 	if (Id == null) {
 		Id = "";
 		Persona = "";
 		Apellido = "";
-		Sexo = "";
+		Sexo = "Seleccione una Opcion";
 		DUI = "";
 		NIT = "";
 		Fecha_Nacimiento = "";
@@ -47,7 +57,7 @@
 		<br>
 		<label>Sexo:</label>
 		<select class="controls" name="Sexo" required>
-					<option>Seleccione una Opcion:</option>
+					<option selected><%=Sexo%></option>
 					<option>M</option>
 					<option>F</option>
 				</select>
@@ -59,7 +69,7 @@
 		<input class="controls" type="text" value="<%=NIT%>" name="NIT"  required> 
 		<br>
 		<label>Fecha_Nacimiento:</label>
-		<input class="controls" type="date" value="<%=Fecha_Nacimiento%>" name="Fecha_Nacimiento"  required> 
+		<input class="controls" type="date" value="<%=fecha%>" name="Fecha_Nacimiento"  required> 
 		<br>
 			<button name="Guardar" value="btna" class="boton">Guardar/Actualizar</button>
 		</form>
