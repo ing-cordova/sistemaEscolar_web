@@ -22,7 +22,7 @@
 		response.sendRedirect("index.jsp");
 	}
 	%>
-<header class="header">
+	<header class="header">
 		<div class="container">
 			<div class="btn-menu">
 				<img alt="" src="Imagenes/school.ico">
@@ -31,7 +31,7 @@
 				<h1>Portal Estudiantil 2021</h1>
 			</div>
 			<nav class="menu">
-				<a href="#">Inicio</a> <a href="#">Materias</a>
+				<a href="#">Inicio</a> <a href="RegistroMateriasEstudiante.jsp">Materias</a>
 				<a href="#">Tareas</a> <a href="#">Ver. Actividades</a>
 				<a href="NotasEstudiante.jsp">Notas</a>
 			</nav>

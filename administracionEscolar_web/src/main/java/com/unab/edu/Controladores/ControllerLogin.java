@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import com.unab.edu.DAO.CLSAdministrador;
 import com.unab.edu.DAO.CLSDocente;
 import com.unab.edu.DAO.CLSEstudiante;
+import com.unab.edu.DAO.CLSMateria;
 import com.unab.edu.Entidades.Administradores;
 import com.unab.edu.Negocio.clsLogin;
 
