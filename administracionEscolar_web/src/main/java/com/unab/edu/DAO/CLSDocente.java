@@ -65,11 +65,11 @@ public class CLSDocente {
             Statement.setInt("PEstado", profe.getDocEstado());
 
             Statement.execute();
-            System.out.println("ACTUALIZADO");
+            System.out.println("Docente Actualizado");
 
             conectar.close();
         } catch (SQLException e) {
-            System.out.println("ERROR" + e);
+            System.out.println("Ha ocurrido un error en CLSDocente/ActualizarDocente " + e);
         }
     }
 

@@ -86,13 +86,13 @@
 		<br>
 		<label>Contraseña del Estudiante:</label>
 		<br>
-		<input class="controls" type="text" value="<%=Pass%>" name="Pass"  required>
+		<input class="controls" type="password" value="<%=Pass%>" name="Pass"  required>
 		<br>
 		<label>Nombre del Grado Academico:</label>
 		<br>
 		
 		<select class="controls" name="GradoAcad"  id="TipoSelect" required>
-					<option selected><%=GradoAcad%></option>
+					<option value="<%=IdGrado%>" selected><%=GradoAcad%></option>
 				</select>
 		<br>
 		<label>Sexo:</label>

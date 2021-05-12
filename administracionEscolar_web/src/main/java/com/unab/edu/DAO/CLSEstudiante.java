@@ -257,7 +257,7 @@ public class CLSEstudiante {
     
     public ArrayList<Estudiante> JoinEstudiante(){
         
-        ArrayList <Estudiante> lista =  new ArrayList();
+        ArrayList <Estudiante> lista =  new ArrayList<>();
             try {
                 CallableStatement st = conectar.prepareCall("call SP_S_JOINESTUDIANTE()");
                 ResultSet rs = st.executeQuery();
@@ -269,11 +269,13 @@ public class CLSEstudiante {
                     es.setIdPersona(rs.getInt("idPersona"));
                     es.setNombre(rs.getString("Nombre"));
                     es.setApellido(rs.getString("Apellido"));
-                    es.setDUI(rs.getString("Dui"));
-                    es.setNIT(rs.getString("Nit"));
+                    es.setSexo(rs.getString("Sexo"));
+                    es.setDUI(rs.getString("DUI"));
+                    es.setNIT(rs.getString("NIT"));
                     es.setFecha_Nacimiento(rs.getDate("Fecha_Nacimiento"));
                     es.setCorreo_Electronico(rs.getString("Correo_Electronico"));
                     es.setPass(rs.getString("Pass"));
+                    es.setIdGradoAcademico(rs.getInt("idGradoAcademico"));
                     es.setNombre_GradoAcad(rs.getString("Nombre_GradoAcad"));
                     es.setEstUltima_Modificacion(rs.getDate("Ultima_Modificacion"));
                     es.setEstEstado(rs.getInt("Estado"));

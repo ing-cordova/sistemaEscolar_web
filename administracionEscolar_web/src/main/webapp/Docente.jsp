@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 	<!DOCTYPE html>
 	<html>
 
 	<head>
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
-		<meta charset="ISO-8859-1">
+		<meta charset="utf-8">
 		<title>Docentes</title>
 		<link rel="icon" href="Imagenes/school.ico">
 		<link rel="stylesheet" href="Styles/style_docente.css">
@@ -56,7 +56,7 @@
 	<div class="container-table">
 		<h1 align="center">Docentes existentes</h1>
 		<div class="botones">
-        	<a href="Administrador.jsp" class="btn btn-secondary btn-lg">Regresar al menú principal</a>
+        	<a href="Administrador.jsp" class="btn btn-secondary btn-lg">Regresar al menÃº principal</a>
         	<a href="AddDocente.jsp" class="btn btn-success btn-lg">Agregar nuevo</a>
         </div>
 		<table class="table table-dark table-striped" id="tablaDatos">

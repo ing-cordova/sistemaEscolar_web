@@ -105,7 +105,7 @@ CREATE TABLE `administradores` (
   PRIMARY KEY (`idAdministrador`),
   KEY `FK_idPersonaA_idx` (`idPersona`),
   CONSTRAINT `FK_idPersonaA` FOREIGN KEY (`idPersona`) REFERENCES `personas` (`idPersona`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -114,7 +114,7 @@ CREATE TABLE `administradores` (
 
 LOCK TABLES `administradores` WRITE;
 /*!40000 ALTER TABLE `administradores` DISABLE KEYS */;
-INSERT INTO `administradores` VALUES (1,10,'daniel@admin.com','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db','2021-04-27',1),(2,1,'andres@admin.com','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db','2021-05-02',1);
+INSERT INTO `administradores` VALUES (1,1,'andres@admin.com','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db','2021-05-11',1),(2,5,'fatima@admin.com','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db','2021-05-11',1),(3,6,'joshua@admin.com','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db','2021-05-11',1),(4,7,'enmanuel@admin.com','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db','2021-05-11',1),(5,8,'marcos@admin.com','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db','2021-05-11',1);
 /*!40000 ALTER TABLE `administradores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -136,7 +136,7 @@ CREATE TABLE `docentes` (
   PRIMARY KEY (`idDocente`),
   KEY `FK_idPersona_idx` (`idPersona`),
   CONSTRAINT `FK_idPersona` FOREIGN KEY (`idPersona`) REFERENCES `personas` (`idPersona`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -145,7 +145,7 @@ CREATE TABLE `docentes` (
 
 LOCK TABLES `docentes` WRITE;
 /*!40000 ALTER TABLE `docentes` DISABLE KEYS */;
-INSERT INTO `docentes` VALUES (1,6,'ingcordova@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db','Ingeniero en Sistemas','2021-04-20',0),(2,7,'docente@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db','Ingeniero en Sistemas','2021-04-11',0),(3,8,'docente@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db','Ingeniero en Sistemas','2021-04-11',1),(4,9,'docente@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db','Licenciatura en Computacion','2021-04-11',1);
+INSERT INTO `docentes` VALUES (1,9,'julio@docente.com','3c56aafa21488c24fe9ecb68ba8478778184c131fd422444c4a6b8f305260b4af28be8f29dd23ffa7ed6aa9dc9b8d2691ce3d8d3ad9cab0e77f42f4bf945a966','Ingeniero en Sistemas y Computación','2021-05-11',1),(2,10,'amilcar@docente.com ','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db','Licenciado en Enfermería','2021-05-11',1);
 /*!40000 ALTER TABLE `docentes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,7 +169,7 @@ CREATE TABLE `estudiantes` (
   KEY `FK_idGradoAcademico_idx` (`idGradoAcademico`),
   CONSTRAINT `FK_idGradoAcademico` FOREIGN KEY (`idGradoAcademico`) REFERENCES `grados_academicos` (`idGradoAcademico`),
   CONSTRAINT `FK_idPersona1` FOREIGN KEY (`idPersona`) REFERENCES `personas` (`idPersona`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -178,7 +178,7 @@ CREATE TABLE `estudiantes` (
 
 LOCK TABLES `estudiantes` WRITE;
 /*!40000 ALTER TABLE `estudiantes` DISABLE KEYS */;
-INSERT INTO `estudiantes` VALUES (1,1,'andres@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db',1,'2021-04-11',0),(2,2,'fatima@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db',1,'2021-04-11',1),(3,3,'joshua@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db',1,'2021-04-11',1),(4,4,'emanuel@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db',1,'2021-04-11',1),(5,5,'marcos@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db',1,'2021-04-11',1),(9,16,'andrescordovaoficial@gmail.com','5225ec09dcc1ed52ae263293a9d176ce6266da4b5b296956853eef00315ab460d359d7028d503261390f4d709be090e91a30051ce55e65f407551c9c8df89b1f',24,'2021-05-05',1),(10,17,'andrescordovaoficial@gmail.com','74d4efa9d8431e1521463b3ec8be0853539333964aa42141b8ef05feade88fd6148c38ef70cc8ab72e25bec1d466320f3a76b626357491e0ffa68c794d0a33de',2,'2021-05-05',1),(11,18,'co0428032019@unab.edu.sv','9961d468d1563f74f3b425ea9972d8d7b661838c806781156c6d702dbce91c5cb74d2b514dad16bbe40e026b8cc2611f4e278759942fb00618b74e58768c27bb',21,'2021-05-05',1),(12,19,'andrescordovaoficial@gmail.com','e0d6cd18ad726471c7031a571f998d16d3485e72de29f4079f551431dc7ffeb134f7e1b04ce8ab1f693bae614309879f6b53f04297529c853f43e0b349f05d88',22,'2021-05-05',1),(13,20,'co0428032019@unab.edu.sv','5709e1663922515d879aa7b6cae01f6f21c55a9295fa29ee32bd4fa5ea80708fbdf680815a6f9ee93e86a4743ac4e665a6ee593fd66892d24af9440bb2021211',23,'2021-05-05',1),(14,21,'andrescordovaoficial@gmail.com','4dbebc655a648082d425d89dd3c102d6e0188015abe17aecaf41b13b81e12775015b82f26a1b332f2bc7c25a9eb7b99896bd3260d0ef1186c7e5612c13b04d9c',24,'2021-05-05',1),(15,22,'santiago@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db',24,'2021-05-05',1),(16,24,'elena.orellana15@gmail.com','2cae3c02bf190d7f25476cd4a355062c48d86d41a2a76b17db01a94c13088000724ba4b74e65c236b4a852d5a1f0cff04b4ae190aaf11705f4be1479171b36fa',26,'2021-05-06',1),(17,27,'esteban.ulloa@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db',22,'2021-05-06',1);
+INSERT INTO `estudiantes` VALUES (1,11,'kevin@unab.edu.sv','d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db',3,'2021-05-11',1);
 /*!40000 ALTER TABLE `estudiantes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -195,7 +195,7 @@ CREATE TABLE `grados_academicos` (
   `Ultima_Modificacion` date DEFAULT NULL,
   `Estado` int DEFAULT NULL,
   PRIMARY KEY (`idGradoAcademico`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -204,7 +204,7 @@ CREATE TABLE `grados_academicos` (
 
 LOCK TABLES `grados_academicos` WRITE;
 /*!40000 ALTER TABLE `grados_academicos` DISABLE KEYS */;
-INSERT INTO `grados_academicos` VALUES (1,'Ingeniería en Sistemas y Computación','2021-05-03',1),(2,'Licenciatura en Computación','2021-03-15',1),(3,'Técnico en Redes Informáticas','2021-03-15',1),(4,'Técnico en Diseño Gráfico','2021-03-15',1),(5,'Técnico en Mantenimiento de Computadoras','2021-03-15',1),(6,'Licenciatura en Enfermería','2021-04-11',1),(20,'Técnico en Ingeniería Civíl','2021-05-03',1),(21,'Licenciatura en Administración de Empresas','2021-05-03',1),(22,'Licenciatura en Contaduría Pública','2021-05-03',1),(23,'Ingeniería Civíl','2021-05-03',1),(24,'Doctorado en Medicina','2021-05-03',1),(25,'Licenciatura en Laboratorio Clínico','2021-05-05',1),(26,'Ingeniería Industrial','2021-05-06',1);
+INSERT INTO `grados_academicos` VALUES (1,'Ingeniería en Sistemas y Computación','2021-05-11',1),(2,'Licenciatura en Laboratorio Clínico','2021-05-11',1),(3,'Técnico en Diseño Gráfico','2021-05-11',1),(4,'Técnico en Enfermería','2021-05-11',1),(5,'Licenciatura en Enfermería','2021-05-11',1);
 /*!40000 ALTER TABLE `grados_academicos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -225,7 +225,7 @@ CREATE TABLE `materias` (
   KEY `fk_idMateria_idx` (`idMateria`),
   KEY `FK_idGradoAcademico4_idx` (`idGradoAcademico`),
   CONSTRAINT `FK_idGradoAcademico4` FOREIGN KEY (`idGradoAcademico`) REFERENCES `grados_academicos` (`idGradoAcademico`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -234,7 +234,7 @@ CREATE TABLE `materias` (
 
 LOCK TABLES `materias` WRITE;
 /*!40000 ALTER TABLE `materias` DISABLE KEYS */;
-INSERT INTO `materias` VALUES (1,1,'Programación III','2021-03-15',0),(2,1,'Física II','2021-03-15',1),(3,1,'Redes I','2021-03-15',1),(4,1,'Matemática Financiera','2021-03-15',1),(5,1,'Sistemas Operativos II','2021-03-15',1),(6,2,'Matemática I','2021-05-06',1),(7,2,'Mantenimiento de Computadoras','2021-03-15',1),(8,2,'Fundamentos de Programación','2021-03-15',1),(9,3,'Redes I','2021-03-15',1),(10,3,'Instalación de Cableado 2','2021-05-06',1),(11,3,'Hardware de Redes','2021-03-15',0),(12,24,'Anatomía General I','2021-05-06',1);
+INSERT INTO `materias` VALUES (1,1,'Programación 3','2021-05-11',1),(2,1,'Matemática IV','2021-05-11',1),(3,5,'Anatomía General II','2021-05-11',1);
 /*!40000 ALTER TABLE `materias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -291,7 +291,7 @@ CREATE TABLE `notas` (
   KEY `FK_idMateria_idx` (`idMateria`),
   CONSTRAINT `FK_idEstudiante2` FOREIGN KEY (`idEstudiante`) REFERENCES `estudiantes` (`idEstudiante`),
   CONSTRAINT `FK_idMateria3` FOREIGN KEY (`idMateria`) REFERENCES `materias` (`idMateria`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -300,7 +300,6 @@ CREATE TABLE `notas` (
 
 LOCK TABLES `notas` WRITE;
 /*!40000 ALTER TABLE `notas` DISABLE KEYS */;
-INSERT INTO `notas` VALUES (1,2,2,10.00,10.00,10.00,10.00,0.00,'2021-05-04',1),(2,2,3,10.00,10.00,10.00,10.00,0.00,'2021-05-04',1),(3,2,4,10.00,10.00,10.00,10.00,0.00,'2021-05-04',1),(4,2,5,10.00,10.00,10.00,10.00,0.00,'2021-05-04',1),(5,2,6,10.00,10.00,10.00,10.00,0.00,'2021-05-04',1),(6,3,2,10.00,10.00,10.00,10.00,10.00,'2021-05-04',1);
 /*!40000 ALTER TABLE `notas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -322,7 +321,7 @@ CREATE TABLE `personas` (
   `Ultima_Modificacion` date DEFAULT NULL,
   `Estado` int DEFAULT NULL,
   PRIMARY KEY (`idPersona`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -331,7 +330,7 @@ CREATE TABLE `personas` (
 
 LOCK TABLES `personas` WRITE;
 /*!40000 ALTER TABLE `personas` DISABLE KEYS */;
-INSERT INTO `personas` VALUES (1,'Andrés Eduardo','Córdova Orellana','M','08568978-2','0407-060301-102-8','2001-03-06','2021-04-11',1),(2,'Fatima Marlene','Cruz Calles','F','08568978-2','0407-060301-102-8','2001-07-24','2021-04-11',1),(3,'Joshua Alexander','Galdámez García','M','08568978-2','0407-060301-102-8','2001-03-12','2021-04-11',1),(4,'Enmanuel Enrique','Orellana Serrano','M','08568978-2','0407-060301-102-8','2021-05-06','2021-05-06',1),(5,'Marcos Antonio','Mejía Miranda','M','08568978-2','0407-060301-102-8','2001-01-27','2021-04-11',1),(6,'Julio David','Gutierrez Gomez','M','08568978-2','0407-060301-102-8','2001-01-27','2021-04-11',1),(7,'Iris Gabriela','Mendez Perez','F','08568978-2','0407-060301-102-8','2001-01-27','2021-04-11',1),(8,'Samanta Liliana','Lopez Galdamez','F','08568978-2','0407-060301-102-8','2001-01-27','2021-04-11',1),(9,'Gabriel Isaias','Orellana Perez','M','08568978-2','0407-060301-102-8','2001-01-27','2021-04-11',0),(10,'Daniel Armando','Serrano Zelaya','M','05287895-8','0407-080206-102-8','2001-04-30','2021-04-27',0),(11,'Andrés Eduardo','Orellana','M','dfgdf','dfdf','2021-05-05','2021-05-05',0),(12,'Prueba Persona','Prueba Estudiante','M','06185678-9','0407-060301-010-1','2021-05-06','2021-05-05',0),(13,'Prueba Persona','Prueba Estudiante','M','06185678-9','0407-060301-010-1','2021-05-06','2021-05-05',0),(14,'dfdf','fdfdf','F','asda','asasasa','2021-05-22','2021-05-05',0),(15,'dfdf','fdfdf','F','asasas','asasas','2021-05-05','2021-05-05',0),(16,'Andr�s Eduardo','Orellana','M','dsdsd','sdsdsd','2021-05-22','2021-05-05',0),(17,'Andr�s Eduardo','Orellana','M','klk','klklkl','2021-05-14','2021-05-05',0),(18,'iuiu','iuiui','M','iuu','iui','2021-06-04','2021-05-05',0),(19,'Andr�s Eduardo','Orellana','M','dfd','ghhg','2021-06-06','2021-05-05',0),(20,'Andres Eduardo','Orellana','M','zxzx','zxzx','2021-05-17','2021-05-05',0),(21,'Andr�s Eduardo','Orellana','M','asasas','asas','2021-05-26','2021-05-05',0),(22,'Tony Santiago','Lopez Cordova','M','08259632-8','0407-060301-100-9','2017-08-23','2021-05-05',1),(23,'Tony Santiago','Cordova','M','dfgdf','s','2021-05-29','2021-05-06',0),(24,'Jose ','Perez','M','061166465-8','asa','1996-05-06','2021-05-06',0),(25,'Tony Santiago','Cordova','M','12345','s','2021-05-05','2021-05-06',0),(26,'Prueba Persona','Prueba Estudiante','M','12345','12345','2021-05-06','2021-05-06',0),(27,'Esteban Javier','Galdámez Ulloa','M','05148956-9','0407-060501-101-8','2000-04-15','2021-05-06',1);
+INSERT INTO `personas` VALUES (1,'Andrés Eduardo','Córdova Orellana','M','06185789-2','0407-060301-101-8','2001-03-06','2021-05-11',1),(5,'Fatima Marlene','Cruz Calles','F','05087489-9','0506-101210-231-8','2001-09-23','2021-05-11',1),(6,'Joshua Alexander','Galdámez García','M','04785612-8','0104-050603-535-8','2001-03-11','2021-05-11',1),(7,'Enmanuel Enrique','Orellana Serrano','M','04895629-1','0408-656458-212-5','2001-04-02','2021-05-11',1),(8,'Marcos Antonio','Mejía Miranda','M','04566266-7','0112-552154-155-2','2001-04-05','2021-05-11',1),(9,'Julio David','López García','M','05897459-8','0407-025025-101-5','1983-06-08','2021-05-11',1),(10,'Amilcar José','Pérez Solorzano','M','05189656-8','0407-052645-101-5','1998-05-25','2021-05-11',1),(11,'Kevin Antonio','Mejía Barrios','M','05198952-5','0407-528945-912-5','2021-05-11','2021-05-11',1);
 /*!40000 ALTER TABLE `personas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1048,7 +1047,8 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_S_JOINESTUDIANTE`()
 BEGIN
-Select e.idEstudiante,p.idPersona, p.Nombre, p.Apellido, e.Correo_Electronico, g.Nombre_GradoAcad,
+Select e.idEstudiante,p.idPersona, p.Nombre, p.Apellido, e.Correo_Electronico, e.Pass, p.Sexo, 
+p.DUI, p.NIT, p.Fecha_Nacimiento, e.idGradoAcademico, g.Nombre_GradoAcad,
 e.Ultima_Modificacion, e.Estado from estudiantes as e
 inner join personas as p on e.idPersona = p.idPersona
 inner join grados_academicos as g on e.idGradoAcademico = g.idGradoAcademico where e.Estado=1;
@@ -1812,4 +1812,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-07  1:36:12
+-- Dump completed on 2021-05-11 20:49:44

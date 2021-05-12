@@ -38,7 +38,7 @@
 				<a href="Docente.jsp">Docentes</a> <a href="Estudiante.jsp">Estudiantes</a>
 				<a href="Materia.jsp">Materias</a> <a href="Persona.jsp">Personas</a>
 				<a href="GradoAcademico.jsp">Grados</a>
-				<a href="GradoAcademico.jsp">N. Docente</a>
+				
 			</nav>
 		</div>
 	</header>

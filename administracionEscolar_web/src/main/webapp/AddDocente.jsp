@@ -82,7 +82,7 @@
 		<br>
 		<label>Contraseña del Docente:</label>
 		<br>
-		<input class="controls" type="text" value="<%=Pass%>" name="Pass"  required>
+		<input class="controls" type="password" value="<%=Pass%>" name="Pass"  required>
 		<br>
 		<label>Especialidad del Docente:</label>
 		<br>

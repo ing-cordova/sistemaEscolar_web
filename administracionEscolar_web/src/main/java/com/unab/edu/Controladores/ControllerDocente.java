@@ -109,6 +109,7 @@ public class ControllerDocente extends HttpServlet {
 				clsPersona.ActualizarPersona(persona);
 				
 				Doce.setIdDocente(Integer.parseInt(Id));
+				Doce.setIdPersona(Integer.parseInt(Id2));
 				clsDoce.ActualizarDocente(Doce);
 				response.sendRedirect("Docente.jsp");
 			}

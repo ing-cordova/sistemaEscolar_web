@@ -30,7 +30,7 @@
                     for (let item of datos) {
                         tabla.innerHTML +=
                             `
-                 
+                 <tr>
                         <td>${item.idEstudiante}</td>
                         <td style="display:none;">${item.idPersona}</td>
                         <td>${item.Nombre}</td>
@@ -40,14 +40,14 @@
                         <td style="display:none;">${item.NIT}</td>
                         <td>${item.Correo_Electronico}</td>
                         <td style="display:none;">${item.Pass}</td>
+                        <td style="display:none;">${item.idGradoAcademico}</td>
                         <td>${item.Nombre_GradoAcad}</td>
                         <td style="display:none;">${item.Fecha_Nacimiento}</td>
                         <td style="display:none;">${item.estUltima_Modificacion}</td>
-						<td style="display:none;">${item.estEstado}</td>
-                        
-                        
+                        <td style="display:none;">${item.estEstado}</td>
                         <td><a href="ControllerEstudiante?Id=${item.idEstudiante}&Eliminar=btne" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
-						<a href="AddEstudiante.jsp?Id=${item.idEstudiante}&Id2=${item.idPersona}&Nombres=${item.Nombre}&Apellidos=${item.Apellido}&Email=${item.Correo_Electronico}&Pass=${item.Pass}&GradoAcad=${item.Nombre_GradoAcad}&Sexo=${item.Sexo}&dui=${item.DUI}&nit=${item.NIT}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                            <a href="AddEstudiante.jsp?Id=${item.idEstudiante}&Id2=${item.idPersona}&Nombres=${item.Nombre}&Apellidos=${item.Apellido}&Email=${item.Correo_Electronico}&Pass=${item.Pass}&IdGrado=${item.idGradoAcademico}&GradoAcad=${item.Nombre_GradoAcad}&Sexo=${item.Sexo}&dui=${item.DUI}&nit=${item.NIT}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                            </tr>
                     `
                         
                     }
@@ -62,7 +62,6 @@
         </div>
         <table class="table table-dark table-striped" id="tablaDatos">
             <thead>
-                
                 <th>ID_ESTUDIANTE</th>
 				<th>NOMBRE</th>
 				<th>APELLIDO</th>
