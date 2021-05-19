@@ -17,6 +17,7 @@
 </head>
 <body>
 <script type="text/javascript">
+
 		//JQuery que nos devuelve todos las materias por GradoAcdemico específico.
 		$(document).ready(function () {
 			$.post('ControllerRegistroMateriasEstudiante', {}, function (response) {

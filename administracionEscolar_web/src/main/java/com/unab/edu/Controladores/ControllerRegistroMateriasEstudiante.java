@@ -43,7 +43,6 @@ public class ControllerRegistroMateriasEstudiante extends HttpServlet {
 		// TODO Auto-generated method stub
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
 
-		// -------DESCOMENTAR HASTA QUE LO DE ARRIBA FUNCIONE.-------
 		Date date = new Date();
 		HttpSession sesion = (HttpSession) request.getSession();
 		String email = String.valueOf(sesion.getAttribute("correo"));
@@ -57,13 +56,12 @@ public class ControllerRegistroMateriasEstudiante extends HttpServlet {
 		if (clsNotas.Verificar_Materias(enviarIdEstudiante) == true) {
 
 			System.out.println("¡Usted ya no puede inscribir materias!");
+			//Si ya tiene materias inscritas, lo devuelve al mismo jsp
+			response.sendRedirect("RegistroMateriasEstudiante.jsp");
 		} else {
 
 			Notas notas = new Notas();
-			Gson json = new Gson();
 			String idMateria[] = request.getParameterValues("idMateria");
-			String valores = (json.toJson(idMateria));
-			System.out.println("Los valores son: " + valores);
 
 			for (int i = 0; i < idMateria.length; i++) {
 				System.out.println("idMateria: " + (idMateria[i]));
@@ -83,6 +81,7 @@ public class ControllerRegistroMateriasEstudiante extends HttpServlet {
 				
 			}
 			
+			//Al momento de inscribir materias correctamente, es enviado al de notas.
 			response.sendRedirect("NotasEstudiante.jsp");
 		}
 

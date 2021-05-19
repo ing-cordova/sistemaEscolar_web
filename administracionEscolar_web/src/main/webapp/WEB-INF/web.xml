@@ -58,6 +58,12 @@
   	<description></description>
   	<servlet-class>com.unab.edu.Controladores.ControllerRegistroMateriasEstudiante</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ControllerRegistroMateriasDocente</servlet-name>
+  	<display-name>ControllerRegistroMateriasDocente</display-name>
+  	<description></description>
+  	<servlet-class>com.unab.edu.Controladores.ControllerRegistroMateriasDocente</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>ControllerGradoAcademico</servlet-name>
   	<url-pattern>/ControllerGradoAcademico</url-pattern>
@@ -93,5 +99,9 @@
   <servlet-mapping>
   	<servlet-name>ControllerRegistroMateriasEstudiante</servlet-name>
   	<url-pattern>/ControllerRegistroMateriasEstudiante</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ControllerRegistroMateriasDocente</servlet-name>
+  	<url-pattern>/ControllerRegistroMateriasDocente</url-pattern>
   </servlet-mapping>
 </web-app>
