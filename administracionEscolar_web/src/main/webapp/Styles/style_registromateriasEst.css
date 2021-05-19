@@ -12,12 +12,13 @@ body {
 .header {
 	width: 100%;
 	height: 100px;
-	position: fixed;
+	/*position: sticky;*/
 	top: 0;
 	left: 0;
 }
 
 .container {
+	background-color: red;
 	width: 90%;
 	max-width: 1200px;
 	margin: auto;
@@ -63,7 +64,7 @@ body {
 }
 
 .out-header {
-	margin-top: 110px;
+	margin-top: 0;
 }
 
 .out-header h2{
@@ -72,7 +73,7 @@ body {
 	margin-bottom: 10px;
 }
 .out-header .tabla{
-	margin: 0 50px;
+	margin: 0 70px;
 }
 
 table{
@@ -80,6 +81,12 @@ table{
 	text-align: left;
 	border-collapse: collapse;
 	width: 100%;
+}
+
+tbody{
+	height: 50px;
+	overflow-y: auto;
+	width: 100%; 
 }
 
 th, td{
@@ -94,4 +101,19 @@ thead{
 
 tr:hover td{
 	background-color: #BCD6E2;
+}
+
+.out-header .btnEnviarDatos{
+	font-family: "Montserrat", sans-serif;
+	font-size: 20px;
+	text-align: center;
+	width: 30%;
+	display: block;
+	margin: auto;
+	border: solid 2px #ffff;
+	padding: 10px;
+	background: #3886AA;
+	color: #ffff;
+	border-radius: 20px;
+	cursor: pointer;
 }

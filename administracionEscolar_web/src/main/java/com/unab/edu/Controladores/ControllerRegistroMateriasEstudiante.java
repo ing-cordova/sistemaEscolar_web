@@ -1,6 +1,12 @@
 package com.unab.edu.Controladores;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -10,53 +16,103 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 import com.unab.edu.DAO.CLSEstudiante;
 import com.unab.edu.DAO.CLSMateria;
+import com.unab.edu.DAO.CLSNotas;
 import com.unab.edu.Entidades.Materia;
+import com.unab.edu.Entidades.Notas;
 
 /**
  * Servlet implementation class ControllerRegistroMateriasEstudiante
  */
 public class ControllerRegistroMateriasEstudiante extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ControllerRegistroMateriasEstudiante() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	public ControllerRegistroMateriasEstudiante() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//doGet(request, response);
-		
-		Gson json = new Gson();
-		
+		// response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		// -------DESCOMENTAR HASTA QUE LO DE ARRIBA FUNCIONE.-------
+		Date date = new Date();
 		HttpSession sesion = (HttpSession) request.getSession();
 		String email = String.valueOf(sesion.getAttribute("correo"));
 		String password = String.valueOf(sesion.getAttribute("pass"));
-		
+
+		CLSNotas clsNotas = new CLSNotas();
+		CLSEstudiante clsEstudiante = new CLSEstudiante();
+
+		var enviarIdEstudiante = clsEstudiante.RetornoIdEstudiante(email, password);
+
+		if (clsNotas.Verificar_Materias(enviarIdEstudiante) == true) {
+
+			System.out.println("¡Usted ya no puede inscribir materias!");
+		} else {
+
+			Notas notas = new Notas();
+			Gson json = new Gson();
+			String idMateria[] = request.getParameterValues("idMateria");
+			String valores = (json.toJson(idMateria));
+			System.out.println("Los valores son: " + valores);
+
+			for (int i = 0; i < idMateria.length; i++) {
+				System.out.println("idMateria: " + (idMateria[i]));
+				
+				int idMateriaC = Integer.parseInt(idMateria[i]);
+				notas.setIdEstudiante(enviarIdEstudiante);
+				notas.setIdMateria(idMateriaC);
+				notas.setPeriodo1(0);
+				notas.setPeriodo2(0);
+				notas.setPeriodo3(0);
+				notas.setNotaFinal(0);
+				notas.setRecuperacion(0);
+				notas.setUltima_Modificacion(date);
+				notas.setEstado(1);
+
+				clsNotas.AgregarNotas(notas);
+				
+			}
+			
+			response.sendRedirect("NotasEstudiante.jsp");
+		}
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		// doGet(request, response);
+
+		Gson json = new Gson();
+
+		HttpSession sesion = (HttpSession) request.getSession();
+		String email = String.valueOf(sesion.getAttribute("correo"));
+		String password = String.valueOf(sesion.getAttribute("pass"));
+
 		CLSMateria clsMateria = new CLSMateria();
 		CLSEstudiante clsEstudiante = new CLSEstudiante();
-		
+
 		Materia materia = new Materia();
-		
+
 		var enviarIdGrado = clsEstudiante.RetornoIdEstudiante(email, password);
 		System.out.println(enviarIdGrado);
-		
+
 		materia.setIdGradoAcademico(enviarIdGrado);
-		
+
 		response.setCharacterEncoding("UTF8");
 		response.getWriter().append(json.toJson(clsMateria.MostrarMateria(materia)));
 	}
