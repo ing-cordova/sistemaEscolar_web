@@ -120,6 +120,7 @@ public class CLSMateriaDocente {
             }
             conectar.close();
         } catch (Exception e) {
+        	System.out.println("Hubo un error en CLSMateriaDocente/ShowMateriasByDocente " + e);
         }
         return MateriaAlumno;
     }

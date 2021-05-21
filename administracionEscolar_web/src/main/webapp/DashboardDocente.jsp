@@ -32,7 +32,7 @@
 			</div>
 			<nav class="menu">
 				<a href="#">Inicio</a> <a href="RegistroMateriasDocente.jsp">Materias</a>
-				<a href="#">Actividades</a> <a href="#">Notas</a>
+				<a href="#">Actividades</a> <a href="PublicarNotas.jsp">Notas</a>
 				<a href="#">Revisar Acts</a>
 			</nav>
 		</div>

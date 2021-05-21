@@ -44,6 +44,7 @@ public class ControllerLogin extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	public static int envioIdDocenteeeee;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -76,6 +77,12 @@ public class ControllerLogin extends HttpServlet {
 			fullname = clsAdmin.MostrarAdministrador(admin);
 			fullnameEst = clsEst.RetornoFullName(email, password);
 			fullnameDoc = clsDoc.RetornoFullName(email, password);
+			
+			var enviarIdDocente = clsDoc.RetornoIdDocente(email, password);
+			envioIdDocenteeeee = enviarIdDocente;
+	        var fullname2 = clsDoc.RetornoFullName(email, password);
+	        System.out.println("IdDocente: " + enviarIdDocente);
+	        System.out.println("Nombre: " + fullname2);
 			
 			int access = login.TipoUsuario(email, password);
 

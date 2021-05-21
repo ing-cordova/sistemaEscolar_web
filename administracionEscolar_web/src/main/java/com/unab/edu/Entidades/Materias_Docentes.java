@@ -14,8 +14,8 @@ import java.util.Date;
 public class Materias_Docentes extends Materia {
 	protected int idMateriaDocente;
 	protected int idDocente;
-	protected Date Ultima_Modificacion;
-	protected int Estado;
+	protected Date mdUltima_Modificacion;
+	protected int mdEstado;
 
 	public int getIdMateriaDocente() {
 		return idMateriaDocente;
@@ -33,19 +33,21 @@ public class Materias_Docentes extends Materia {
 		this.idDocente = idDocente;
 	}
 
-	public Date getUltima_Modificacion() {
-		return Ultima_Modificacion;
+	public Date getMdUltima_Modificacion() {
+		return mdUltima_Modificacion;
 	}
 
-	public void setUltima_Modificacion(Date ultima_Modificacion) {
-		Ultima_Modificacion = ultima_Modificacion;
+	public void setMdUltima_Modificacion(Date mdUltima_Modificacion) {
+		this.mdUltima_Modificacion = mdUltima_Modificacion;
 	}
 
-	public int getEstado() {
-		return Estado;
+	public int getMdEstado() {
+		return mdEstado;
 	}
 
-	public void setEstado(int estado) {
-		Estado = estado;
+	public void setMdEstado(int mdEstado) {
+		this.mdEstado = mdEstado;
 	}
+
+
 }
