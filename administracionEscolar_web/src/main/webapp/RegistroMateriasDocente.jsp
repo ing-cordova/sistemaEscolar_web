@@ -36,6 +36,61 @@
 			});
 		});
 		
+		//Función que cargará los datos que seleccionemos en la tabla 1.
+		function CargarDatos(){
+
+			//Declaración de variables recolectoras.
+			var RowIdx;
+			var id, Materia;
+			
+			var tabla = document.getElementById('tablaMateriasAIscribir');
+			
+			var rows = tabla.getElementsByTagName('tr');
+			var selectedRow;
+			var rowCellValue;
+
+			//Ciclo de iteración de datos recogidos.
+			for(i = 0; i < rows.length ; i++){
+				rows[i].onclick = function(){
+					RowIdx = this.rowIndex;
+					selectedRow = this.cells;
+					var contador = 1;
+					for(j = 0; j < selectedRow.length; j++){
+						if(contador == 1){
+							id = selectedRow[j].innerText;
+							contador++;
+						}
+						else if(contador == 2){
+							Materia = selectedRow[j].innerText;
+							contador++;
+						}
+					}
+
+					if(id > 0){
+						console.log(id);
+						console.log(Materia);
+						//Creando el botón de eliminar cada fila que se seleccione.
+						var boton = "<button class='borrar' style='padding: 8px; color: #ffff; background: red; border-radius: 9px;'><i class='fas fa-trash-alt'></i> ELIMINAR</button>";
+						//Pasando los datos de la tabla anterior a una fila en la nueva tabla.
+						var fila="<tr><td>"+id+"</td><input type = 'hidden' name = 'idMateria' value = "+id+"><td>"+Materia+"</td><td>"+boton+"</td></tr>";
+						//Creando una nueva tableRow (tr) dentro de la tabla.
+						var btn = document.createElement("TR");
+						//Añadiendo los datos a la fila.
+					   	btn.innerHTML = fila;
+					  	//Agregando los datos en la tabla.
+					    document.getElementById("tablaMateriasSeleccionadas").appendChild(btn);
+					}
+				}
+			}
+		}
+		
+		//JQuery que nos permite eliminar la fila seleccionada.
+		$(document).on('click', '.borrar', function (event) {
+		    event.preventDefault();
+		    $(this).closest('tr').remove();
+		});
+		
+		
 </script>
 	<header class="header">
 		<div class="container">
