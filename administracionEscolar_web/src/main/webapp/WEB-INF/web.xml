@@ -70,6 +70,12 @@
   	<description></description>
   	<servlet-class>com.unab.edu.Controladores.ControllerPublicarNotas</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ControllerSendAndShow_GradesTeacher</servlet-name>
+  	<display-name>ControllerSendAndShow_GradesTeacher</display-name>
+  	<description></description>
+  	<servlet-class>com.unab.edu.Controladores.ControllerSendAndShow_GradesTeacher</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>ControllerGradoAcademico</servlet-name>
   	<url-pattern>/ControllerGradoAcademico</url-pattern>
@@ -113,5 +119,9 @@
   <servlet-mapping>
   	<servlet-name>ControllerPublicarNotas</servlet-name>
   	<url-pattern>/ControllerPublicarNotas</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ControllerSendAndShow_GradesTeacher</servlet-name>
+  	<url-pattern>/ControllerSendAndShow_GradesTeacher</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -107,7 +107,7 @@ public class ControllerRegistroMateriasEstudiante extends HttpServlet {
 
 		Materia materia = new Materia();
 
-		var enviarIdGrado = clsEstudiante.RetornoIdEstudiante(email, password);
+		var enviarIdGrado = clsEstudiante.RetornoIdGrado(email, password);
 		System.out.println(enviarIdGrado);
 
 		materia.setIdGradoAcademico(enviarIdGrado);

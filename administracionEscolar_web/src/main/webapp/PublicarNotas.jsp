@@ -16,6 +16,7 @@
 </head>
 <body>
 	<script type="text/javascript">
+		//jQuery que nos devuelve el arreglo de la etiqueta select
 		$(document).ready(function () {
 			$.post('ControllerPublicarNotas', {
 			}, function (response) {
@@ -34,6 +35,116 @@
 				
 			});
 		});
+
+		//AJAX que envía el idMateria, y retorna la tabla con los datos. Todo
+		//esto de forma asíncrona al servidor.
+		$(document).ready(function () {
+			//id del botón MostrarDatos
+			$("#idMat").click(function (){
+				
+				//Recogiendo el value del combo
+				var comboID = $("#TipoSelect").val();
+				
+				$.post('ControllerSendAndShow_GradesTeacher', {
+					//Enviando variable al controlador.
+					comboID
+				}, function (response) {
+					
+					let datos = JSON.parse(response);
+					console.log(datos);
+
+					var tabla = document.getElementById('tablaNotasxMateria');
+					for(let iterar of datos){
+						tabla.innerHTML += 
+						`
+						<tr>
+							<td>${iterar.idNota}</td>
+							<td style="display:none;">${iterar.idEstudiante}</td>
+							<td>${iterar.Correo_Electronico}</td>
+							<td>${iterar.Periodo1}</td>
+							<td>${iterar.Periodo2}</td>
+							<td>${iterar.Periodo3}</td>
+							<td>${iterar.NotaFinal}</td>
+							<td>${iterar.Recuperacion}</td>
+						</tr>
+						`
+					}
+				});
+			});
+		});
+
+		//Función que limpiará la tabla
+		function LimpiarTabla(){			
+			$("#tablaNotasxMateria tr").remove(); 
+		}
+
+		//Función que cargará los datos que seleccionemos en la tabla 1.
+		function CargarDatos(){
+
+			//Declaración de variables recolectoras.
+			var RowIdx;
+			var idnota, idstudent, correo, p1, p2, p3, pfinal, repo;
+			
+			var tabla = document.getElementById('tablaNotasxMateria');
+			
+			var rows = tabla.getElementsByTagName('tr');
+			var selectedRow;
+			var rowCellValue;
+
+			//Ciclo de iteración de datos recogidos.
+			for(i = 0; i < rows.length ; i++){
+				rows[i].onclick = function(){
+					RowIdx = this.rowIndex;
+					selectedRow = this.cells;
+					var contador = 1;
+					for(j = 0; j < selectedRow.length; j++){
+						if(contador == 1){
+							idnota = selectedRow[j].innerText;
+							contador++;
+						}
+						else if(contador == 2){
+							idstudent = selectedRow[j].innerText;
+							contador++;
+						}
+						else if(contador == 3){
+							correo = selectedRow[j].innerText;
+							contador++;
+						}
+						else if(contador == 4){
+							p1 = selectedRow[j].innerText;
+							contador++;
+						}
+						else if(contador == 5){
+							p2 = selectedRow[j].innerText;
+							contador++;
+						}
+						else if(contador == 6){
+							p3 = selectedRow[j].innerText;
+							contador++;
+						}
+						else if(contador == 7){
+							pfinal = selectedRow[j].innerText;
+							contador++;
+						}
+						else if(contador == 8){
+							repo = selectedRow[j].innerText;
+							contador++;
+						}
+					}
+
+					if(idnota > 0){
+						console.log(idnota);
+						console.log(idstudent);
+						console.log(correo);
+						console.log(p1);
+						console.log(p2);
+						console.log(p3);
+						console.log(pfinal);
+						console.log(repo);
+					}
+				}
+			}
+		}
 	</script>
 	<header class="header">
 		<div class="container">
@@ -51,16 +162,15 @@
 		</div>
 		<div class="out-header">
 			<!--Formulario que envía únicamente el id de la materia seleccionada-->
-			<form action="" method="">
-				<div class="componentes">
-					<label>Materia:</label>
-					<br>
-					<select class="controls" name="materia"  id="TipoSelect" required>
-						<option value="" selected>Seleccione...</option>
-					</select>
-					<input type="submit" name="enviaridMateria" class="btnEnviarID" value="Mostrar notas">
-				</div>
-			</form>
+			<div class="componentes">
+				<label>Materia:</label>
+				<br>
+				<select class="controls" name="idmateria"  id="TipoSelect" required>
+					<option value="" selected>Seleccione...</option>
+				</select>
+				<!-- <input type="submit" name="enviaridMateria" class="btnEnviarID" value="Mostrar notas"> -->
+				<button class="btnEnviarID" id="idMat" onclick="LimpiarTabla();">Mostrar notas</button>
+			</div>
 
 			<!--Formulario que envía los datos para ser actualizados.-->
 			<form action="ControllerPublicarNotas" method="post">
@@ -85,7 +195,8 @@
 					</div>
 				</div>
 			</form>
-			<div class="tabla">
+		</div>
+		<div class="tabla">
 				<table>
 					<thead>
 						<th>ID_NOTA</th>
@@ -96,42 +207,12 @@
 						<th>FINAL</th>
 						<th>REPO</th>
 					</thead>
-					<tbody id="tablaNotasxMateria">
+					<tbody id="tablaNotasxMateria" onclick="CargarDatos();">
 					<!-- DATOS SOLO DE PRUEBA, ELIMINAR CUANDO YA SE TRAIGAN DATOS REALES -->
-						<tr>
-							<td>1</td>
-							<td style="display:none;">10</td>
-							<td>esteesunejemplo@gmail.com</td>
-							<td>10</td>
-							<td>9.5</td>
-							<td>7.6</td>
-							<td>8.8</td>
-							<td>0</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td style="display:none;">10</td>
-							<td>esteesunejemplo@gmail.com</td>
-							<td>10</td>
-							<td>9.5</td>
-							<td>7.6</td>
-							<td>8.8</td>
-							<td>0</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td style="display:none;">10</td>
-							<td>esteesunejemplo@gmail.com</td>
-							<td>10</td>
-							<td>9.5</td>
-							<td>7.6</td>
-							<td>8.8</td>
-							<td>0</td>
-						</tr>
+						
 					</tbody>					
 				</table>
 			</div>
-		</div>
 	</header>
 </body>
 </html>

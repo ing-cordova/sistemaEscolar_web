@@ -162,9 +162,9 @@ public class CLSNotas {
 
                 Nota.add(nota);
             }
-            conectar.close();
+            
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+           System.out.println("Error en CLSNotas/NOTAS_PUBLICADAS \n" + e);
         }
         return Nota;
     }
