@@ -79,12 +79,12 @@ public class CLSNotas {
             Statement.setDate("PUltima_Modificacion", new java.sql.Date(not.getUltima_Modificacion().getTime()));
 
             Statement.execute();
-            JOptionPane.showMessageDialog(null, "Notas actualizada");
+            System.out.println("La nota ha sido actualizada con exito");
 
             conectar.close();
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
+        	System.out.println("Error en CLSNotas/ActualizarNota: " + e);
         }
     }
 

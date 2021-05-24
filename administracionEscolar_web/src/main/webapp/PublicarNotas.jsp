@@ -53,6 +53,8 @@
 					let datos = JSON.parse(response);
 					console.log(datos);
 
+					//validar();
+					
 					var tabla = document.getElementById('tablaNotasxMateria');
 					for(let iterar of datos){
 						tabla.innerHTML += 
@@ -141,6 +143,17 @@
 						console.log(p3);
 						console.log(pfinal);
 						console.log(repo);
+						
+						document.getElementById('NidNota').value = idnota;
+						document.getElementById('NidEstudiante').value = idstudent;
+						document.getElementById('Ncorreo1').innerText = correo;
+
+						document.getElementById('Ncorreo').value = correo;
+						document.getElementById('Np1').value = (p1/0.33).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+						document.getElementById('Np2').value = (p2/0.33).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+						document.getElementById('Np3').value = (p3/0.33).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+						document.getElementById('Npfinal').value = pfinal;
+						document.getElementById('NpRepo').value = repo;
 					}
 				}
 			}
@@ -173,22 +186,25 @@
 			</div>
 
 			<!--Formulario que envía los datos para ser actualizados.-->
-			<form action="ControllerPublicarNotas" method="post">
+			<form action="ControllerPublicarNotas" method="get">
 				<div class="componentes">
 					<label>E-mail:</label>
-					<label>algoooooooooo@gmail.com</label>
+					<label for="correoo" id="Ncorreo1"></label>
 					<br>
 					<br>
+					<input type="hidden" name="correoo" id="Ncorreo">
+					<input type="hidden" name="idNotaaa" id="NidNota">
+					<input type="hidden" name="idEstudianteeee" id="NidEstudiante">
 					<label>Periodo 1</label>
-					<input type="text" name="p1" class="controls2">
+					<input type="text" name="p1" class="controls2" id="Np1">
 					<label>Periodo 2</label>
-					<input type="text" name="p2" class="controls2">
+					<input type="text" name="p2" class="controls2" id="Np2">
 					<label>Periodo 3</label>
-					<input type="text" name="p3" class="controls2">
+					<input type="text" name="p3" class="controls2" id="Np3">
 					<label>Final</label>
-					<input type="text" name="pfinal" class="controls2">
+					<input type="text" name="pfinal" class="controls2" id="Npfinal" readonly>
 					<label>Reposición</label>
-					<input type="text" name="pRepo" class="controls2">
+					<input type="text" name="pRepo" class="controls2" id="NpRepo" readonly>
 					<br>
 					<div class="btEnvDa">
 						<input type="submit" name="" class="btnEnviarNotas" value="Publicar notas">
