@@ -1,3 +1,6 @@
+<%@page import="java.text.ParseException"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -36,6 +39,8 @@
             });
         </script>
 	<%
+	SimpleDateFormat formato = new SimpleDateFormat("dd/mm/aaaa");
+	Date castfecha = new Date();
 	
 	String Id = request.getParameter("Id");
 	String Id2 = request.getParameter("Id2");
@@ -49,8 +54,7 @@
 	String GradoAcad = request.getParameter("GradoAcad");
 	String IdGrado = request.getParameter("IdGrado");
 	//String GradoAcademico = request.getParameter("GradoAcademico");
-	String birthdate = request.getParameter("birthdate");
-	
+	String birthdate = request.getParameter("fecha");
 
 	if (Id == null || Id2 == null) {
 		Id = "";
@@ -64,7 +68,7 @@
 		Sexo = "Seleccione una opcion";
 		dui = "";
 		nit = "";
-		birthdate = "";
+		//birthdate = "";
 	}
 
 	%>

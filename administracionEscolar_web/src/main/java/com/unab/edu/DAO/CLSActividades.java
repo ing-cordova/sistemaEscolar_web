@@ -32,15 +32,15 @@ public class CLSActividades {
             statement.setDouble("PPorcentaje", act.getPorcentaje());
             statement.setDate("PFecha_Entrega", new java.sql.Date(act.getFecha_Entrega().getTime()));
             statement.setString("PEstado_Actividad", act.getEstado_Actividad());
-            statement.setDate("PUltima_Modificacion", new java.sql.Date(act.getUltima_Modificacion().getTime()));
-            statement.setInt("PEstado", act.getEstado());
+            statement.setDate("PUltima_Modificacion", new java.sql.Date(act.getActUltima_Modificacion().getTime()));
+            statement.setInt("PEstado", act.getActEstado());
 
             statement.execute();
-            JOptionPane.showMessageDialog(null, "¡ ACTIVIDAD GUARDADA CON EXITO !");
+            System.out.println("Actividad guardada con exito!!!");
             conectar.close();
         } catch (Exception e) {
 
-            JOptionPane.showMessageDialog(null, e);
+            System.out.println("Ha ocurrido un error en CLSActividades/AgregarActividad " + e);
         }
     }
 
@@ -79,16 +79,16 @@ public class CLSActividades {
             st.setString("PNombre_Actividad", act.getNombre_Actividad());
             st.setDouble("PPorcentaje", act.getPorcentaje());
             st.setDate("PFecha_Entrega", new java.sql.Date(act.getFecha_Entrega().getTime()));
-            st.setDate("PUltima_Modificacion", new java.sql.Date(act.getUltima_Modificacion().getTime()));
-            st.setInt("PEstado", act.getEstado());
+            st.setDate("PUltima_Modificacion", new java.sql.Date(act.getActUltima_Modificacion().getTime()));
+            st.setInt("PEstado", act.getActEstado());
 
             st.execute();
-            JOptionPane.showMessageDialog(null, "¡ ACTIVIDAD ACTUALIZADA CON EXITO !");
+            System.out.println("Actividad actualizada con exito!!");
 
             conectar.close();
         } catch (Exception e) {
 
-            JOptionPane.showMessageDialog(null, e);
+            System.out.println("Ha ocurrido un error en CLSActividades/ActualizarActividad " + e);
         }
     }
 
@@ -99,12 +99,12 @@ public class CLSActividades {
             st.setInt("PidActividad", act.getIdActividad());
 
             st.execute();
-            JOptionPane.showMessageDialog(null, "¡ ACTIVIDAD ELIMINADA CON EXITO !");
+            System.out.println("Actividad eliminada con exito!!");
 
             conectar.close();
         } catch (Exception e) {
 
-            JOptionPane.showMessageDialog(null, e);
+            System.out.println("Hubo un error en CLSActividades/EliminarActividad: " + e);
         }
     }
 

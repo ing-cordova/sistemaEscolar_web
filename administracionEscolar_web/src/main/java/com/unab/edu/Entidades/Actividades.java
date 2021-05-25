@@ -18,8 +18,8 @@ public class Actividades extends Materia {
 	protected double Porcentaje;
 	protected Date Fecha_Entrega;
 	protected String Estado_Actividad;
-	protected Date Ultima_Modificacion;
-	protected int Estado;
+	protected Date actUltima_Modificacion;
+	protected int actEstado;
 
 	public int getIdActividad() {
 		return idActividad;
@@ -69,19 +69,20 @@ public class Actividades extends Materia {
 		Estado_Actividad = estado_Actividad;
 	}
 
-	public Date getUltima_Modificacion() {
-		return Ultima_Modificacion;
+	public Date getActUltima_Modificacion() {
+		return actUltima_Modificacion;
 	}
 
-	public void setUltima_Modificacion(Date ultima_Modificacion) {
-		Ultima_Modificacion = ultima_Modificacion;
+	public void setActUltima_Modificacion(Date actUltima_Modificacion) {
+		this.actUltima_Modificacion = actUltima_Modificacion;
 	}
 
-	public int getEstado() {
-		return Estado;
+	public int getActEstado() {
+		return actEstado;
 	}
 
-	public void setEstado(int estado) {
-		Estado = estado;
+	public void setActEstado(int actEstado) {
+		this.actEstado = actEstado;
 	}
+	
 }

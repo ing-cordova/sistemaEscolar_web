@@ -76,6 +76,12 @@
   	<description></description>
   	<servlet-class>com.unab.edu.Controladores.ControllerSendAndShow_GradesTeacher</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ControllerActividadesDocente</servlet-name>
+  	<display-name>ControllerActividadesDocente</display-name>
+  	<description></description>
+  	<servlet-class>com.unab.edu.Controladores.ControllerActividadesDocente</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>ControllerGradoAcademico</servlet-name>
   	<url-pattern>/ControllerGradoAcademico</url-pattern>
@@ -123,5 +129,9 @@
   <servlet-mapping>
   	<servlet-name>ControllerSendAndShow_GradesTeacher</servlet-name>
   	<url-pattern>/ControllerSendAndShow_GradesTeacher</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ControllerActividadesDocente</servlet-name>
+  	<url-pattern>/ControllerActividadesDocente</url-pattern>
   </servlet-mapping>
 </web-app>
