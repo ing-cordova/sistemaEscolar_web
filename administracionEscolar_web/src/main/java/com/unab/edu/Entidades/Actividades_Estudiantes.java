@@ -17,9 +17,9 @@ public class Actividades_Estudiantes extends Actividades {
 	protected String Correo_Electronico;
 	protected int idMateria;
 	protected double Nota_Obtenida;
-	protected byte[] Archivo;
-	protected Date Ultima_Modificacion;
-	protected int Estado;
+	protected String Archivo;
+	protected Date acEsUltima_Modificacion;
+	protected int acEsEstado;
 
 	public int getIdActividadEstudiante() {
 		return idActividadEstudiante;
@@ -61,27 +61,27 @@ public class Actividades_Estudiantes extends Actividades {
 		Nota_Obtenida = nota_Obtenida;
 	}
 
-	public byte[] getArchivo() {
+	public String getArchivo() {
 		return Archivo;
 	}
 
-	public void setArchivo(byte[] archivo) {
+	public void setArchivo(String archivo) {
 		Archivo = archivo;
 	}
 
-	public Date getUltima_Modificacion() {
-		return Ultima_Modificacion;
+	public Date getAcEsUltima_Modificacion() {
+		return acEsUltima_Modificacion;
 	}
 
-	public void setUltima_Modificacion(Date ultima_Modificacion) {
-		Ultima_Modificacion = ultima_Modificacion;
+	public void setAcEsUltima_Modificacion(Date acEsUltima_Modificacion) {
+		this.acEsUltima_Modificacion = acEsUltima_Modificacion;
 	}
 
-	public int getEstado() {
-		return Estado;
+	public int getAcEsEstado() {
+		return acEsEstado;
 	}
 
-	public void setEstado(int estado) {
-		Estado = estado;
+	public void setAcEsEstado(int acEsEstado) {
+		this.acEsEstado = acEsEstado;
 	}
 }

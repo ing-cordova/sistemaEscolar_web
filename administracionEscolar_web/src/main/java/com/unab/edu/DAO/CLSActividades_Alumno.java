@@ -38,16 +38,16 @@ public class CLSActividades_Alumno {
             statement.setInt("PidActividad", ae.getIdActividad());
             statement.setInt("PidMateria", ae.getIdMateria());
             statement.setDouble("PNota", ae.getNota_Obtenida());
-            statement.setBytes("PArchivo", ae.getArchivo());
+            statement.setString("PArchivo", ae.getArchivo());
             statement.setString("PEstado_Act", ae.getEstado_Actividad());
-            statement.setDate("PUltima_Modificacion", new java.sql.Date(ae.getUltima_Modificacion().getTime()));
-            statement.setInt("PEstado", ae.getEstado());
+            statement.setDate("PUltima_Modificacion", new java.sql.Date(ae.getAcEsUltima_Modificacion().getTime()));
+            statement.setInt("PEstado", ae.getAcEsEstado());
             statement.execute();
-            JOptionPane.showMessageDialog(null, "¡Se envió la tarea con éxito!");
+            System.out.println("¡Se envió la tarea con éxito!");
 
             conectar.close();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        	System.out.println("Hubo un error en CLSActividades_Alumno/Insertar_Actividad " + e);
         }
     }
 
@@ -58,12 +58,12 @@ public class CLSActividades_Alumno {
             statement.setInt("PidActividadEst", ae.getIdActividadEstudiante());
             statement.setInt("PidEstudiante", ae.getIdEstudiante());
             statement.setDouble("PNotaFinal", ae.getNota_Obtenida());
-            statement.setDate("PUltima_Modificacion", new java.sql.Date(ae.getUltima_Modificacion().getTime()));
+            statement.setDate("PUltima_Modificacion", new java.sql.Date(ae.getAcEsUltima_Modificacion().getTime()));
             statement.execute();
-
-            JOptionPane.showMessageDialog(null, "¡Se ha calificado esta actividad con éxito!");
+            
+            System.out.println("¡Se ha calificado esta actividad con éxito!");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        	System.out.println("Hubo un error en CLSActividades_Alumno/Actualizar_Actividad " + e);
         }
     }
     
@@ -74,9 +74,9 @@ public class CLSActividades_Alumno {
             statement.setInt("PidActividadEst", ae.getIdActividadEstudiante());
             statement.setInt("PidEstudiante", ae.getIdEstudiante());
             statement.execute();
-            JOptionPane.showMessageDialog(null, "¡Se ha anulado el envío con éxito!");
+            System.out.println("¡Se ha anulado el envío con éxito!");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        	System.out.println("Hubo un error en CLSActividades_Alumno/Anular_Envio " + e);
         }
     }
 
@@ -95,7 +95,7 @@ public class CLSActividades_Alumno {
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        	System.out.println("Hubo un error en CLSActividades_Alumno/Verificar_Entrega " + e);
         }
 
         return verifica;
@@ -119,7 +119,7 @@ public class CLSActividades_Alumno {
                 actividad.setIdEstudiante(rs.getInt("idEstudiante"));
                 actividad.setCorreo_Electronico(rs.getString("Correo_Electronico"));
                 actividad.setNombre_Actividad(rs.getString("Nombre_Actividad"));
-                actividad.setArchivo(rs.getBytes("Archivo"));
+                actividad.setArchivo(rs.getString("Archivo"));
                 actividad.setPorcentaje(rs.getDouble("Porcentaje"));
                 actividad.setNota_Obtenida(rs.getDouble("Nota_Obtenida"));
                 actividad.setEstado_Actividad(rs.getString("Estado_Actividad"));
@@ -127,7 +127,7 @@ public class CLSActividades_Alumno {
                 Listado.add(actividad);
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+            System.out.println("Hubo un error en CLSActividades_Alumno/Mostrar_Acts_Alumnos " + e);
         }
 
         return Listado;
@@ -152,12 +152,12 @@ public class CLSActividades_Alumno {
                 actividad.setPorcentaje(rs.getDouble("Porcentaje"));
                 actividad.setNota_Obtenida(rs.getDouble("Nota_Obtenida"));
                 actividad.setEstado_Actividad(rs.getString("Estado_Actividad"));
-                actividad.setArchivo(rs.getBytes("Archivo"));
+                actividad.setArchivo(rs.getString("Archivo"));
 
                 Listado.add(actividad);
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        	System.out.println("Hubo un error en CLSActividades_Alumno/Mostrar_Todas_Actividades " + e);
         }
 
         return Listado;
@@ -209,13 +209,12 @@ public class CLSActividades_Alumno {
             CallableStatement statement = conectar.prepareCall("call SP_S_REENVIAR_ACTIVIDAD(?,?,?,?)");
             statement.setInt("PidActEstudent", ae.getIdActividadEstudiante());
             statement.setInt("PidEstudiante", ae.getIdEstudiante());
-            statement.setBytes("PArchivo", ae.getArchivo());
-            statement.setDate("PUltima_Modificacion", new java.sql.Date(ae.getUltima_Modificacion().getTime()));
+            statement.setString("PArchivo", ae.getArchivo());
+            statement.setDate("PUltima_Modificacion", new java.sql.Date(ae.getAcEsUltima_Modificacion().getTime()));
             statement.execute();
-           
-            JOptionPane.showMessageDialog(null, "¡Tu tarea ha sido modificada con éxito!");
+            System.out.println("¡Tu tarea ha sido modificada con éxito!");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        	System.out.println("Hubo un error en CLSActividades_Alumno/Reenviar_Actividad " + e);
         }
     }
 }
