@@ -118,7 +118,7 @@
 					</tbody>					
 				</table>
 			</div>
-			<form action="" method="">
+			<form action="ControllerRegistroMateriasDocente" method="get">
 				<br>
 				<h2>> Materias Seleccionadas</h2>
 				<div class="tabla">

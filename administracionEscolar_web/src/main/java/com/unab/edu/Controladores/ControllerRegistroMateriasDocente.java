@@ -47,10 +47,11 @@ public class ControllerRegistroMateriasDocente extends HttpServlet {
 		CLSDocente clsdocente = new CLSDocente();
 
 		var enviarIdDocente = clsdocente.RetornoIdDocente(email, password);
+		
 
-		if (clsMmateria.Verificar_Materias(enviarIdDocente) == true) {
+		if (clsMmateria.Verificar_Materias(ControllerLogin.envioIdDocenteeeee) == true) {
 
-			System.out.println("¡Usted ya no puede inscribir materias!");
+			System.out.println("¡Usted ya no puede volver a inscribir la misma!");
 			//Si ya tiene materias inscritas, lo devuelve al mismo jsp
 			response.sendRedirect("RegistroMateriasDocente.jsp");
 		} else {
@@ -62,7 +63,7 @@ public class ControllerRegistroMateriasDocente extends HttpServlet {
 				System.out.println("idMateria: " + (idMateria[i]));
 				
 				int idMateriaC = Integer.parseInt(idMateria[i]);
-				Mmateria.setIdDocente(enviarIdDocente);
+				Mmateria.setIdDocente(ControllerLogin.envioIdDocenteeeee);
 				Mmateria.setIdMateria(idMateriaC);
 				Mmateria.setMdUltima_Modificacion(date);
 				Mmateria.setMdEstado(1);
