@@ -82,6 +82,24 @@
   	<description></description>
   	<servlet-class>com.unab.edu.Controladores.ControllerActividadesDocente</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ControllerMateriasEstudiante</servlet-name>
+  	<display-name>ControllerMateriasEstudiante</display-name>
+  	<description></description>
+  	<servlet-class>com.unab.edu.Controladores.ControllerMateriasEstudiante</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ControllerSendAndShow_AssignmentsStudents</servlet-name>
+  	<display-name>ControllerSendAndShow_AssignmentsStudents</display-name>
+  	<description></description>
+  	<servlet-class>com.unab.edu.Controladores.ControllerSendAndShow_AssignmentsStudents</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ControllerEnviarArchivo</servlet-name>
+  	<display-name>ControllerEnviarArchivo</display-name>
+  	<description></description>
+  	<servlet-class>com.unab.edu.Controladores.ControllerEnviarArchivo</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>ControllerGradoAcademico</servlet-name>
   	<url-pattern>/ControllerGradoAcademico</url-pattern>
@@ -133,5 +151,17 @@
   <servlet-mapping>
   	<servlet-name>ControllerActividadesDocente</servlet-name>
   	<url-pattern>/ControllerActividadesDocente</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ControllerMateriasEstudiante</servlet-name>
+  	<url-pattern>/ControllerMateriasEstudiante</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ControllerSendAndShow_AssignmentsStudents</servlet-name>
+  	<url-pattern>/ControllerSendAndShow_AssignmentsStudents</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ControllerEnviarArchivo</servlet-name>
+  	<url-pattern>/ControllerEnviarArchivo</url-pattern>
   </servlet-mapping>
 </web-app>
