@@ -35,8 +35,8 @@ public class CLSMateriaDocente {
                 MatProf.setIdMateriaDocente(resultadoConsulta.getInt("idMateriaDocente"));
                 MatProf.setIdDocente(resultadoConsulta.getInt("idDocente"));
                 MatProf.setIdMateria(resultadoConsulta.getInt("idMateria"));
-                MatProf.setUltima_Modificacion(resultadoConsulta.getDate("Ultima_Modificacion"));
-                MatProf.setEstado(resultadoConsulta.getInt("Estado"));
+                MatProf.setMdUltima_Modificacion(resultadoConsulta.getDate("Ultima_Modificacion"));
+                MatProf.setMdEstado(resultadoConsulta.getInt("Estado"));
 
                 MateriaAlumno.add(MatProf);
             }
@@ -72,8 +72,8 @@ public class CLSMateriaDocente {
             Statement.setInt("PidMateriaAlumno", matProf.getIdMateriaDocente());
             Statement.setInt("PidDocente", matProf.getIdDocente());
             Statement.setInt("PidMateria", matProf.getIdMateria());
-            Statement.setDate("PUltima_Modificacion", new java.sql.Date(matProf.getUltima_Modificacion().getTime()));
-            Statement.setInt("PEstado", matProf.getEstado());
+            Statement.setDate("PUltima_Modificacion", new java.sql.Date(matProf.getMdUltima_Modificacion().getTime()));
+            Statement.setInt("PEstado", matProf.getMdEstado());
 
             Statement.execute();
             JOptionPane.showMessageDialog(null, "Datos actualizados con éxito");
@@ -91,8 +91,8 @@ public class CLSMateriaDocente {
             CallableStatement Statement = conectar.prepareCall("call SP_I_MATERIAS_DOCENTES(?,?,?,?)");
             Statement.setInt("PidDocente", matProf.getIdDocente());
             Statement.setInt("PidMateria", matProf.getIdMateria());
-            Statement.setDate("PUltima_Modificacion", new java.sql.Date(matProf.getUltima_Modificacion().getTime()));
-            Statement.setInt("PEstado", matProf.getEstado());
+            Statement.setDate("PUltima_Modificacion", new java.sql.Date(matProf.getMdUltima_Modificacion().getTime()));
+            Statement.setInt("PEstado", matProf.getMdEstado());
 
             Statement.execute();
             System.out.println("¡Materias agregadas con éxito!");

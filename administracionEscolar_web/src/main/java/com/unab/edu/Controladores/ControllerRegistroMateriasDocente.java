@@ -12,9 +12,10 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 import com.unab.edu.DAO.CLSDocente;
 import com.unab.edu.DAO.CLSMateria;
-import com.unab.edu.DAO.CLSNotas;
+import com.unab.edu.DAO.CLSMateriaDocente;
 import com.unab.edu.Entidades.Materia;
-import com.unab.edu.Entidades.Notas;
+import com.unab.edu.Entidades.Materias_Docentes;
+
 
 /**
  * Servlet implementation class ControllerRegistroMateriasDocente
@@ -42,36 +43,31 @@ public class ControllerRegistroMateriasDocente extends HttpServlet {
 		String email = String.valueOf(sesion.getAttribute("correo"));
 		String password = String.valueOf(sesion.getAttribute("pass"));
 
-		CLSNotas clsNotas = new CLSNotas();
+		CLSMateriaDocente clsMmateria = new CLSMateriaDocente();
 		CLSDocente clsdocente = new CLSDocente();
 
 		var enviarIdDocente = clsdocente.RetornoIdDocente(email, password);
 
-		if (clsNotas.Verificar_Materias(enviarIdDocente) == true) {
+		if (clsMmateria.Verificar_Materias(enviarIdDocente) == true) {
 
 			System.out.println("¡Usted ya no puede inscribir materias!");
 			//Si ya tiene materias inscritas, lo devuelve al mismo jsp
 			response.sendRedirect("RegistroMateriasDocente.jsp");
 		} else {
 
-			Notas notas = new Notas();
+			Materias_Docentes Mmateria = new Materias_Docentes();
 			String idMateria[] = request.getParameterValues("idMateria");
 
 			for (int i = 0; i < idMateria.length; i++) {
 				System.out.println("idMateria: " + (idMateria[i]));
 				
 				int idMateriaC = Integer.parseInt(idMateria[i]);
-				notas.setIdEstudiante(enviarIdDocente);
-				notas.setIdMateria(idMateriaC);
-				notas.setPeriodo1(0);
-				notas.setPeriodo2(0);
-				notas.setPeriodo3(0);
-				notas.setNotaFinal(0);
-				notas.setRecuperacion(0);
-				notas.setUltima_Modificacion(date);
-				notas.setEstado(1);
+				Mmateria.setIdDocente(enviarIdDocente);
+				Mmateria.setIdMateria(idMateriaC);
+				Mmateria.setMdUltima_Modificacion(date);
+				Mmateria.setMdEstado(1);
 
-				clsNotas.AgregarNotas(notas);
+				clsMmateria.AgregarMateriaDocente(Mmateria);
 				
 			}
 			
