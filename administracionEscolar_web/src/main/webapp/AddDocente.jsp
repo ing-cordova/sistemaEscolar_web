@@ -27,6 +27,7 @@
 	String Correo_Electronico = request.getParameter("Correo_Electronico");
 	String Pass = request.getParameter("Pass");
 	String Especialidad = request.getParameter("Especialidad");
+	System.out.println(FechaNacimiento);
 	
 
 	if (Id == null || Id2 == null) {
