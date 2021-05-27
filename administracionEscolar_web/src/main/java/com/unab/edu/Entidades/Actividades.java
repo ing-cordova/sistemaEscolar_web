@@ -16,7 +16,7 @@ public class Actividades extends Materia {
 	protected int idDocente;
 	protected String Nombre_Actividad;
 	protected double Porcentaje;
-	protected Date Fecha_Entrega;
+	protected String Fecha_Entrega;
 	protected String Estado_Actividad;
 	protected Date actUltima_Modificacion;
 	protected int actEstado;
@@ -52,12 +52,12 @@ public class Actividades extends Materia {
 	public void setPorcentaje(double porcentaje) {
 		Porcentaje = porcentaje;
 	}
-
-	public Date getFecha_Entrega() {
+	
+	public String getFecha_Entrega() {
 		return Fecha_Entrega;
 	}
 
-	public void setFecha_Entrega(Date fecha_Entrega) {
+	public void setFecha_Entrega(String fecha_Entrega) {
 		Fecha_Entrega = fecha_Entrega;
 	}
 

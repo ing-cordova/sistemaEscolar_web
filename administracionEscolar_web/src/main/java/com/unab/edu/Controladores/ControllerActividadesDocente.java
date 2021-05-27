@@ -45,13 +45,6 @@ public class ControllerActividadesDocente extends HttpServlet {
 		String ActivitieName = request.getParameter("ActivitieName");
 		String Porcent = request.getParameter("Porcent");
 		String LimitDate = request.getParameter("LimitDate");
-		SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
-		Date fecha = null;
-		try {
-			fecha = formatoDelTexto.parse(LimitDate);
-		} catch (Exception e) {
-			System.out.println("Algo salió mal en el parseo de LimitDate" + e);
-		}
 		
 		if(Evaluar != null) {
 			if(Evaluar.equals("Eliminar")) {
@@ -73,7 +66,7 @@ public class ControllerActividadesDocente extends HttpServlet {
 			actividad.setIdDocente(ControllerLogin.envioIdDocenteeeee);
 			actividad.setNombre_Actividad(ActivitieName);
 			actividad.setPorcentaje(Double.parseDouble(Porcent) / 100);
-			actividad.setFecha_Entrega(fecha);
+			actividad.setFecha_Entrega(String.valueOf(LimitDate));
 			actividad.setEstado_Actividad("Pendiente");
 			actividad.setActUltima_Modificacion(date);
 			actividad.setActEstado(1);

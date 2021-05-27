@@ -30,7 +30,7 @@ public class CLSActividades {
             statement.setInt("PidMateria", act.getIdMateria());
             statement.setString("PNombre_Actividad", act.getNombre_Actividad());
             statement.setDouble("PPorcentaje", act.getPorcentaje());
-            statement.setDate("PFecha_Entrega", new java.sql.Date(act.getFecha_Entrega().getTime()));
+            statement.setString("PFecha_Entrega", act.getFecha_Entrega());
             statement.setString("PEstado_Actividad", act.getEstado_Actividad());
             statement.setDate("PUltima_Modificacion", new java.sql.Date(act.getActUltima_Modificacion().getTime()));
             statement.setInt("PEstado", act.getActEstado());
@@ -59,7 +59,7 @@ public class CLSActividades {
                 act.setNombre_Materia(rs.getString("Nombre_Materia"));
                 act.setNombre_Actividad(rs.getString("Nombre_Actividad"));
                 act.setPorcentaje(rs.getDouble("Porcentaje"));
-                act.setFecha_Entrega(rs.getDate("Fecha_Entrega"));
+                act.setFecha_Entrega(rs.getString("Fecha_Entrega"));
                 actividades.add(act);
             }
 
@@ -78,7 +78,7 @@ public class CLSActividades {
             st.setInt("PidMateria", act.getIdMateria());
             st.setString("PNombre_Actividad", act.getNombre_Actividad());
             st.setDouble("PPorcentaje", act.getPorcentaje());
-            st.setDate("PFecha_Entrega", new java.sql.Date(act.getFecha_Entrega().getTime()));
+            st.setString("PFecha_Entrega", act.getFecha_Entrega());
             st.setDate("PUltima_Modificacion", new java.sql.Date(act.getActUltima_Modificacion().getTime()));
             st.setInt("PEstado", act.getActEstado());
 
@@ -122,7 +122,7 @@ public class CLSActividades {
                 activ.setIdActividad(rs.getInt("idActividad"));
                 activ.setNombre_Actividad(rs.getString("Nombre_Actividad"));
                 activ.setPorcentaje(rs.getDouble("Porcentaje"));
-                activ.setFecha_Entrega(rs.getDate("Fecha_Entrega"));
+                activ.setFecha_Entrega(rs.getString("Fecha_Entrega"));
                 activ.setEstado_Actividad(rs.getString("Estado_Actividad"));
                 
                 lista.add(activ);
