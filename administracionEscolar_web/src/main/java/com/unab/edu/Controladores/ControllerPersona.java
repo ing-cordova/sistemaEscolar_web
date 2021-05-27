@@ -48,14 +48,20 @@ public class ControllerPersona extends HttpServlet {
 		String DUI = request.getParameter("DUI");
 		String NIT = request.getParameter("NIT");
 		String Fecha_Nacimiento = request.getParameter("Fecha_Nacimiento");
+		
+		
+		/*response.getWriter().append(json.toJson(Fecha_Nacimiento));
+		
 		SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
+		
 		Date fecha = null;
 		try {
 			fecha = formatoDelTexto.parse(Fecha_Nacimiento);
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
+		*/
 
 		Persona per = new Persona();
 		CLSPersona clsper = new CLSPersona();
@@ -74,7 +80,7 @@ public class ControllerPersona extends HttpServlet {
 			per.setSexo(Sexo);
 			per.setDUI(DUI);
 			per.setNIT(NIT);
-			per.setFecha_Nacimiento(fecha);
+			per.setFecha_Nacimiento(Fecha_Nacimiento);
 			per.setUltima_Modificacion(date);
 			per.setEstado(1);
 			

@@ -82,7 +82,7 @@ public class ControllerDocente extends HttpServlet {
 			persona.setSexo(Sexo);
 			persona.setDUI(Dui);
 			persona.setNIT(Nit);
-			persona.setFecha_Nacimiento(fecha);
+			persona.setFecha_Nacimiento(String.valueOf(fecha));
 			persona.setUltima_Modificacion(date);
 			persona.setEstado(1);
 			

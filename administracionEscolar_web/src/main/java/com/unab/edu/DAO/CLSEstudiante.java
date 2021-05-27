@@ -272,7 +272,7 @@ public class CLSEstudiante {
                     es.setSexo(rs.getString("Sexo"));
                     es.setDUI(rs.getString("DUI"));
                     es.setNIT(rs.getString("NIT"));
-                    es.setFecha_Nacimiento(rs.getDate("Fecha_Nacimiento"));
+                    es.setFecha_Nacimiento(rs.getString("Fecha_Nacimiento"));
                     es.setCorreo_Electronico(rs.getString("Correo_Electronico"));
                     es.setPass(rs.getString("Pass"));
                     es.setIdGradoAcademico(rs.getInt("idGradoAcademico"));

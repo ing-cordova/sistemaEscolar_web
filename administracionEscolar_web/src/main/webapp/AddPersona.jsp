@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 <meta charset="utf-8">
 <link rel="icon" href="Imagenes/school.ico">
 <title>Nueva Persona</title>
@@ -25,14 +26,16 @@
 	String DUI = request.getParameter("DUI");
 	String NIT = request.getParameter("NIT");
 	String Fecha_Nacimiento = request.getParameter("Fecha_Nacimiento");
+	System.out.println(Fecha_Nacimiento);
 	
-	SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/mm/aaaa");
+	/*SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
 	Date fecha = null;
 	try {
 		fecha = formatoDelTexto.parse(Fecha_Nacimiento);
+		System.out.println(fecha);
 	} catch (Exception e) {
 		// TODO: handle exception
-	}
+	}*/
 
 	if (Id == null) {
 		Id = "";
@@ -44,6 +47,7 @@
 		Fecha_Nacimiento = "";
 	}
 	%>
+	
 	<section class="form-register">
 		<h1>Registros de Personas</h1>
 		<form action="ControllerPersona" method="get">
@@ -69,7 +73,7 @@
 		<input class="controls" type="text" value="<%=NIT%>" name="NIT"  required> 
 		<br>
 		<label>Fecha_Nacimiento:</label>
-		<input class="controls" type="date" value="<%=fecha%>" name="Fecha_Nacimiento"  required> 
+		<input class="controls" type="date" value="<%=Fecha_Nacimiento%>" name="Fecha_Nacimiento"  id="idfechaa" required> 
 		<br>
 			<button name="Guardar" value="btna" class="boton">Guardar/Actualizar</button>
 		</form>

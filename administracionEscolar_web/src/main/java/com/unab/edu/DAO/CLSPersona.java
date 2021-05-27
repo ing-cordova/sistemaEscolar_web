@@ -38,7 +38,7 @@ public class CLSPersona {
                 persona.setSexo(resultadoConsulta.getString("Sexo"));
                 persona.setDUI(resultadoConsulta.getString("DUI"));
                 persona.setNIT(resultadoConsulta.getString("NIT"));
-                persona.setFecha_Nacimiento(resultadoConsulta.getDate("Fecha_Nacimiento"));
+                persona.setFecha_Nacimiento(resultadoConsulta.getString("Fecha_Nacimiento"));
                 persona.setUltima_Modificacion(resultadoConsulta.getDate("Ultima_Modificacion"));
                 persona.setEstado(resultadoConsulta.getInt("Estado"));
 
@@ -100,7 +100,7 @@ public class CLSPersona {
             Statement.setString("PSexo", per.getSexo());
             Statement.setString("PDui", per.getDUI());
             Statement.setString("PNit", per.getNIT());
-            Statement.setDate("PFecha_Nacimiento", new java.sql.Date(per.getFecha_Nacimiento().getTime()));
+            Statement.setString("PFecha_Nacimiento", per.getFecha_Nacimiento());
             Statement.setDate("PUltima_Modificacion", new java.sql.Date(per.getUltima_Modificacion().getTime()));
             Statement.setInt("PEstado", per.getEstado());
 
@@ -125,7 +125,7 @@ public class CLSPersona {
             Statement.setString("PSexo", per.getSexo());
             Statement.setString("PDui", per.getDUI());
             Statement.setString("PNit", per.getNIT());
-            Statement.setDate("PFecha_Nacimiento", new java.sql.Date(per.getFecha_Nacimiento().getTime()));
+            Statement.setString("PFecha_Nacimiento", per.getFecha_Nacimiento());
             Statement.setDate("PUltima_Modificacion", new java.sql.Date(per.getUltima_Modificacion().getTime()));
             Statement.setInt("PEstado", per.getEstado());
 
@@ -134,7 +134,7 @@ public class CLSPersona {
 
             conectar.close();
         } catch (SQLException e) {
-        	System.out.println("Ha ocurrido un error en CLSPersona" + e);
+        	System.out.println("Ha ocurrido un error en CLSPersona/AgregarPersona: " + e);
         }
     }
 }
