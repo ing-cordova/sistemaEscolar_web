@@ -61,15 +61,15 @@ public class ControllerEstudiante extends HttpServlet {
 		String Sexo = request.getParameter("Sexo");
 		String dui = request.getParameter("dui");
 		String nit = request.getParameter("nit");
-		String birthdate = request.getParameter("birthdate");
+		String FechaNacimiento = request.getParameter("birthdate");
 		
-		Date fecha = null;
-		SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
-		try {
-			fecha = formatoDelTexto.parse(birthdate);
-		} catch (Exception e) {
+		//Date fecha = null;
+		//SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
+		//try {
+			//fecha = formatoDelTexto.parse(birthdate);
+		//} catch (Exception e) {
 			// TODO: handle exception
-		}
+		//}
 		
 		int ultimo = clsPersona.RetornoLastID() + 1;
 		
@@ -89,7 +89,7 @@ public class ControllerEstudiante extends HttpServlet {
 			persona.setSexo(Sexo);
 			persona.setDUI(dui);
 			persona.setNIT(nit);
-			persona.setFecha_Nacimiento(String.valueOf(fecha));
+			persona.setFecha_Nacimiento(FechaNacimiento);
 			persona.setUltima_Modificacion(date);
 			persona.setEstado(1);
 			
