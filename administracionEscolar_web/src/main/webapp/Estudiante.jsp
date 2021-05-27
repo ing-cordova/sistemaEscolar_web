@@ -46,7 +46,7 @@
                         <td style="display:none;">${item.estUltima_Modificacion}</td>
                         <td style="display:none;">${item.estEstado}</td>
                         <td><a href="ControllerEstudiante?Id=${item.idEstudiante}&Eliminar=btne" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
-                            <a href="AddEstudiante.jsp?Id=${item.idEstudiante}&Id2=${item.idPersona}&Nombres=${item.Nombre}&Apellidos=${item.Apellido}&Email=${item.Correo_Electronico}&Pass=${item.Pass}&IdGrado=${item.idGradoAcademico}&GradoAcad=${item.Nombre_GradoAcad}&Sexo=${item.Sexo}&dui=${item.DUI}&nit=${item.NIT}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                            <a href="AddEstudiante.jsp?Id=${item.idEstudiante}&Id2=${item.idPersona}&Nombres=${item.Nombre}&Apellidos=${item.Apellido}&Email=${item.Correo_Electronico}&Pass=${item.Pass}&IdGrado=${item.idGradoAcademico}&GradoAcad=${item.Nombre_GradoAcad}&Sexo=${item.Sexo}&dui=${item.DUI}&nit=${item.NIT}&birthdate=${item.Fecha_Nacimiento}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
                             </tr>
                     `
                         
