@@ -236,7 +236,7 @@ public class CLSDocente {
                 Do.setSexo(rs.getString("Sexo"));
                 Do.setDUI(rs.getString("Dui"));
                 Do.setNIT(rs.getString("Nit"));
-                //Do.setFecha_Nacimiento(rs.getDate("Fecha_Nacimiento"));
+                Do.setFecha_Nacimiento(rs.getString("Fecha_Nacimiento"));
                 Do.setCorreo_Electronico(rs.getString("Correo_Electronico"));
                 Do.setPass(rs.getString("Pass"));
                 Do.setEspecialidad(rs.getString("Especialidad"));

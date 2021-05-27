@@ -54,7 +54,8 @@
 	String GradoAcad = request.getParameter("GradoAcad");
 	String IdGrado = request.getParameter("IdGrado");
 	//String GradoAcademico = request.getParameter("GradoAcademico");
-	String birthdate = request.getParameter("fecha");
+	String FechaNacimiento = request.getParameter("birthdate");
+	System.out.println(FechaNacimiento);
 
 	if (Id == null || Id2 == null) {
 		Id = "";
@@ -68,7 +69,7 @@
 		Sexo = "Seleccione una opcion";
 		dui = "";
 		nit = "";
-		//birthdate = "";
+		FechaNacimiento = "";
 	}
 
 	%>
@@ -112,9 +113,9 @@
 		<label>NIT:</label>
 		<input class="controls" type="text" value="<%=nit%>" name="nit" placeholder="0000-000000-000-0" required> 
 		<br>
-		<label for="birthdate">Fecha_Nacimiento:</label>
+		<label for="birthdate">Fecha de Nacimiento:</label>
 
-		<input class="controls" value ="<%=birthdate%>" name="birthdate" type="date" placeholder="20XX-00-00" required>
+		<input class="controls" value ="<%=FechaNacimiento%>" name="birthdate" type="date" placeholder="20XX-00-00" required>
 		<br>
 		<br>
 			<button name="Guardar" value="btna" class="boton">Guardar/Actualizar</button>
