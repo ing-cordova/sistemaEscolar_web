@@ -15,7 +15,7 @@ public class Actividades_Estudiantes extends Actividades {
 	protected int idActividadEstudiante;
 	protected int idEstudiante;
 	protected String Correo_Electronico;
-	protected int idMateria;
+	protected int acEsidMateria;
 	protected double Nota_Obtenida;
 	protected String Archivo;
 	protected Date acEsUltima_Modificacion;
@@ -45,12 +45,12 @@ public class Actividades_Estudiantes extends Actividades {
 		Correo_Electronico = correo_Electronico;
 	}
 
-	public int getIdMateria() {
-		return idMateria;
+	public int getAcEsidMateria() {
+		return acEsidMateria;
 	}
 
-	public void setIdMateria(int idMateria) {
-		this.idMateria = idMateria;
+	public void setAcEsidMateria(int acEsidMateria) {
+		this.acEsidMateria = acEsidMateria;
 	}
 
 	public double getNota_Obtenida() {

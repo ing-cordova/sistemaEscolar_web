@@ -69,18 +69,7 @@ public class ControllerEnviarArchivo extends HttpServlet {
 
 		String ruta = "C:\\Users\\andre\\Documents\\GitHub\\sistemaEscolar_web\\administracionEscolar_web\\src\\main\\webapp\\FilesPDF\\"
 				+ nombrePDF;
-		try {
-			FileOutputStream fileoutput = new FileOutputStream(ruta);
-			// Obteniendo y recreando los bytes
-			InputStream stream = archivo.getInputStream();
-
-			byte[] datos = new byte[stream.available()];
-			stream.read(datos);
-			fileoutput.write(datos);
-			fileoutput.close();
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+		
 
 		Date date = new Date();
 		CLSActividades_Alumno clsAct_Almuno = new CLSActividades_Alumno();
@@ -90,7 +79,7 @@ public class ControllerEnviarArchivo extends HttpServlet {
 		act_est.setIdActividad(Integer.parseInt(IdActi));
 		act_est.setIdMateria(Integer.parseInt(idMateeee));
 		act_est.setNota_Obtenida(0.00);
-		act_est.setArchivo(nombrePDF);
+		
 		act_est.setEstado_Actividad("Entregada");
 		act_est.setAcEsUltima_Modificacion(date);
 		act_est.setAcEsEstado(1);
@@ -101,7 +90,19 @@ public class ControllerEnviarArchivo extends HttpServlet {
 			response.sendRedirect("TareasEstudiante.jsp");
 			
 		} else {
+			try {
+				FileOutputStream fileoutput = new FileOutputStream(ruta);
+				// Obteniendo y recreando los bytes
+				InputStream stream = archivo.getInputStream();
 
+				byte[] datos = new byte[stream.available()];
+				stream.read(datos);
+				fileoutput.write(datos);
+				fileoutput.close();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			act_est.setArchivo(nombrePDF);
 			clsAct_Almuno.Insertar_Actividad(act_est);
 			response.sendRedirect("TareasEstudiante.jsp");
 		}

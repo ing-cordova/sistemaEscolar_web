@@ -84,7 +84,7 @@ pageEncoding="utf-8"%>
 			</div>
 			<nav class="menu">
 				<a href="DashboardEstudiante.jsp">Inicio</a> <a href="RegistroMateriasEstudiante.jsp">Materias</a>
-				<a href="#">Tareas</a> <a href="#">Ver. Actividades</a>
+				<a href="#">Tareas</a> <a href="VerActividades.jsp">Ver. Actividades</a>
 				<a href="NotasEstudiante.jsp">Notas</a>
 			</nav>
 		</div>

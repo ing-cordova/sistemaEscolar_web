@@ -147,6 +147,7 @@ public class CLSActividades_Alumno {
 
                 Actividades_Estudiantes actividad = new Actividades_Estudiantes();
                 actividad.setIdActividadEstudiante(rs.getInt("idActividadEstudiante"));
+                actividad.setIdEstudiante(rs.getInt("idEstudiante"));
                 actividad.setNombre_Materia(rs.getString("Nombre_Materia"));
                 actividad.setNombre_Actividad(rs.getString("Nombre_Actividad"));
                 actividad.setPorcentaje(rs.getDouble("Porcentaje"));

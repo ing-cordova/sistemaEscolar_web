@@ -100,6 +100,18 @@
   	<description></description>
   	<servlet-class>com.unab.edu.Controladores.ControllerEnviarArchivo</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ControllerVerActividades</servlet-name>
+  	<display-name>ControllerVerActividades</display-name>
+  	<description></description>
+  	<servlet-class>com.unab.edu.Controladores.ControllerVerActividades</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ControllerEditarAnularTarea</servlet-name>
+  	<display-name>ControllerEditarAnularTarea</display-name>
+  	<description></description>
+  	<servlet-class>com.unab.edu.Controladores.ControllerEditarAnularTarea</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>ControllerGradoAcademico</servlet-name>
   	<url-pattern>/ControllerGradoAcademico</url-pattern>
@@ -163,5 +175,13 @@
   <servlet-mapping>
   	<servlet-name>ControllerEnviarArchivo</servlet-name>
   	<url-pattern>/ControllerEnviarArchivo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ControllerVerActividades</servlet-name>
+  	<url-pattern>/ControllerVerActividades</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ControllerEditarAnularTarea</servlet-name>
+  	<url-pattern>/ControllerEditarAnularTarea</url-pattern>
   </servlet-mapping>
 </web-app>
