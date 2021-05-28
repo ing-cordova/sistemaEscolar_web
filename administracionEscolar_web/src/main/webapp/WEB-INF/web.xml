@@ -112,6 +112,18 @@
   	<description></description>
   	<servlet-class>com.unab.edu.Controladores.ControllerEditarAnularTarea</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ControllerRecibirCombo1Acts</servlet-name>
+  	<display-name>ControllerRecibirCombo1Acts</display-name>
+  	<description></description>
+  	<servlet-class>com.unab.edu.Controladores.ControllerRecibirCombo1Acts</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ControllerRevisarActividades</servlet-name>
+  	<display-name>ControllerRevisarActividades</display-name>
+  	<description></description>
+  	<servlet-class>com.unab.edu.Controladores.ControllerRevisarActividades</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>ControllerGradoAcademico</servlet-name>
   	<url-pattern>/ControllerGradoAcademico</url-pattern>
@@ -183,5 +195,13 @@
   <servlet-mapping>
   	<servlet-name>ControllerEditarAnularTarea</servlet-name>
   	<url-pattern>/ControllerEditarAnularTarea</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ControllerRecibirCombo1Acts</servlet-name>
+  	<url-pattern>/ControllerRecibirCombo1Acts</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ControllerRevisarActividades</servlet-name>
+  	<url-pattern>/ControllerRevisarActividades</url-pattern>
   </servlet-mapping>
 </web-app>
