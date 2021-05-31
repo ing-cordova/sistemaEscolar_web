@@ -80,6 +80,7 @@ public class ControllerRevisarActividades extends HttpServlet {
         act.setIdMateria(Integer.parseInt(combo1));
         act.setIdActividad(Integer.parseInt(combo2));
 		
+        response.setCharacterEncoding("UTF8");
         response.getWriter().append(json.toJson(clsActs.Mostrar_Acts_Alumnos(act)));
 	}
 

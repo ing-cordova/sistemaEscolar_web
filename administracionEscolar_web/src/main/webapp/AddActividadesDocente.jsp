@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,7 +73,7 @@ pageEncoding="ISO-8859-1"%>
 		<br>
 		<input class="controls" value="<%=LimitDate%>" name="LimitDate" type="date" required>
 		<br>
-		<button name="btna" value="Guardar" class="boton">¡Procesar ahora!</button>
+		<button name="btna" value="Guardar" class="boton">Â¡Procesar ahora!</button>
 		<p>
 			<a href="ActividadesDocente.jsp">CANCELAR</a>
 		</p>

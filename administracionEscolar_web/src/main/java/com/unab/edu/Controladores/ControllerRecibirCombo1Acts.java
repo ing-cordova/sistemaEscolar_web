@@ -47,6 +47,7 @@ public class ControllerRecibirCombo1Acts extends HttpServlet {
         Actividades m = new Actividades();
         m.setIdMateria(Integer.parseInt(combo1));
         
+        response.setCharacterEncoding("UTF8");
         response.getWriter().append(json.toJson(clsActs.Mostrar_Tareas_By_Materia(m)));
 	}
 
