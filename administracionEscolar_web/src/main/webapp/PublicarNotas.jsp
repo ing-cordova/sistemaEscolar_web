@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<meta charset="utf-8">
-<title>Calificaciones | Docente</title>
-<link rel="icon" href="Imagenes/school.ico">
-<link rel="stylesheet" href="Styles/style_publicarnotas.css">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<meta charset="utf-8">
+	<title>Calificaciones | Docente</title>
+	<link rel="icon" href="Imagenes/school.ico">
+	<link rel="stylesheet" href="Styles/style_publicarnotas.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap"
 	rel="stylesheet">
 </head>
@@ -22,17 +22,16 @@
 			}, function (response) {
 				
 				let datos = JSON.parse(response);
-                console.log(datos);
-                
-                var combo = document.getElementById('TipoSelect');
-                for (let item of datos) {
-                	combo.innerHTML +=
-                        `
-                        <option value ="${item.idMateria}">${item.Nombre_Materia}</option>
-                    	
-                    `
-                }
+				console.log(datos);
 				
+				var combo = document.getElementById('TipoSelect');
+				for (let item of datos) {
+					combo.innerHTML +=
+					`
+					<option value ="${item.idMateria}">${item.Nombre_Materia}</option>
+					
+					`
+				}
 			});
 		});
 
@@ -60,14 +59,14 @@
 						tabla.innerHTML += 
 						`
 						<tr>
-							<td>${iterar.idNota}</td>
-							<td style="display:none;">${iterar.idEstudiante}</td>
-							<td>${iterar.Correo_Electronico}</td>
-							<td>${iterar.Periodo1}</td>
-							<td>${iterar.Periodo2}</td>
-							<td>${iterar.Periodo3}</td>
-							<td>${iterar.NotaFinal}</td>
-							<td>${iterar.Recuperacion}</td>
+						<td>${iterar.idNota}</td>
+						<td style="display:none;">${iterar.idEstudiante}</td>
+						<td>${iterar.Correo_Electronico}</td>
+						<td>${iterar.Periodo1}</td>
+						<td>${iterar.Periodo2}</td>
+						<td>${iterar.Periodo3}</td>
+						<td>${iterar.NotaFinal}</td>
+						<td>${iterar.Recuperacion}</td>
 						</tr>
 						`
 					}
@@ -170,7 +169,7 @@
 			<nav class="menu">
 				<a href="DashboardDocente.jsp">Inicio</a> <a href="RegistroMateriasDocente.jsp">Materias</a>
 				<a href="ActividadesDocente.jsp">Actividades</a> <a href="#">Notas</a>
-				<a href="#">Revisar Acts</a>
+				<a href="RevisarActividadesEstudiante.jsp">Revisar Acts</a>
 			</nav>
 		</div>
 		<div class="out-header">
@@ -213,22 +212,22 @@
 			</form>
 		</div>
 		<div class="tabla">
-				<table>
-					<thead>
-						<th>ID_NOTA</th>
-						<th>E-MAIL</th>
-						<th>P1</th>
-						<th>P2</th>
-						<th>P3</th>
-						<th>FINAL</th>
-						<th>REPO</th>
-					</thead>
-					<tbody id="tablaNotasxMateria" onclick="CargarDatos();">
+			<table>
+				<thead>
+					<th>ID_NOTA</th>
+					<th>E-MAIL</th>
+					<th>P1</th>
+					<th>P2</th>
+					<th>P3</th>
+					<th>FINAL</th>
+					<th>REPO</th>
+				</thead>
+				<tbody id="tablaNotasxMateria" onclick="CargarDatos();">
 					<!-- DATOS SOLO DE PRUEBA, ELIMINAR CUANDO YA SE TRAIGAN DATOS REALES -->
-						
-					</tbody>					
-				</table>
-			</div>
+					
+				</tbody>					
+			</table>
+		</div>
 	</header>
 </body>
 </html>

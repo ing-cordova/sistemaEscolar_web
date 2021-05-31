@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<link rel="icon" href="Imagenes/school.ico">
-<title>Nuevo Docente</title>
-<link rel="stylesheet" href="Styles/style_addDocente.css">
-<script src="https://kit.fontawesome.com/dab6165ace.js"
+	<meta charset="utf-8">
+	<link rel="icon" href="Imagenes/school.ico">
+	<title>Nuevo Docente</title>
+	<link rel="stylesheet" href="Styles/style_addDocente.css">
+	<script src="https://kit.fontawesome.com/dab6165ace.js"
 	crossorigin="anonymous"></script>
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap"
 	rel="stylesheet">
 </head>
@@ -31,22 +31,22 @@
 	
 
 	if (Id == null || Id2 == null) {
-		Id = "";
-		Id2 = "";
-		Nombres = "";
-		Apellidos = "";
-		Sexo = "Seleccione una Opcion";
-		DUI = "";
-		NIT = "";
-		FechaNacimiento = "";
-		Correo_Electronico = "";
-		Pass = "";
-		Especialidad = "";
-	}
-	%>
-		<section class="form-register">
-		<h1>Registro de Docente</h1>
-		<form action="ControllerDocente" method="get">
+	Id = "";
+	Id2 = "";
+	Nombres = "";
+	Apellidos = "";
+	Sexo = "Seleccione una Opcion";
+	DUI = "";
+	NIT = "";
+	FechaNacimiento = "";
+	Correo_Electronico = "";
+	Pass = "";
+	Especialidad = "";
+}
+%>
+<section class="form-register">
+	<h1>Registro de Docente</h1>
+	<form action="ControllerDocente" method="get">
 		<input type="hidden" name="Id" value=<%=Id%>>
 		<input type="hidden" name="Id2" value=<%=Id2%>>
 		<label>Nombres:</label>
@@ -58,12 +58,12 @@
 		<br>
 		<label>Sexo:</label>
 		<br>
-			<select class="controls" name="sexo" required>
-				<option selected ><%=Sexo%></option>
-				<option>M</option>
-				<option>F</option>
-			</select>
-				<!-- Aqui va el combobox de Sexo -->
+		<select class="controls" name="sexo" required>
+			<option selected ><%=Sexo%></option>
+			<option>M</option>
+			<option>F</option>
+		</select>
+		<!-- Aqui va el combobox de Sexo -->
 		<br>
 		<label>DUI:</label>
 		<br> 
@@ -89,9 +89,9 @@
 		<br>
 		<input class="controls" type="text" value="<%=Especialidad%>" name="Especialidad"  required>
 		<br>
-			<button name="Guardar" value="btna" class="boton">Guardar/Actualizar</button>
-		</form>
-	</section>
+		<button name="Guardar" value="btna" class="boton">Guardar/Actualizar</button>
+	</form>
+</section>
 
 </body>
 </html>

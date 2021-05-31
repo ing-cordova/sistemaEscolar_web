@@ -16,7 +16,7 @@ pageEncoding="utf-8"%>
 </head>
 <body>
 	<script type="text/javascript">
-		//jQuery que nos devuelve el arreglo de la etiqueta select
+		//Función de jQuery que nos devuelve el arreglo de la etiqueta select
 		$(document).ready(function () {
 			$.post('ControllerPublicarNotas', {
 			}, function (response) {
@@ -35,7 +35,8 @@ pageEncoding="utf-8"%>
 				
 			});
 		});
-
+		//Función de jQuery que envía el idMateria el servidor por método get
+		//y nos devuelve el arreglo mediante el response.
 		$(document).ready(function () {
 			$("#TipoSelect").change(function (){
 
@@ -59,16 +60,25 @@ pageEncoding="utf-8"%>
 				});
 			});
 		});
-
+		//Función de jQuery que nos ayuda para limpiar todos los elementos del
+		//select TipoSelect2(Actividades por Materia).
 		$(document).ready(function () {
 			$("#TipoSelect").change(function (){
 				$("#TipoSelect2 option").remove(); 
 
 			});
 		});
+		//Función para limpiar todos los datos de la tabla.
+		function LimpiarTabla(){			
+			$("#tablaMostrarActividades tr").remove(); 
+		}
+		//Función para cargar los datos que vienen del response mediante las etiquetas
+		//de tipo Select que envían idMateria y idActividad.
+		function cargarDatosTabla(){
 
-		$(document).ready(function () {
-			$("#idMatAct").click(function (){
+			LimpiarTabla();
+
+			$(document).ready(function () {
 
 				console.log("IdCombo1: " + $("#TipoSelect").val());
 				console.log("IdCombo2: " + $("#TipoSelect2").val());
@@ -85,34 +95,109 @@ pageEncoding="utf-8"%>
 
 					var tabla = document.getElementById('tablaMostrarActividades');
 					for(let item of datos){
+
 						tabla.innerHTML += 
 						`
-							<tr>
-								<td>${item.idActividadEstudiante}</td>
-								<td style="display: none;">${item.idEstudiante}</td>
-								<td>${item.Correo_Electronico}</td>
-								<td>${item.Nombre_Actividad}</td>
-								<td>${item.Porcentaje}</td>
-								<td>${item.Nota_Obtenida}</td>
-								<td>${item.Estado_Actividad}</td>
-								<td style="text-align: center"><a href="FilesPDF/${item.Archivo}" class="btnAjuntar" target="_blank"><i class="fa fa-file-pdf"></i>  ABRIR PDF</a></td>
-							</tr>
+						<tr>
+						<td>${item.idActividadEstudiante}</td>
+						<td style="display: none;">${item.idEstudiante}</td>
+						<td>${item.Correo_Electronico}</td>
+						<td>${item.Nombre_Actividad}</td>
+						<td>${item.Porcentaje}</td>
+						<td>${item.Nota_Obtenida}</td>
+						<td>${item.Estado_Actividad}</td>
+						<td style="text-align: center"><a href="FilesPDF/${item.Archivo}" class="btnAjuntar" target="_blank"><i class="fa fa-file-pdf"></i>  ABRIR PDF</a><a href="FilesPDF/${item.Archivo}" download="${item.Nombre_Actividad}_${item.Correo_Electronico}.pdf" class="btnDownload"><i class="fa fa-cloud-download-alt"></i></a></td>
+						</tr>
 						`
 					}
 				});
-			});
-		});
 
+			//$("#idMatAct").click(function (){
+
+				
+			//});
+		});
+		}
+		
+		//Función que sirve para qué, cuándo el usuario de un click sobre alguna
+		//fila de la tabla, los datos se cargen a los controles.
+		function CargarDatos(){
+
+			//Declaración de variables recolectoras.
+			var RowIdx;
+			var idactividadestudiante, idestudiante, email, nombreactividad, porcenteje, notaobtenida, estadoactividad;
+			
+			var tabla = document.getElementById('tablaMostrarActividades');
+			
+			var rows = tabla.getElementsByTagName('tr');
+			var selectedRow;
+			var rowCellValue;
+
+			//Ciclo de iteración de datos recogidos.
+			for(i = 0; i < rows.length ; i++){
+				rows[i].onclick = function(){
+					RowIdx = this.rowIndex;
+					selectedRow = this.cells;
+					var contador = 1;
+					for(j = 0; j < selectedRow.length; j++){
+						if(contador == 1){
+							idactividadestudiante = selectedRow[j].innerText;
+							contador++;
+						}
+						else if(contador == 2){
+							idestudiante = selectedRow[j].innerText;
+							contador++;
+						}
+						else if(contador == 3){
+							email = selectedRow[j].innerText;
+							contador++;
+						}
+						else if(contador == 4){
+							nombreactividad = selectedRow[j].innerText;
+							contador++;
+						}
+						else if(contador == 5){
+							porcenteje = selectedRow[j].innerText;
+							contador++;
+						}
+						else if(contador == 6){
+							notaobtenida = selectedRow[j].innerText;
+							contador++;
+						}
+						else if(contador == 7){
+							estadoactividad = selectedRow[j].innerText;
+							contador++;
+						}
+					}
+
+					if(idactividadestudiante > 0){
+						
+						//Innerencia en los labels.
+						document.getElementById('lblCorreo').innerText = email;
+						document.getElementById('lblNombreActividad').innerText = nombreactividad;
+						document.getElementById('lblPorcentaje').innerText = porcenteje;
+						//Innerencia para los input type hidden.
+						document.getElementById('rvidActividadEstudiante').value = idactividadestudiante;
+						document.getElementById('rvidEstudiante').value = idestudiante;
+						document.getElementById('rvPorcentaje').value = porcenteje;
+					}
+				}
+			}
+		}
+		//Función por AJAX que nos permite envíar todos los datos hacia nuestro Back-end.
 		$(document).ready(function () {
 			$("#EnvioGET").click(function (){
 
-				var envio = "vengo de ajax por get :3";
+				var ajaxIdActividadEstudiante = $("#rvidActividadEstudiante").val();
+				var ajaxIdEstudiante = $("#rvidEstudiante").val();
+				var ajaxPorcenteje = $("#rvPorcentaje").val();
+				var ajaxNota = $("#rvNotaObt").val();
 
 				$.get('ControllerRevisarActividades', {
-					envio
+					ajaxIdActividadEstudiante, ajaxIdEstudiante, ajaxPorcenteje, ajaxNota
 				}, function(response){
 
-				
+
 				});
 			});
 		});
@@ -140,8 +225,25 @@ pageEncoding="utf-8"%>
 			<select class="controls" name="idactividad"  id="TipoSelect2" required>
 				<option value="" selected>Seleccione...</option>
 			</select>
-			<!-- <input type="submit" name="enviaridMateria" class="btnEnviarID" value="Mostrar notas"> -->
-			<button class="btnEnviarID" id="idMatAct">> Mostrar actividades</button>
+			<button class="btnEnviarID" id="idMatAct" onclick="cargarDatosTabla();">> Mostrar actividades</button>
+
+			<div class="componentes2">
+				<label>E-mail:</label>
+				<label id="lblCorreo"></label>
+				<br>
+				<label>Actividad:</label>
+				<label id="lblNombreActividad"></label>
+				<br>
+				<label>Porcentaje:</label>
+				<label id="lblPorcentaje"></label>
+				<br>
+				<input type="hidden" name="idActividadEstudiante" id="rvidActividadEstudiante">
+				<input type="hidden" name="idEstudiante" id="rvidEstudiante">
+				<input type="hidden" name="Porcentaje" id="rvPorcentaje">
+				<label>NOTA OBTENIDA</label>
+				<input type="number" name="rvNotaObtenida" class="controls2" id="rvNotaObt" min="0" max="10" required="NO SEA PASMADO">
+				<button id="EnvioGET" class="btnEnviarNotas" onclick="cargarDatosTabla();">Actualizar nota</button>
+			</div>
 		</div>
 	</div>
 	<div class="tabla">
@@ -155,13 +257,10 @@ pageEncoding="utf-8"%>
 				<th>ESTADO</th>
 				<th style="text-align: center">ARCHIVO</th>
 			</thead>
-			<tbody id="tablaMostrarActividades">
-				<!-- DATOS SOLO DE PRUEBA, ELIMINAR CUANDO YA SE TRAIGAN DATOS REALES -->
+			<tbody id="tablaMostrarActividades" onclick="CargarDatos();">
 
 			</tbody>					
 		</table>
 	</div>
-
-	<button id="EnvioGET">enviar por get AJAX</button>
 </body>
 </html>

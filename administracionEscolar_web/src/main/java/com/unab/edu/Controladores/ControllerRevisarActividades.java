@@ -1,6 +1,8 @@
 package com.unab.edu.Controladores;
 
 import java.io.IOException;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,9 +33,32 @@ public class ControllerRevisarActividades extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		String recibida = request.getParameter("envio");
+		String idActividadEstudiante = request.getParameter("ajaxIdActividadEstudiante");
+		String idEstudiante = request.getParameter("ajaxIdEstudiante");
+		String porentaje = request.getParameter("ajaxPorcenteje");
+		String notaObtenida = request.getParameter("ajaxNota");
 		
-		System.out.println("Recibiendo dato de AJAX por GET: " + recibida);
+		/*System.out.println("Recibiendo dato de AJAX por idActividadEstudiante: " + idActividadEstudiante);
+		System.out.println("Recibiendo dato de AJAX por idEstudiante: " + idEstudiante);
+		System.out.println("Recibiendo dato de AJAX por porentaje: " + porentaje);
+		System.out.println("Recibiendo dato de AJAX por notaObtenida: " + notaObtenida);*/
+		
+		Date date = new Date();
+        //Extraemos todos los datos de la tabla
+        Double porcent = Double.parseDouble(porentaje);
+        Double nota = Double.parseDouble(notaObtenida);
+        Double Total = (nota * porcent);
+        
+        CLSActividades_Alumno clsActividad = new CLSActividades_Alumno();
+        //Creamos un objeto de tipo Entidad ActivEstud.
+        Actividades_Estudiantes actEst = new Actividades_Estudiantes();
+        //Seteamos los parametros de la tabla.
+        actEst.setIdActividadEstudiante(Integer.parseInt(idActividadEstudiante));
+        actEst.setIdEstudiante(Integer.parseInt(idEstudiante));
+        actEst.setNota_Obtenida(Total);
+        actEst.setAcEsUltima_Modificacion(date);
+        //Transferimos los datos hacia el metodo de actualizar.
+        clsActividad.Actualizar_Actividad(actEst);
 	}
 
 	/**

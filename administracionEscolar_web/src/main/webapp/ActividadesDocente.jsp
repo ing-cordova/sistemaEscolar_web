@@ -12,7 +12,7 @@ pageEncoding="utf-8"%>
 	<link
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap"
 	rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
 	<script type="text/javascript">
@@ -29,14 +29,14 @@ pageEncoding="utf-8"%>
 					tabla.innerHTML += `
 
 					<tr>
-						<td>${iterar.idActividad}</td>
-						<td style="display:none;">${iterar.idMateria}</td>
-						<td>${iterar.Nombre_Materia}</td>
-						<td>${iterar.Nombre_Actividad}</td>
-						<td>${iterar.Porcentaje}</td>
-						<td>${iterar.Fecha_Entrega}</td>
-						<td><a href="ControllerActividadesDocente?btne=Eliminar&IdAct=${iterar.idActividad}" class="btnAccionDelete"><i class="fa fa-trash-alt"></i></a>
-                            <a href="AddActividadesDocente.jsp?IdAct=${iterar.idActividad}&IdMat=${iterar.idMateria}&SubjectName=${iterar.Nombre_Materia}&ActivitieName=${iterar.Nombre_Actividad}&Porcent=${iterar.Porcentaje}&LimitDate=${iterar.Fecha_Entrega}" class="btnAccionUpdate"><i class="fa fa-marker"></i></a></td>
+					<td>${iterar.idActividad}</td>
+					<td style="display:none;">${iterar.idMateria}</td>
+					<td>${iterar.Nombre_Materia}</td>
+					<td>${iterar.Nombre_Actividad}</td>
+					<td>${iterar.Porcentaje}</td>
+					<td>${iterar.Fecha_Entrega}</td>
+					<td><a href="ControllerActividadesDocente?btne=Eliminar&IdAct=${iterar.idActividad}" class="btnAccionDelete"><i class="fa fa-trash-alt"></i></a>
+					<a href="AddActividadesDocente.jsp?IdAct=${iterar.idActividad}&IdMat=${iterar.idMateria}&SubjectName=${iterar.Nombre_Materia}&ActivitieName=${iterar.Nombre_Actividad}&Porcent=${iterar.Porcentaje}&LimitDate=${iterar.Fecha_Entrega}" class="btnAccionUpdate"><i class="fa fa-marker"></i></a></td>
 					</tr>
 
 					`
@@ -55,7 +55,7 @@ pageEncoding="utf-8"%>
 			<nav class="menu">
 				<a href="DashboardDocente.jsp">Inicio</a> <a href="RegistroMateriasDocente.jsp">Materias</a>
 				<a href="#">Actividades</a> <a href="PublicarNotas.jsp">Notas</a>
-				<a href="#">Revisar Acts</a>
+				<a href="RevisarActividadesEstudiante.jsp">Revisar Acts</a>
 			</nav>
 		</div>
 	</header>

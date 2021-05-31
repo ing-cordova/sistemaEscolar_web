@@ -21,17 +21,16 @@ pageEncoding="utf-8"%>
 			}, function (response) {
 				
 				let datos = JSON.parse(response);
-                console.log(datos);
-                
-                var combo = document.getElementById('TipoSelect');
-                for (let item of datos) {
-                	combo.innerHTML +=
-                        `
-                        <option value ="${item.idMateria}">${item.Nombre_Materia}</option>
-                    	
-                    `
-                }
+				console.log(datos);
 				
+				var combo = document.getElementById('TipoSelect');
+				for (let item of datos) {
+					combo.innerHTML +=
+					`
+					<option value ="${item.idMateria}">${item.Nombre_Materia}</option>
+					
+					`
+				}
 			});
 		});
 
@@ -57,15 +56,15 @@ pageEncoding="utf-8"%>
 					for(let iterar of datos){
 						tabla.innerHTML += 
 						`
-							<tr>
-							<td>${iterar.idActividad}</td>
-							<td>${iterar.Nombre_Actividad}</td>
-							<td>${iterar.Porcentaje}</td>
-							<td>${iterar.Fecha_Entrega}</td>
-							<td>${iterar.Estado_Actividad}</td>
-							<td><a href="AddAtachement.jsp?IdActi=${iterar.idActividad}&NombreActi=${iterar.Nombre_Actividad}&Porcent=${iterar.Porcentaje}&FechaEntrega=${iterar.Fecha_Entrega}&EstadoActiv=${iterar.Estado_Actividad}&idMateeee=${comboID}" class="btnAjuntar">AJUNTAR +</a>
-                            </td>
-							</tr>
+						<tr>
+						<td>${iterar.idActividad}</td>
+						<td>${iterar.Nombre_Actividad}</td>
+						<td>${iterar.Porcentaje}</td>
+						<td>${iterar.Fecha_Entrega}</td>
+						<td>${iterar.Estado_Actividad}</td>
+						<td><a href="AddAtachement.jsp?IdActi=${iterar.idActividad}&NombreActi=${iterar.Nombre_Actividad}&Porcent=${iterar.Porcentaje}&FechaEntrega=${iterar.Fecha_Entrega}&EstadoActiv=${iterar.Estado_Actividad}&idMateeee=${comboID}" class="btnAjuntar">AJUNTAR +</a>
+						</td>
+						</tr>
 						`
 					}
 				});
@@ -96,26 +95,24 @@ pageEncoding="utf-8"%>
 			<select class="controls" name="idmateria"  id="TipoSelect" required>
 				<option value="" selected>Seleccione...</option>
 			</select>
-			<!-- <input type="submit" name="enviaridMateria" class="btnEnviarID" value="Mostrar notas"> -->
 			<button class="btnEnviarID" id="idMat" onclick="LimpiarTabla();">> Mostrar Actividades</button>
 		</div>
 
 		<div class="tabla">
-				<table>
-					<thead>
-						<th>CÓDIGO</th>
-						<th>ACTIVIDAD</th>
-						<th>PORCENTAJE</th>
-						<th>FECHA LÍMITE</th>
-						<th>ESTADO</th>
-						<th>ACCIÓN</th>
-					</thead>
-					<tbody id="tablaActividades" onclick="CargarDatos();">
-					<!-- DATOS SOLO DE PRUEBA, ELIMINAR CUANDO YA SE TRAIGAN DATOS REALES -->
-						
-					</tbody>					
-				</table>
-			</div>
+			<table>
+				<thead>
+					<th>CÓDIGO</th>
+					<th>ACTIVIDAD</th>
+					<th>PORCENTAJE</th>
+					<th>FECHA LÍMITE</th>
+					<th>ESTADO</th>
+					<th>ACCIÓN</th>
+				</thead>
+				<tbody id="tablaActividades" onclick="CargarDatos();">
+					
+				</tbody>					
+			</table>
+		</div>
 	</div>
 	<br>
 </body>
