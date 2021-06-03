@@ -17,6 +17,30 @@ pageEncoding="ISO-8859-1"%>
 </head>
 
 <body>
+	<%
+	HttpSession sesion = (HttpSession) request.getSession();
+	String sesionAdmin = String.valueOf(sesion.getAttribute("dashboard"));
+	String sesionDocente = String.valueOf(sesion.getAttribute("dashboardDoc"));
+	String sesionEstudiante = String.valueOf(sesion.getAttribute("dashboardEst"));
+	
+	if(sesionAdmin.equals(null) || sesionAdmin.equals("null")){
+		if(sesionDocente.equals(null) || sesionDocente.equals("null")){
+			if(sesionEstudiante.equals(null) || sesionEstudiante.equals("null")){
+				
+			}
+			else{
+				response.sendRedirect("DashboardEstudiante.jsp");
+			}
+		}
+		else{
+			response.sendRedirect("DashboardDocente.jsp");
+		}
+	}
+	else{
+		response.sendRedirect("Administrador.jsp");
+	}
+	
+	%>
 	<img class="wave" src="Imagenes/wave.png">
 	<div class="container">
 		<div class="img">

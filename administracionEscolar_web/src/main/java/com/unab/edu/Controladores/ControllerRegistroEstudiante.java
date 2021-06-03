@@ -51,14 +51,6 @@ public class ControllerRegistroEstudiante extends HttpServlet {
 		String GradoAcademico = request.getParameter("carreras");
 		String FechaNacimiento = request.getParameter("birthdate");
 		
-		/*SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");	
-		Date fecha = null;
-		try {
-			fecha = formatoDelTexto.parse(FechaNacimiento);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}*/
-		
 		String DUI = request.getParameter("dui");
 		String NIT = request.getParameter("nit");
 		String EMAIL = request.getParameter("email");

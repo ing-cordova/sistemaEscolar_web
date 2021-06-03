@@ -20,6 +20,15 @@
 </head>
 
 <body>
+<%
+	HttpSession sesion = (HttpSession) request.getSession();
+	String usuSession = String.valueOf(sesion.getAttribute("dashboard"));
+	String fullname = String.valueOf(sesion.getAttribute("fullname"));
+
+	if (usuSession.equals(null) || usuSession.equals("null")) {
+	response.sendRedirect("index.jsp");
+}
+%>
     <script type="text/javascript">
         $(document).ready(function () {
             $.post('ControllerPersona', {

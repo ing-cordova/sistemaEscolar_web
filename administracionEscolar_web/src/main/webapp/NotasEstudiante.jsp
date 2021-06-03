@@ -14,10 +14,15 @@ pageEncoding="utf-8"%>
 	rel="stylesheet">
 </head>
 <body>
-	<%
+<%
 	HttpSession sesion = (HttpSession) request.getSession();
+	String usuSession = String.valueOf(sesion.getAttribute("dashboardEst"));
 	String fullname = String.valueOf(sesion.getAttribute("fullnameEst"));
-	%>
+
+	if (usuSession.equals(null) || usuSession.equals("null")) {
+	response.sendRedirect("index.jsp");
+}
+%>
 	<script type="text/javascript">
 		$(document).ready(function () {
 			$.post('ControllerNotasEstudiante', {}, function (response) {

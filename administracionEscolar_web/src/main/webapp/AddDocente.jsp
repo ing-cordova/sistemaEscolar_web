@@ -15,6 +15,15 @@ pageEncoding="utf-8"%>
 	rel="stylesheet">
 </head>
 <body>
+<%
+	HttpSession sesion = (HttpSession) request.getSession();
+	String usuSession = String.valueOf(sesion.getAttribute("dashboard"));
+	String fullname = String.valueOf(sesion.getAttribute("fullname"));
+
+	if (usuSession.equals(null) || usuSession.equals("null")) {
+	response.sendRedirect("index.jsp");
+}
+%>
 	<%
 	String Id = request.getParameter("Id");
 	String Id2 = request.getParameter("Id2");

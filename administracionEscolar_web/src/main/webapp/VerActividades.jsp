@@ -13,6 +13,7 @@ pageEncoding="utf-8"%>
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap"
 	rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <script type="text/javascript">
 	//jQuery que nos devuelve el arreglo de la etiqueta select
@@ -117,8 +118,31 @@ pageEncoding="utf-8"%>
 				}
 			}
 		}
+
+		function fileValidation(){
+			var fileInput = document.getElementById('file');
+			var filePath = fileInput.value;
+			var allowedExtensions = /(.pdf)$/i;
+			if(!allowedExtensions.exec(filePath)){
+				swal('¡Esta extensión es inválida!','Solo permitimos el envío de documentos PDF', 'error');
+				fileInput.value = '';
+				return false;
+			}
+			else{
+				swal('¡DOCUMENTO VÁLIDO!','', 'success');
+			}
+		}
 	</script>
 	<body>
+	<%
+	HttpSession sesion = (HttpSession) request.getSession();
+	String usuSession = String.valueOf(sesion.getAttribute("dashboardEst"));
+	String fullname = String.valueOf(sesion.getAttribute("fullnameEst"));
+
+	if (usuSession.equals(null) || usuSession.equals("null")) {
+	response.sendRedirect("index.jsp");
+}
+%>
 		<header class="header">
 			<div class="container">
 				<div class="logo">
@@ -149,7 +173,7 @@ pageEncoding="utf-8"%>
 					<label>> Archivo (Solo se permiten pdf):</label>
 					<br>
 					<br>
-					<input type="file" name="archivoAgain" class="controls" accept="application/pdf" required>
+					<input type="file" name="archivoAgain" class="controls" id="file" onchange="return fileValidation()" accept="application/pdf" required>
 					<br>
 					<div class="botonesss">				
 						<button name="btnSendAgain" value="SendAgain" class="btnVolverEntregar"><i class="fa fa-paper-plane"></i> VOLVER A ENTREGAR</button>

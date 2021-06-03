@@ -15,6 +15,15 @@ pageEncoding="utf-8"%>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
+<%
+	HttpSession sesion = (HttpSession) request.getSession();
+	String usuSession = String.valueOf(sesion.getAttribute("dashboardDoc"));
+	String fullname = String.valueOf(sesion.getAttribute("fullnameDoc"));
+
+	if (usuSession.equals(null) || usuSession.equals("null")) {
+	response.sendRedirect("index.jsp");
+}
+%>
 	<script type="text/javascript">
 		//Función de jQuery que nos devuelve el arreglo de la etiqueta select
 		$(document).ready(function () {
@@ -106,7 +115,7 @@ pageEncoding="utf-8"%>
 						<td>${item.Porcentaje}</td>
 						<td>${item.Nota_Obtenida}</td>
 						<td>${item.Estado_Actividad}</td>
-						<td style="text-align: center"><a href="FilesPDF/${item.Archivo}" class="btnAjuntar" target="_blank"><i class="fa fa-file-pdf"></i>  ABRIR PDF</a><a href="FilesPDF/${item.Archivo}" download="${item.Nombre_Actividad}_${item.Correo_Electronico}.pdf" class="btnDownload"><i class="fa fa-cloud-download-alt"></i></a></td>
+						<td style="text-align: center"><a href="FilesPDF/${item.Archivo}" class="btnAjuntar" target="_blank"><i class="fa fa-file-pdf"></i>  ABRIR PDF</a><a href="FilesPDF/${item.Archivo}" download="${item.Nombre_Actividad}-${item.Correo_Electronico}.pdf" class="btnDownload"><i class="fa fa-cloud-download-alt"></i></a></td>
 						</tr>
 						`
 					}

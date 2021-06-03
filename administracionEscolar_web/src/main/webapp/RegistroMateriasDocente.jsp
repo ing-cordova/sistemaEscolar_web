@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,9 +15,18 @@ pageEncoding="ISO-8859-1"%>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+<%
+	HttpSession sesion = (HttpSession) request.getSession();
+	String usuSession = String.valueOf(sesion.getAttribute("dashboardDoc"));
+	String fullname = String.valueOf(sesion.getAttribute("fullnameDoc"));
+
+	if (usuSession.equals(null) || usuSession.equals("null")) {
+	response.sendRedirect("index.jsp");
+}
+%>
 	<script type="text/javascript">
 
-		//JQuery que nos devuelve todos las materias por GradoAcdemico específico.
+		//JQuery que nos devuelve todos las materias por GradoAcdemico especï¿½fico.
 		$(document).ready(function () {
 			$.post('ControllerRegistroMateriasDocente', {}, function (response) {
 				let datos = JSON.parse(response);
@@ -36,10 +45,10 @@ pageEncoding="ISO-8859-1"%>
 			});
 		});
 		
-		//Función que cargará los datos que seleccionemos en la tabla 1.
+		//Funciï¿½n que cargarï¿½ los datos que seleccionemos en la tabla 1.
 		function CargarDatos(){
 
-			//Declaración de variables recolectoras.
+			//Declaraciï¿½n de variables recolectoras.
 			var RowIdx;
 			var id, Materia;
 			
@@ -49,7 +58,7 @@ pageEncoding="ISO-8859-1"%>
 			var selectedRow;
 			var rowCellValue;
 
-			//Ciclo de iteración de datos recogidos.
+			//Ciclo de iteraciï¿½n de datos recogidos.
 			for(i = 0; i < rows.length ; i++){
 				rows[i].onclick = function(){
 					RowIdx = this.rowIndex;
@@ -69,13 +78,13 @@ pageEncoding="ISO-8859-1"%>
 					if(id > 0){
 						console.log(id);
 						console.log(Materia);
-						//Creando el botón de eliminar cada fila que se seleccione.
+						//Creando el botï¿½n de eliminar cada fila que se seleccione.
 						var boton = "<button class='borrar' style='padding: 8px; color: #ffff; background: red; border-radius: 9px;'><i class='fas fa-trash-alt'></i> ELIMINAR</button>";
 						//Pasando los datos de la tabla anterior a una fila en la nueva tabla.
 						var fila="<tr><td>"+id+"</td><input type = 'hidden' name = 'idMateria' value = "+id+"><td>"+Materia+"</td><td>"+boton+"</td></tr>";
 						//Creando una nueva tableRow (tr) dentro de la tabla.
 						var btn = document.createElement("TR");
-						//Añadiendo los datos a la fila.
+						//Aï¿½adiendo los datos a la fila.
 						btn.innerHTML = fila;
 					  	//Agregando los datos en la tabla.
 					  	document.getElementById("tablaMateriasSeleccionadas").appendChild(btn);
@@ -94,13 +103,16 @@ pageEncoding="ISO-8859-1"%>
 	</script>
 	<header class="header">
 		<div class="container">
+		<div class="btn-menu">
+			<img alt="" src="Imagenes/school.ico">
+		</div>
 			<div class="logo">
-				<h1>Inscripcion de Materias</h1>
+				<h1>InscripciÃ³n de Materias</h1>
 			</div>
 			<nav class="menu">
 				<a href="DashboardDocente.jsp">Inicio</a> <a href="#">Materias</a>
 				<a href="ActividadesDocente.jsp">Actividades</a> <a href="PublicarNotas.jsp">Notas</a>
-				<a href="RevisarAvtividadesEstudiante.jsp">Revisar Acts.</a>
+				<a href="RevisarActividadesEstudiante.jsp">Revisar Acts.</a>
 			</nav>
 		</div>
 	</header>
@@ -110,7 +122,7 @@ pageEncoding="ISO-8859-1"%>
 		<div class="tabla">
 			<table onclick='CargarDatos()'>
 				<thead>
-					<th>CÓDIGO MATERIA</th>
+					<th>CÃ“DIGO MATERIA</th>
 					<th>NOMBRE MATERIA</th>
 				</thead>
 				<tbody id="tablaMateriasAIscribir">
@@ -124,9 +136,9 @@ pageEncoding="ISO-8859-1"%>
 			<div class="tabla">
 				<table class="tableFixed">
 					<thead>
-						<th>CÓDIGO MATERIA</th>
+						<th>CÃ“DIGO MATERIA</th>
 						<th>NOMBRE MATERIA</th>
-						<th>ACCIÓN</th>
+						<th>ACCIÃ“N</th>
 					</thead>
 					<tbody id="tablaMateriasSeleccionadas">
 						
@@ -134,7 +146,7 @@ pageEncoding="ISO-8859-1"%>
 				</table>
 			</div>
 			<br>
-			<input type="submit" value="¡Estoy listo para inscribir!" class="btnEnviarDatos">
+			<input type="submit" value="Â¡Estoy listo para inscribir!" class="btnEnviarDatos">
 			<br>
 		</form>
 	</div>

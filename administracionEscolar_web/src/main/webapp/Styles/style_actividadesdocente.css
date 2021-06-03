@@ -73,7 +73,7 @@ body {
 
 .out-header .tabla{
 	overflow-y: scroll;
-	max-height: 520px;
+	max-height: 400px;
 	
 }
 table{

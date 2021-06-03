@@ -16,6 +16,15 @@ pageEncoding="utf-8"%>
 </head>
 </head>
 <body>
+<%
+	HttpSession sesion = (HttpSession) request.getSession();
+	String usuSession = String.valueOf(sesion.getAttribute("dashboardEst"));
+	String fullname = String.valueOf(sesion.getAttribute("fullnameEst"));
+
+	if (usuSession.equals(null) || usuSession.equals("null")) {
+	response.sendRedirect("index.jsp");
+}
+%>
 	<script type="text/javascript">
 
 		//JQuery que nos devuelve todos las materias por GradoAcdemico específico.

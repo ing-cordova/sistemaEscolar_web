@@ -34,6 +34,18 @@ body {
 	line-height: 100px;
 }
 
+.btn-menu .btnCerrar {
+	font-family: "Montserrat", sans-serif;
+	font-size: 15px;
+	width: 100%;
+	border: solid 2px #ffff;
+	padding: 10px;
+	background: #AD0B00;
+	color: #ffff;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
 .logo h1 {
 	color: #fff;
 	font-weight: 400;
