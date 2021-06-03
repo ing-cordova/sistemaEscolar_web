@@ -65,7 +65,8 @@ public class ControllerSendAndShow_AssignmentsStudents extends HttpServlet {
 		String nombrePDF = archivo.getSubmittedFileName();
 
 		//String ruta = "C:\\Users\\andre\\Documents\\GitHub\\sistemaEscolar_web\\administracionEscolar_web\\src\\main\\webapp\\FilesPDF\\"
-		String ruta = "C:\\Users\\PC\\Documents\\GitHub\\sistemaEscolar_web\\administracionEscolar_web\\src\\main\\webapp\\FilesPDF\\"
+		//String ruta = "C:\\Users\\PC\\Documents\\GitHub\\sistemaEscolar_web\\administracionEscolar_web\\src\\main\\webapp\\FilesPDF\\"
+		String ruta = "C:\\Users\\orell\\OneDrive\\Documentos\\GitHub\\sistemaEscolar_web\\administracionEscolar_web\\src\\main\\webapp\\FilesPDF\\"
 				+ nombrePDF;
 		try {
 			FileOutputStream fileoutput = new FileOutputStream(ruta);
