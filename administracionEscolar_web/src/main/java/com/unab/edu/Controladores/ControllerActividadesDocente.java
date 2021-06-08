@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 import com.unab.edu.DAO.CLSActividades;
 import com.unab.edu.Entidades.Actividades;
 
+
 /**
  * Servlet implementation class ControllerActividadesDocente
  */
@@ -34,6 +35,7 @@ public class ControllerActividadesDocente extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
+		Gson json = new Gson();
 		Date date = new Date();
 		String Evaluar = request.getParameter("btne");
 		String SaveUpdate = request.getParameter("btna");
@@ -42,45 +44,54 @@ public class ControllerActividadesDocente extends HttpServlet {
 		
 		String IdMat = request.getParameter("IdMat");
 		String SubjectName = request.getParameter("SubjectName");
-		String ActivitieName = request.getParameter("ActivitieName");
+		String ActivitieName = request.getParameter("ActivitieName2");
 		String Porcent = request.getParameter("Porcent");
+		
 		String LimitDate = request.getParameter("LimitDate");
 		
-		if(Evaluar != null) {
-			if(Evaluar.equals("Eliminar")) {
+		String mensaje = "";
+		try {
+			if(Evaluar != null) {
+				if(Evaluar.equals("Eliminar")) {
+					
+					Actividades actividad = new Actividades();
+					actividad.setIdActividad(Integer.parseInt(IdAct));
+					
+					CLSActividades clsActividad = new CLSActividades();
+					clsActividad.EliminarActividad(actividad);
+					response.sendRedirect("ActividadesDocente.jsp");
+				}
+			}
+			else if(SaveUpdate.equals("Guardar")) {
 				
 				Actividades actividad = new Actividades();
-				actividad.setIdActividad(Integer.parseInt(IdAct));
-				
 				CLSActividades clsActividad = new CLSActividades();
-				clsActividad.EliminarActividad(actividad);
-				response.sendRedirect("ActividadesDocente.jsp");
+				
+				actividad.setIdMateria(Integer.parseInt(SubjectName));
+				actividad.setIdDocente(ControllerLogin.envioIdDocenteeeee);
+				actividad.setNombre_Actividad(ActivitieName);
+				actividad.setPorcentaje(Double.parseDouble(Porcent) / 100);
+				actividad.setFecha_Entrega(String.valueOf(LimitDate));
+				actividad.setEstado_Actividad("Pendiente");
+				actividad.setActUltima_Modificacion(date);
+				actividad.setActEstado(1);
+				
+				if(IdAct == "" || IdAct == null) {
+					mensaje = "Guardado";
+					response.getWriter().append(json.toJson(mensaje));
+					clsActividad.AgregarActividad(actividad);
+				}
+				else {
+					actividad.setIdActividad(Integer.parseInt(IdAct));
+					mensaje = "Actualizado";
+					response.getWriter().append(json.toJson(mensaje));
+					clsActividad.ActualizarActividad(actividad);
+				}
 			}
+		} catch (Exception e) {
+			System.out.println("Error en ControllerActividadesDocente. " + e);
 		}
-		else if(SaveUpdate.equals("Guardar")) {
-			
-			Actividades actividad = new Actividades();
-			CLSActividades clsActividad = new CLSActividades();
-			
-			actividad.setIdMateria(Integer.parseInt(SubjectName));
-			actividad.setIdDocente(ControllerLogin.envioIdDocenteeeee);
-			actividad.setNombre_Actividad(ActivitieName);
-			actividad.setPorcentaje(Double.parseDouble(Porcent) / 100);
-			actividad.setFecha_Entrega(String.valueOf(LimitDate));
-			actividad.setEstado_Actividad("Pendiente");
-			actividad.setActUltima_Modificacion(date);
-			actividad.setActEstado(1);
-			
-			if(IdAct == "" || IdAct == null) {
-				clsActividad.AgregarActividad(actividad);
-				response.sendRedirect("ActividadesDocente.jsp");
-			}
-			else {
-				actividad.setIdActividad(Integer.parseInt(IdAct));
-				clsActividad.ActualizarActividad(actividad);
-				response.sendRedirect("ActividadesDocente.jsp");
-			}
-		}
+		
 	}
 
 	/**

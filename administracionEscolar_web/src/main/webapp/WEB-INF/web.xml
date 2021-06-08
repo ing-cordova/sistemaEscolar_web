@@ -204,4 +204,8 @@
 		<servlet-name>ControllerRevisarActividades</servlet-name>
 		<url-pattern>/ControllerRevisarActividades</url-pattern>
 	</servlet-mapping>
+	<error-page>
+      <error-code>404</error-code>
+      <location>/ErrorPages/error404.jsp</location>
+  </error-page> 
 </web-app>

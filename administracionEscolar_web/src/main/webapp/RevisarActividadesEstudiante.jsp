@@ -13,6 +13,7 @@ pageEncoding="utf-8"%>
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap"
 	rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 <%
@@ -77,10 +78,24 @@ pageEncoding="utf-8"%>
 
 			});
 		});
+
 		//Función para limpiar todos los datos de la tabla.
 		function LimpiarTabla(){			
 			$("#tablaMostrarActividades tr").remove(); 
 		}
+
+		//Función para limpiar todos los controles.
+		function LimpiarComponentes(){		
+
+			$("#rvidActividadEstudiante").val('');
+			$("#rvidEstudiante").val('');
+			$("#rvPorcentaje").val('');
+			$("#rvNotaObt").val('');
+			document.getElementById('lblCorreo').innerText = '';
+			document.getElementById('lblNombreActividad').innerText = '';
+			document.getElementById('lblPorcentaje').innerText = '';
+		}
+
 		//Función para cargar los datos que vienen del response mediante las etiquetas
 		//de tipo Select que envían idMateria y idActividad.
 		function cargarDatosTabla(){
@@ -120,79 +135,54 @@ pageEncoding="utf-8"%>
 						`
 					}
 				});
-
-			//$("#idMatAct").click(function (){
-
-				
-			//});
-		});
+			});
 		}
 		
-		//Función que sirve para qué, cuándo el usuario de un click sobre alguna
-		//fila de la tabla, los datos se cargen a los controles.
-		function CargarDatos(){
-
-			//Declaración de variables recolectoras.
-			var RowIdx;
+		//Jquery que cargará los datos que seleccionemos en la tabla 1 a los input
+		$(document).on("click", "#tablaMostrarActividades tr", function () {
 			var idactividadestudiante, idestudiante, email, nombreactividad, porcenteje, notaobtenida, estadoactividad;
-			
-			var tabla = document.getElementById('tablaMostrarActividades');
-			
-			var rows = tabla.getElementsByTagName('tr');
-			var selectedRow;
-			var rowCellValue;
 
-			//Ciclo de iteración de datos recogidos.
-			for(i = 0; i < rows.length ; i++){
-				rows[i].onclick = function(){
-					RowIdx = this.rowIndex;
-					selectedRow = this.cells;
-					var contador = 1;
-					for(j = 0; j < selectedRow.length; j++){
-						if(contador == 1){
-							idactividadestudiante = selectedRow[j].innerText;
-							contador++;
-						}
-						else if(contador == 2){
-							idestudiante = selectedRow[j].innerText;
-							contador++;
-						}
-						else if(contador == 3){
-							email = selectedRow[j].innerText;
-							contador++;
-						}
-						else if(contador == 4){
-							nombreactividad = selectedRow[j].innerText;
-							contador++;
-						}
-						else if(contador == 5){
-							porcenteje = selectedRow[j].innerText;
-							contador++;
-						}
-						else if(contador == 6){
-							notaobtenida = selectedRow[j].innerText;
-							contador++;
-						}
-						else if(contador == 7){
-							estadoactividad = selectedRow[j].innerText;
-							contador++;
-						}
-					}
+			idactividadestudiante = $(this).find('td:first-child').html();
+			idestudiante = $(this).find('td:nth-child(2)').html();
+			email = $(this).find('td:nth-child(3)').html();
+			nombreactividad = $(this).find('td:nth-child(4)').html();
+			porcenteje = $(this).find('td:nth-child(5)').html();
+			notaobtenida = $(this).find('td:nth-child(6)').html();
+			estadoactividad = $(this).find('td:nth-child(7)').html();
 
-					if(idactividadestudiante > 0){
-						
-						//Innerencia en los labels.
-						document.getElementById('lblCorreo').innerText = email;
-						document.getElementById('lblNombreActividad').innerText = nombreactividad;
-						document.getElementById('lblPorcentaje').innerText = porcenteje;
-						//Innerencia para los input type hidden.
-						document.getElementById('rvidActividadEstudiante').value = idactividadestudiante;
-						document.getElementById('rvidEstudiante').value = idestudiante;
-						document.getElementById('rvPorcentaje').value = porcenteje;
-					}
-				}
+			//Innerencia en los labels.
+			document.getElementById('lblCorreo').innerText = email;
+			document.getElementById('lblNombreActividad').innerText = nombreactividad;
+			document.getElementById('lblPorcentaje').innerText = porcenteje;
+			//Innerencia para los input type hidden.
+			document.getElementById('rvidActividadEstudiante').value = idactividadestudiante;
+			document.getElementById('rvidEstudiante').value = idestudiante;
+			document.getElementById('rvPorcentaje').value = porcenteje;
+		});
+
+		function checknumber(e) {
+			tecla = (document.all) ? e.keyCode : e.which;
+
+			//Tecla de retroceso para borrar, siempre la permite
+			if (tecla == 8) {
+				return true;
 			}
+
+			// Patron de entrada, en este caso solo acepta números y guión medio
+			patron = /[0-9.]/;
+			tecla_final = String.fromCharCode(tecla);
+			return patron.test(tecla_final);
 		}
+
+		$(function(){
+			$('#rvNotaObt').keypress(function(e) {
+			if(isNaN(this.value + String.fromCharCode(e.charCode))) 
+				return false;
+			}).on("cut copy paste",function(e){
+				e.preventDefault();
+			});
+		});
+
 		//Función por AJAX que nos permite envíar todos los datos hacia nuestro Back-end.
 		$(document).ready(function () {
 			$("#EnvioGET").click(function (){
@@ -202,12 +192,27 @@ pageEncoding="utf-8"%>
 				var ajaxPorcenteje = $("#rvPorcentaje").val();
 				var ajaxNota = $("#rvNotaObt").val();
 
-				$.get('ControllerRevisarActividades', {
-					ajaxIdActividadEstudiante, ajaxIdEstudiante, ajaxPorcenteje, ajaxNota
-				}, function(response){
-
-
-				});
+				if(ajaxIdActividadEstudiante ==  null || ajaxIdActividadEstudiante == ""){
+					swal('¡Alerta!', 'Tiene que seleccionar una materia, actividad o estudiante para comenzar', 'warning');
+				}
+				else{
+					if(ajaxNota == null || ajaxNota == ""){
+						swal('¡No se permiten campos vacios!', '', 'warning');
+					}
+					else{
+						if(ajaxNota > 10){
+							swal('No se permiten notas mayores a 10.0!', '', 'error');
+						}
+						else{
+							$.get('ControllerRevisarActividades', {
+								ajaxIdActividadEstudiante, ajaxIdEstudiante, ajaxPorcenteje, ajaxNota
+							}, function(response){
+								let datos = JSON.parse(response);
+								console.log(datos);
+							});
+						}
+					}
+				}	
 			});
 		});
 	</script>
@@ -250,8 +255,9 @@ pageEncoding="utf-8"%>
 				<input type="hidden" name="idEstudiante" id="rvidEstudiante">
 				<input type="hidden" name="Porcentaje" id="rvPorcentaje">
 				<label>NOTA OBTENIDA</label>
-				<input type="number" name="rvNotaObtenida" class="controls2" id="rvNotaObt" min="0" max="10" required="NO SEA PASMADO">
+				<input type="number" name="rvNotaObtenida" class="controls2" id="rvNotaObt" maxlength="5" onkeypress="return checknumber(event)" min="0" max="10" required>
 				<button id="EnvioGET" class="btnEnviarNotas" onclick="cargarDatosTabla();">Actualizar nota</button>
+				<button class="btnLimpio" onclick="LimpiarComponentes();">Limpiar</button>
 			</div>
 		</div>
 	</div>
@@ -266,7 +272,7 @@ pageEncoding="utf-8"%>
 				<th>ESTADO</th>
 				<th style="text-align: center">ARCHIVO</th>
 			</thead>
-			<tbody id="tablaMostrarActividades" onclick="CargarDatos();">
+			<tbody id="tablaMostrarActividades">
 
 			</tbody>					
 		</table>

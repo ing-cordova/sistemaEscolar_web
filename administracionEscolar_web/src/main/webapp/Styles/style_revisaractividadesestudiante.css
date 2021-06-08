@@ -170,3 +170,14 @@ tr:hover td{
 	color: #ffff;
 	margin: 16px 0;
 }
+
+.btnLimpio{
+	font-family: "Montserrat", sans-serif;
+	font-size: 15px;
+	width: 15%;
+	background: #686B71;
+	border: none;
+	padding: 12px;
+	color: #ffff;
+	margin: 16px 0;
+}

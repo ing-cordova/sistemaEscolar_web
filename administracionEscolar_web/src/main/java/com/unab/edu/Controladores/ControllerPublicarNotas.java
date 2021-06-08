@@ -38,6 +38,7 @@ public class ControllerPublicarNotas extends HttpServlet {
 		// TODO Auto-generated method stub
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
 
+		Gson json = new Gson();
 		HttpSession session = request.getSession(true);
 
 		String idNota = request.getParameter("idNotaaa");
@@ -50,6 +51,7 @@ public class ControllerPublicarNotas extends HttpServlet {
 		String pRepo = request.getParameter("pRepo");
 
 		int validarGuardado = 0;
+		String mensaje = "";
 
 		if (idNota == null || idNota == "") {
 			
@@ -92,6 +94,8 @@ public class ControllerPublicarNotas extends HttpServlet {
 
 				nota.setUltima_Modificacion(date);
 				clsNotas.ActualizarNotas(nota);
+				mensaje = "Notaactualizada";
+				response.getWriter().append(json.toJson(mensaje));
 				response.sendRedirect("PublicarNotas.jsp");
 			}
 		}

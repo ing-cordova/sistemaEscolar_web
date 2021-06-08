@@ -75,7 +75,7 @@ body {
 }
 
 .out-header .controls{
-	width: 18%;
+	width: 30%;
 	padding: 10px;
 	margin-bottom: 14px;
 	border: 1px solid #365DA8;
@@ -106,6 +106,17 @@ body {
 	font-size: 15px;
 	width: 15%;
 	background: #3886AA;
+	border: none;
+	padding: 12px;
+	color: #ffff;
+	margin: 16px 0;
+}
+
+.out-header .btnLimpio{
+	font-family: "Montserrat", sans-serif;
+	font-size: 15px;
+	width: 15%;
+	background: #686B71;
 	border: none;
 	padding: 12px;
 	color: #ffff;

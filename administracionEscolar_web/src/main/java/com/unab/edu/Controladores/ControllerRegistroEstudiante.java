@@ -38,6 +38,7 @@ public class ControllerRegistroEstudiante extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
+		Gson json = new Gson();
 		Date date = new Date();
 		CLSPersona clsPersona = new CLSPersona();
 		CLSEstudiante clsEstudiante = new CLSEstudiante();
@@ -45,38 +46,46 @@ public class ControllerRegistroEstudiante extends HttpServlet {
 		Persona persona = new Persona();
 		Estudiante estudiante = new Estudiante();
 		
-		String Nombres = request.getParameter("nombres");
-		String Apellidos = request.getParameter("apellidos");
+		String Nombres = request.getParameter("nombres2");
+		String Apellidos = request.getParameter("apellidos2");
 		String Sexo = request.getParameter("sexo");
 		String GradoAcademico = request.getParameter("carreras");
 		String FechaNacimiento = request.getParameter("birthdate");
 		
-		String DUI = request.getParameter("dui");
-		String NIT = request.getParameter("nit");
-		String EMAIL = request.getParameter("email");
-		String Password = request.getParameter("pass");
+		String DUI = request.getParameter("dui2");
+		String NIT = request.getParameter("nit2");
+		String EMAIL = request.getParameter("email2");
+		String Password = request.getParameter("pass2");
 		int ultimo = clsPersona.RetornoLastID() + 1;
 		
-		persona.setNombre(Nombres);
-		persona.setApellido(Apellidos);
-		persona.setSexo(Sexo);
-		persona.setDUI(DUI);
-		persona.setNIT(NIT);
-		persona.setFecha_Nacimiento(String.valueOf(FechaNacimiento));
-		persona.setUltima_Modificacion(date);
-		persona.setEstado(1);
-		clsPersona.AgregarPersona(persona);
+		String mensaje = ""; 
+		try {
+			persona.setNombre(Nombres);
+			persona.setApellido(Apellidos);
+			persona.setSexo(Sexo);
+			persona.setDUI(DUI);
+			persona.setNIT(NIT);
+			persona.setFecha_Nacimiento(String.valueOf(FechaNacimiento));
+			persona.setUltima_Modificacion(date);
+			persona.setEstado(1);
+			clsPersona.AgregarPersona(persona);
+			
+			estudiante.setCorreo_Electronico(EMAIL);
+			estudiante.setPass(Password);
+			estudiante.setIdPersona(ultimo);
+			estudiante.setIdGradoAcademico(Integer.parseInt(GradoAcademico));
+			estudiante.setEstUltima_Modificacion(date);
+			estudiante.setEstEstado(1);
+			mensaje = "Registrado";
+			response.getWriter().append(json.toJson(mensaje));
+			clsEstudiante.AgregarEstudiante(estudiante);
+			System.out.println(ultimo);
+			
+		} catch (Exception e) {
+			mensaje = "Error";
+			response.getWriter().append(json.toJson(mensaje));
+		}
 		
-		estudiante.setCorreo_Electronico(EMAIL);
-		estudiante.setPass(Password);
-		estudiante.setIdPersona(ultimo);
-		estudiante.setIdGradoAcademico(Integer.parseInt(GradoAcademico));
-		estudiante.setEstUltima_Modificacion(date);
-		estudiante.setEstEstado(1);
-		clsEstudiante.AgregarEstudiante(estudiante);
-		System.out.println(ultimo);
-		
-		response.sendRedirect("index.jsp");
 	}
 
 	/**

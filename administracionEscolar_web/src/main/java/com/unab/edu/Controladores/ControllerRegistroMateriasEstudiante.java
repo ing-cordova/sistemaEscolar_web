@@ -42,7 +42,6 @@ public class ControllerRegistroMateriasEstudiante extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
-
 		Date date = new Date();
 		HttpSession sesion = (HttpSession) request.getSession();
 		String email = String.valueOf(sesion.getAttribute("correo"));
@@ -56,33 +55,38 @@ public class ControllerRegistroMateriasEstudiante extends HttpServlet {
 		if (clsNotas.Verificar_Materias(enviarIdEstudiante) == true) {
 
 			System.out.println("¡Usted ya no puede inscribir materias!");
-			//Si ya tiene materias inscritas, lo devuelve al mismo jsp
+			// Si ya tiene materias inscritas, lo devuelve al mismo jsp
 			response.sendRedirect("RegistroMateriasEstudiante.jsp");
 		} else {
 
-			Notas notas = new Notas();
-			String idMateria[] = request.getParameterValues("idMateria");
+			try {
+				Notas notas = new Notas();
+				String idMateria[] = request.getParameterValues("idMateria");
 
-			for (int i = 0; i < idMateria.length; i++) {
-				System.out.println("idMateria: " + (idMateria[i]));
-				
-				int idMateriaC = Integer.parseInt(idMateria[i]);
-				notas.setIdEstudiante(enviarIdEstudiante);
-				notas.setIdMateria(idMateriaC);
-				notas.setPeriodo1(0);
-				notas.setPeriodo2(0);
-				notas.setPeriodo3(0);
-				notas.setNotaFinal(0);
-				notas.setRecuperacion(0);
-				notas.setUltima_Modificacion(date);
-				notas.setEstado(1);
+				for (int i = 0; i < idMateria.length; i++) {
+					System.out.println("idMateria: " + (idMateria[i]));
 
-				clsNotas.AgregarNotas(notas);
-				
+					int idMateriaC = Integer.parseInt(idMateria[i]);
+					notas.setIdEstudiante(enviarIdEstudiante);
+					notas.setIdMateria(idMateriaC);
+					notas.setPeriodo1(0);
+					notas.setPeriodo2(0);
+					notas.setPeriodo3(0);
+					notas.setNotaFinal(0);
+					notas.setRecuperacion(0);
+					notas.setUltima_Modificacion(date);
+					notas.setEstado(1);
+
+					clsNotas.AgregarNotas(notas);
+
+				}
+
+				// Al momento de inscribir materias correctamente, es enviado al de notas.
+
+				response.sendRedirect("NotasEstudiante.jsp");
+			} catch (Exception e) {
+				System.out.println("Error en ControllerRegMatEst: " + e);
 			}
-			
-			//Al momento de inscribir materias correctamente, es enviado al de notas.
-			response.sendRedirect("NotasEstudiante.jsp");
 		}
 
 	}

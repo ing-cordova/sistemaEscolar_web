@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.google.gson.annotations.JsonAdapter;
 import com.unab.edu.DAO.CLSActividades_Alumno;
 import com.unab.edu.Entidades.Actividades_Estudiantes;
 
@@ -33,32 +34,40 @@ public class ControllerRevisarActividades extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		String idActividadEstudiante = request.getParameter("ajaxIdActividadEstudiante");
-		String idEstudiante = request.getParameter("ajaxIdEstudiante");
-		String porentaje = request.getParameter("ajaxPorcenteje");
-		String notaObtenida = request.getParameter("ajaxNota");
-		
-		/*System.out.println("Recibiendo dato de AJAX por idActividadEstudiante: " + idActividadEstudiante);
-		System.out.println("Recibiendo dato de AJAX por idEstudiante: " + idEstudiante);
-		System.out.println("Recibiendo dato de AJAX por porentaje: " + porentaje);
-		System.out.println("Recibiendo dato de AJAX por notaObtenida: " + notaObtenida);*/
-		
-		Date date = new Date();
-        //Extraemos todos los datos de la tabla
-        Double porcent = Double.parseDouble(porentaje);
-        Double nota = Double.parseDouble(notaObtenida);
-        Double Total = (nota * porcent);
-        
-        CLSActividades_Alumno clsActividad = new CLSActividades_Alumno();
-        //Creamos un objeto de tipo Entidad ActivEstud.
-        Actividades_Estudiantes actEst = new Actividades_Estudiantes();
-        //Seteamos los parametros de la tabla.
-        actEst.setIdActividadEstudiante(Integer.parseInt(idActividadEstudiante));
-        actEst.setIdEstudiante(Integer.parseInt(idEstudiante));
-        actEst.setNota_Obtenida(Total);
-        actEst.setAcEsUltima_Modificacion(date);
-        //Transferimos los datos hacia el metodo de actualizar.
-        clsActividad.Actualizar_Actividad(actEst);
+		Gson json = new Gson();
+		String mensaje = "";
+		try {
+			String idActividadEstudiante = request.getParameter("ajaxIdActividadEstudiante");
+			String idEstudiante = request.getParameter("ajaxIdEstudiante");
+			String porentaje = request.getParameter("ajaxPorcenteje");
+			String notaObtenida = request.getParameter("ajaxNota");
+			
+			/*System.out.println("Recibiendo dato de AJAX por idActividadEstudiante: " + idActividadEstudiante);
+			System.out.println("Recibiendo dato de AJAX por idEstudiante: " + idEstudiante);
+			System.out.println("Recibiendo dato de AJAX por porentaje: " + porentaje);
+			System.out.println("Recibiendo dato de AJAX por notaObtenida: " + notaObtenida);*/
+			
+			Date date = new Date();
+	        //Extraemos todos los datos de la tabla
+	        Double porcent = Double.parseDouble(porentaje);
+	        Double nota = Double.parseDouble(notaObtenida);
+	        Double Total = (nota * porcent);
+	        
+	        CLSActividades_Alumno clsActividad = new CLSActividades_Alumno();
+	        //Creamos un objeto de tipo Entidad ActivEstud.
+	        Actividades_Estudiantes actEst = new Actividades_Estudiantes();
+	        //Seteamos los parametros de la tabla.
+	        actEst.setIdActividadEstudiante(Integer.parseInt(idActividadEstudiante));
+	        actEst.setIdEstudiante(Integer.parseInt(idEstudiante));
+	        actEst.setNota_Obtenida(Total);
+	        actEst.setAcEsUltima_Modificacion(date);
+	        //Transferimos los datos hacia el metodo de actualizar.
+	        clsActividad.Actualizar_Actividad(actEst);
+	        mensaje = "Guardado";
+	        response.getWriter().append(json.toJson(mensaje));
+		} catch (Exception e) {
+			System.out.println("Hubo un error en ControllerRevisarAc " + e);
+		}
 	}
 
 	/**
