@@ -196,3 +196,15 @@ input[type="file"] {
 	margin: 16px 0;
 	cursor: pointer;
 }
+
+.botonesss .btnLimpio{
+	font-family: "Montserrat", sans-serif;
+	font-size: 15px;
+	width: 10%;
+	background: #686B71;
+	border: none;
+	padding: 12px;
+	color: #ffff;
+	margin: 16px 0;
+	cursor: pointer;
+}

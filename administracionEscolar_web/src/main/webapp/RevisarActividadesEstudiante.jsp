@@ -120,6 +120,10 @@ pageEncoding="utf-8"%>
 					var tabla = document.getElementById('tablaMostrarActividades');
 					for(let item of datos){
 
+						if(item.Archivo == null || item.Archivo == ""){
+							item.Archivo = "nofiles.jsp";
+						}
+
 						tabla.innerHTML += 
 						`
 						<tr>
