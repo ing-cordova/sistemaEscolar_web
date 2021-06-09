@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.google.gson.annotations.JsonAdapter;
 import com.unab.edu.DAO.CLSEstudiante;
 import com.unab.edu.DAO.CLSPersona;
 import com.unab.edu.Entidades.Estudiante;
@@ -40,6 +41,8 @@ public class ControllerEstudiante extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
+		Gson json = new Gson();
+		String mensaje = "";
 		Date date = new Date();
 		String Evaluar = request.getParameter("Eliminar");
 		String Agregar = request.getParameter("Guardar");
@@ -52,24 +55,17 @@ public class ControllerEstudiante extends HttpServlet {
 		CLSEstudiante clsEstudiante = new CLSEstudiante();
 		CLSPersona clsPersona = new CLSPersona();
 		
-		String Nombres = request.getParameter("Nombres");
-		String Apellidos = request.getParameter("Apellidos");
-		String Email = request.getParameter("Email");
-		String Pass = request.getParameter("Pass");
+		String Nombres = request.getParameter("Nombres2");
+		String Apellidos = request.getParameter("Apellidos2");
+		String Email = request.getParameter("Email2");
+		String Pass = request.getParameter("Pass2");
 		String GradoAcad = request.getParameter("GradoAcad");
 		String IdGrado = request.getParameter("IdGrado");
 		String Sexo = request.getParameter("Sexo");
-		String dui = request.getParameter("dui");
-		String nit = request.getParameter("nit");
+		String dui = request.getParameter("dui2");
+		String nit = request.getParameter("nit2");
 		String FechaNacimiento = request.getParameter("birthdate");
 		
-		//Date fecha = null;
-		//SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
-		//try {
-			//fecha = formatoDelTexto.parse(birthdate);
-		//} catch (Exception e) {
-			// TODO: handle exception
-		//}
 		
 		int ultimo = clsPersona.RetornoLastID() + 1;
 		
@@ -110,8 +106,9 @@ public class ControllerEstudiante extends HttpServlet {
 			estudiante.setIdEstudiante(Integer.parseInt(Id));
 			estudiante.setIdPersona(Integer.parseInt(Id2));
 			clsEstudiante.ActualizarEstudiante(estudiante);
-			
-			response.sendRedirect("Estudiante.jsp");
+			mensaje = "Actualizado";
+			response.getWriter().append(json.toJson(mensaje));
+			//response.sendRedirect("Estudiante.jsp");
 		}
 	}
 
