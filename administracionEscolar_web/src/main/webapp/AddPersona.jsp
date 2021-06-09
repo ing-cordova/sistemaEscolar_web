@@ -62,7 +62,7 @@
 
 							if (mensaje == "Registrado") {
 								swal({
-									title: "¡Actividad guardada con éxito!",
+									title: "¡Persona guardada con éxito!",
 									text: "",
 									icon: "success",
 									timer: 3000,
@@ -72,7 +72,7 @@
 							}
 							else if (mensaje == "Actualizado") {
 								swal({
-									title: "¡Actividad actualizada con éxito!",
+									title: "¡Persona actualizada con éxito!",
 									text: "",
 									icon: "success",
 									timer: 3000,

@@ -14,6 +14,7 @@ pageEncoding="utf-8"%>
 	<link
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap"
 	rel="stylesheet">
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 <%
@@ -42,6 +43,68 @@ pageEncoding="utf-8"%>
 				}
 			});
 		});
+		$(document).ready(function () {
+				$("#Guardar").click(function (){
+					var Guardar = $("#Guardar").val();
+
+					var Id = $("#Id").val();
+
+					var Materia = $("#Materia").val();
+					var Materia2 = Materia.replace(/\s+/g, " ").trim();
+
+					var GradoAcad = $("#TipoSelect").val();
+					
+
+
+					if (Materia2 == "" || Materia2 == null || GradoAcad == "" || GradoAcad == null) {
+						swal('¡Por favor llene todos los campos!', 'Esto puede deberse a los campos que contengan espacios, por favor reviselos.', 'warning');
+					}
+					else{
+						$.get('ControllerMateria', {
+							Guardar, Id, Materia2, GradoAcad
+						}, function(response){
+							let mensaje = JSON.parse(response);
+
+							if (mensaje == "Registrado") {
+								swal({
+									title: "¡Materia guardada con éxito!",
+									text: "",
+									icon: "success",
+									timer: 3000,
+								}).then(() => {
+										location.href = 'http://localhost:8080/administracionEscolar_web/Materia.jsp';
+								})
+							}
+							else if (mensaje == "Actualizado") {
+								swal({
+									title: "¡Materia actualizada con éxito!",
+									text: "",
+									icon: "success",
+									timer: 3000,
+								})
+									.then(() => {
+										location.href = 'http://localhost:8080/administracionEscolar_web/Materia.jsp';
+									})
+							}
+						});
+					}
+				});
+			});
+		
+		$(document).ready(function (){
+			$("#Materia").on('paste', function (e) {
+				e.preventDefault();
+				swal('¡Acción Pegar está prohibida!', '', 'error');
+			})
+
+			$("#Materia").on('copy', function (e) {
+				e.preventDefault();
+				swal('¡Acción Copiar está prohibida!', '', 'error');
+			})
+
+		});
+
+
 	</script>
 
 
@@ -61,11 +124,11 @@ pageEncoding="utf-8"%>
 %>
 <section class="form-register">
 	<h1>Registros de Materias</h1>
-	<form action="ControllerMateria" method="get">
-		<input type="hidden" name="Id" value=<%=Id%>> 
+	<!--<form action="ControllerMateria" method="get">-->
+		<input type="hidden" id="Id" value=<%=Id%>> 
 		<label>Nombre de la Materia:</label>
 		<br>
-		<input class="controls" type="text" value="<%=Materia%>" name="Materia"  required> 
+		<input class="controls" type="text" value="<%=Materia%>" id="Materia"  required> 
 		<br>
 		<label>Seleccione el Grado Academico</label>
 		<br>
@@ -73,8 +136,8 @@ pageEncoding="utf-8"%>
 			<option value="<%=IdGrado%>" selected><%=GradoAcad%></option>
 		</select>
 		<br>
-		<button name="Guardar" value="btna" class="boton">Guardar/Actualizar</button>
-	</form>
+		<button id="Guardar" value="btna" class="boton">Guardar/Actualizar</button>
+	<!--</form>-->
 </section>
 </body>
 </html>

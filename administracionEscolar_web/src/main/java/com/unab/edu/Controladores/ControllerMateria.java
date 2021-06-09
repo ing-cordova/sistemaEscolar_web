@@ -35,12 +35,15 @@ public class ControllerMateria extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
+		Gson json = new Gson();
+		String mensaje = "";
+		
 		Date date = new Date();
 		String Evaluar = request.getParameter("Eliminar");
 		String Agregar = request.getParameter("Guardar");
 
 		String Id = request.getParameter("Id");
-		String Materia = request.getParameter("Materia");
+		String Materia = request.getParameter("Materia2");
 		String GradoAcad = request.getParameter("GradoAcad");
 		String IdGrado = request.getParameter("IdGrado");
 
@@ -66,12 +69,16 @@ public class ControllerMateria extends HttpServlet {
 			if(Id == "" || Id == null) {
 				
 				clsMateria.AgregarMateria(materia);
-				response.sendRedirect("Materia.jsp");
+				mensaje = "Registrado";
+				response.getWriter().append(json.toJson(mensaje));
+				//response.sendRedirect("Materia.jsp");
 			}
 			else {
 				materia.setIdMateria(Integer.parseInt(Id));
 				clsMateria.ActualizarMateria(materia);
-				response.sendRedirect("Materia.jsp");
+				mensaje = "Actualizado";
+				response.getWriter().append(json.toJson(mensaje));
+				//response.sendRedirect("Materia.jsp");
 			}
 		}
 	}
