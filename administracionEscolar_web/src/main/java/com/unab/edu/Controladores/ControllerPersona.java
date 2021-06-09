@@ -42,12 +42,15 @@ public class ControllerPersona extends HttpServlet {
 		String Agregar = request.getParameter("Guardar");
 
 		String Id = request.getParameter("Id");
-		String Persona = request.getParameter("Persona");
-		String Apellido = request.getParameter("Apellido");
+		String Persona = request.getParameter("Persona2");
+		String Apellido = request.getParameter("Apellido2");
 		String Sexo = request.getParameter("Sexo");
-		String DUI = request.getParameter("DUI");
-		String NIT = request.getParameter("NIT");
+		String DUI = request.getParameter("DUI2");
+		String NIT = request.getParameter("NIT2");
 		String Fecha_Nacimiento = request.getParameter("Fecha_Nacimiento");
+		
+		Gson json = new Gson();
+		String mensaje = "";
 		
 		
 		/*response.getWriter().append(json.toJson(Fecha_Nacimiento));
@@ -89,12 +92,16 @@ public class ControllerPersona extends HttpServlet {
 			if(Id == "" || Id == null) {
 				
 				clsper.AgregarPersona(per);
-				response.sendRedirect("Persona.jsp");
+				mensaje = "Registrado";
+				response.getWriter().append(json.toJson(mensaje));
+				//response.sendRedirect("Persona.jsp");
 			}
 			else {
 				per.setIdPersona(Integer.parseInt(Id));
 				clsper.ActualizarPersona(per);
-				response.sendRedirect("Persona.jsp");
+				mensaje = "Actualizado";
+				response.getWriter().append(json.toJson(mensaje));
+				//response.sendRedirect("Persona.jsp");
 			}
 		}
 	}
