@@ -27,6 +27,7 @@
 						if (Id==null) { Id="" ; Persona="" ; Apellido="" ; Sexo="Seleccione una Opcion" ; DUI="" ;
 						NIT="" ; Fecha_Nacimiento="" ; } %>
 		<script type="text/javascript">
+
 			$(document).ready(function () {
 				$("#Guardar").click(function (){
 					var Guardar = $("#Guardar").val();
@@ -50,7 +51,7 @@
 					var Fecha_Nacimiento = $("#Fecha_Nacimiento").val();
 
 					if (Persona2 == "" || Persona2 == null || Apellido2 == "" || Apellido2 == null ||
-						Sexo == 0 || Sexo == "" || Sexo == null || DUI2 == "" || DUI2 == null ||
+						Sexo == 0 || Sexo == "Seleccione una Opcion" || Sexo == null || DUI2 == "" || DUI2 == null ||
 						NIT2 == "" || NIT2 == null || Fecha_Nacimiento == "" || Fecha_Nacimiento == null) {
 						swal('¡Por favor llene todos los campos!', 'Esto puede deberse a los campos que contengan espacios, por favor reviselos.', 'warning');
 					}

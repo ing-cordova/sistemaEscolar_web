@@ -33,12 +33,14 @@ public class ControllerGradoAcademico extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
+		Gson json = new Gson();
+		String mensaje = "";
 		Date date = new Date();
 		String Evaluar = request.getParameter("Eliminar");
 		String Agregar = request.getParameter("Guardar");
 
 		String Id = request.getParameter("Id");
-		String GradoAcad = request.getParameter("GradoAcad");
+		String GradoAcad = request.getParameter("GradoAcad2");
 
 		Grados_Academicos grado = new Grados_Academicos();
 		CLSGradoAcademico clsGrado = new CLSGradoAcademico();
@@ -61,12 +63,16 @@ public class ControllerGradoAcademico extends HttpServlet {
 			if(Id == "" || Id == null) {
 				
 				clsGrado.AgregarGradoAcademico(grado);
-				response.sendRedirect("GradoAcademico.jsp");
+				mensaje = "Guardado";
+				response.getWriter().append(json.toJson(mensaje));
+				//response.sendRedirect("GradoAcademico.jsp");
 			}
 			else {
 				grado.setIdGradoAcademico(Integer.parseInt(Id));
 				clsGrado.ActualizarGradoAcademico(grado);
-				response.sendRedirect("GradoAcademico.jsp");
+				mensaje = "Actualizado";
+				response.getWriter().append(json.toJson(mensaje));
+				//response.sendRedirect("GradoAcademico.jsp");
 			}
 		}
 	}
