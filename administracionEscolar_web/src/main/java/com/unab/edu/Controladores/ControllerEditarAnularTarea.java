@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
@@ -80,40 +81,48 @@ public class ControllerEditarAnularTarea extends HttpServlet {
 		// Obteniendo el nombre del archivo especificado por el cliente
 		String nombrePDF = archivo.getSubmittedFileName();
 
-		//String ruta = "C:\\Users\\andre\\Documents\\GitHub\\sistemaEscolar_web\\administracionEscolar_web\\src\\main\\webapp\\FilesPDF\\"
-		//String ruta = "C:\\Users\\PC\\Documents\\GitHub\\sistemaEscolar_web\\administracionEscolar_web\\src\\main\\webapp\\FilesPDF\\"
-		String ruta = "C:\\Users\\orell\\OneDrive\\Documentos\\GitHub\\sistemaEscolar_web\\administracionEscolar_web\\src\\main\\webapp\\FilesPDF\\"
+		String ruta = "C:\\Users\\andre\\Documents\\GitHub\\sistemaEscolar_web\\administracionEscolar_web\\src\\main\\webapp\\FilesPDF\\"
+				// String ruta =
+				// "C:\\Users\\PC\\Documents\\GitHub\\sistemaEscolar_web\\administracionEscolar_web\\src\\main\\webapp\\FilesPDF\\"
+				// String ruta =
+				// "C:\\Users\\orell\\OneDrive\\Documentos\\GitHub\\sistemaEscolar_web\\administracionEscolar_web\\src\\main\\webapp\\FilesPDF\\"
 				+ nombrePDF;
 
 		CLSActividades_Alumno clsAct_Almuno = new CLSActividades_Alumno();
 		Actividades_Estudiantes act_est = new Actividades_Estudiantes();
 
-		if (!EstadoActividad.equals("Calificada")) {
-			try {
-				FileOutputStream fileoutput = new FileOutputStream(ruta);
-				// Obteniendo y recreando los bytes
-				InputStream stream = archivo.getInputStream();
+		try {
+			if (!EstadoActividad.equals("Calificada")) {
+				try {
+					FileOutputStream fileoutput = new FileOutputStream(ruta);
+					// Obteniendo y recreando los bytes
+					InputStream stream = archivo.getInputStream();
 
-				byte[] datos = new byte[stream.available()];
-				stream.read(datos);
-				fileoutput.write(datos);
-				fileoutput.close();
-			} catch (Exception e) {
-				// TODO: handle exception
+					byte[] datos = new byte[stream.available()];
+					stream.read(datos);
+					fileoutput.write(datos);
+					fileoutput.close();
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+
+				act_est.setIdActividadEstudiante(Integer.parseInt(idActividad));
+				act_est.setIdEstudiante(Integer.parseInt(idEstudiante));
+				act_est.setArchivo(nombrePDF);
+				act_est.setAcEsUltima_Modificacion(date);
+
+				clsAct_Almuno.Reenviar_Actividad(act_est);
+				response.sendRedirect("VerActividades.jsp");
+
+			} else {
+				System.out.println("¡La tarea ya ha sido calificada!");
+				response.sendRedirect("VerActividades.jsp");
 			}
-
-			act_est.setIdActividadEstudiante(Integer.parseInt(idActividad));
-			act_est.setIdEstudiante(Integer.parseInt(idEstudiante));
-			act_est.setArchivo(nombrePDF);
-			act_est.setAcEsUltima_Modificacion(date);
-
-			clsAct_Almuno.Reenviar_Actividad(act_est);
-			response.sendRedirect("VerActividades.jsp");
-
-		} else {
-			System.out.println("¡La tarea ya ha sido calificada!");
-			response.sendRedirect("VerActividades.jsp");
+		} catch (Exception e) {
+			System.out.println("¡No se permiten campos vacíos!");
+			response.setCharacterEncoding("UTF8");
+			RequestDispatcher rd = request.getRequestDispatcher("ErrorPages/error500.jsp");
+	        rd.include(request, response); 
 		}
 	}
-
 }

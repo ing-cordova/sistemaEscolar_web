@@ -15,13 +15,13 @@ pageEncoding="utf-8"%>
 <body>
 <div class="container">
 	<p class="pintro">
-		<strong>Ops, ¡Lo sentimos pero este sítio web no responde! </strong>
+		<strong>Internal Server Error</strong>
 	</p>
 	<br>
-	<h1>500 Internal Server Error</h1>
+	<h1>500</h1>
 	<br>
 	<p class="poutro">
-		<strong>Ha ocurrido un error interno en el servidor.
+		<strong>Ha ocurrido un error interno en el servidor.<br>Puede deberse a que enviaste campos vacíos al servidor.
 		</strong>
 	</p>
 	<br>

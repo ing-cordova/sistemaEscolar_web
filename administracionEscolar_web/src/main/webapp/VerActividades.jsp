@@ -26,6 +26,11 @@ pageEncoding="utf-8"%>
 
 			var tabla = document.getElementById('tablaVerActividades');
 			for(let iterar of datos){
+
+				if(iterar.Archivo == null || iterar.Archivo == ""){
+					iterar.Archivo = "nofiles.jsp";
+				}
+
 				tabla.innerHTML += 
 				`
 				<tr>
@@ -44,94 +49,66 @@ pageEncoding="utf-8"%>
 		});
 	});
 
-	//Función que limpiará la tabla
-	function LimpiarTabla(){			
-		$("#tablaNotasxMateria tr").remove(); 
+	$(document).on("click", "#tablaVerActividades tr", function () {
+		var idAct, idstudent, materia, actividad, pocent, notaObte, Estado;
+
+		idAct = $(this).find('td:first-child').html();
+		idstudent = $(this).find('td:nth-child(2)').html();
+		materia = $(this).find('td:nth-child(3)').html();
+		actividad = $(this).find('td:nth-child(4)').html();
+		pocent = $(this).find('td:nth-child(5)').html();
+		notaObte = $(this).find('td:nth-child(6)').html();
+		Estado = $(this).find('td:nth-child(7)').html();
+
+		if(Estado == "Calificada"){
+			swal('¡Ya ha sido calificada, nota: '+notaObte+'!','No puedes modificar más tú tarea', 'error');
+		}
+		else{
+			swal({
+			title: "¡Atención!",
+			text: "¿Desea modificar la tarea?",
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
+			})
+			.then((willDelete) => {
+			if (willDelete) {
+				document.getElementById('idactividad').value = idAct;
+				document.getElementById('idestudiante').value = idstudent;
+				document.getElementById('idestadoactividad').value = Estado;
+
+				document.getElementById('Activ').innerText = actividad;
+				document.getElementById('Mater').innerText = materia;
+			} else {
+				swal("¡No se editará nada!");
+				Limpiar();
+			}
+			});
+		}
+	});
+
+	function fileValidation(){
+		var fileInput = document.getElementById('file');
+		var filePath = fileInput.value;
+		var allowedExtensions = /(.pdf)$/i;
+		if(!allowedExtensions.exec(filePath)){
+			swal('¡Esta extensión es inválida!','Solo permitimos el envío de documentos PDF', 'error');
+			fileInput.value = '';
+			return false;
+		}
+		else{
+			swal('¡DOCUMENTO VÁLIDO!','', 'success');
+		}
 	}
 
-		//Función que cargará los datos que seleccionemos en la tabla 1.
-		function CargarDatos(){
+	function Limpiar(){
+		document.getElementById('Activ').innerText = '';
+		document.getElementById('Mater').innerText = '';
 
-			//Declaración de variables recolectoras.
-			var RowIdx;
-			var idAct, idstudent, materia, actividad, pocent, notaObte, Estado;
-			
-			var tabla = document.getElementById('tablaVerActividades');
-			
-			var rows = tabla.getElementsByTagName('tr');
-			var selectedRow;
-			var rowCellValue;
-
-			//Ciclo de iteración de datos recogidos.
-			for(i = 0; i < rows.length ; i++){
-				rows[i].onclick = function(){
-					RowIdx = this.rowIndex;
-					selectedRow = this.cells;
-					var contador = 1;
-					for(j = 0; j < selectedRow.length; j++){
-						if(contador == 1){
-							idAct = selectedRow[j].innerText;
-							contador++;
-						}
-						else if(contador == 2){
-							idstudent = selectedRow[j].innerText;
-							contador++;
-						}
-						else if(contador == 3){
-							materia = selectedRow[j].innerText;
-							contador++;
-						}
-						else if(contador == 4){
-							actividad = selectedRow[j].innerText;
-							contador++;
-						}
-						else if(contador == 5){
-							pocent = selectedRow[j].innerText;
-							contador++;
-						}
-						else if(contador == 6){
-							notaObte = selectedRow[j].innerText;
-							contador++;
-						}
-						else if(contador == 7){
-							Estado = selectedRow[j].innerText;
-							contador++;
-						}
-					}
-
-					if(idAct > 0){
-						console.log(idAct);
-						console.log(idstudent);
-						console.log(materia);
-						console.log(actividad);
-						console.log(pocent);
-						console.log(notaObte);
-						console.log(Estado);
-
-						document.getElementById('idactividad').value = idAct;
-						document.getElementById('idestudiante').value = idstudent;
-						document.getElementById('idestadoactividad').value = Estado;
-
-						document.getElementById('Activ').innerText = actividad;
-						document.getElementById('Mater').innerText = materia;
-					}
-				}
-			}
-		}
-
-		function fileValidation(){
-			var fileInput = document.getElementById('file');
-			var filePath = fileInput.value;
-			var allowedExtensions = /(.pdf)$/i;
-			if(!allowedExtensions.exec(filePath)){
-				swal('¡Esta extensión es inválida!','Solo permitimos el envío de documentos PDF', 'error');
-				fileInput.value = '';
-				return false;
-			}
-			else{
-				swal('¡DOCUMENTO VÁLIDO!','', 'success');
-			}
-		}
+		$("#idactividad").val('');
+		$("#idestudiante").val('');
+		$("#idestadoactividad").val('');
+	}
 	</script>
 	<body>
 	<%
@@ -175,8 +152,9 @@ pageEncoding="utf-8"%>
 					<br>
 					<input type="file" name="archivoAgain" class="controls" id="file" onchange="return fileValidation()" accept="application/pdf" required>
 					<br>
-					<div class="botonesss">				
-						<button name="btnSendAgain" value="SendAgain" class="btnVolverEntregar"><i class="fa fa-paper-plane"></i> VOLVER A ENTREGAR</button>
+					<div class="botonesss">
+						<button class="btnLimpio" onclick="Limpiar();">LIMPIAR <i class="fa fa-backspace"></i></button>
+						<button name="btnSendAgain" value="SendAgain" class="btnVolverEntregar" onclick="comprobar();"><i class="fa fa-paper-plane"></i> VOLVER A ENTREGAR</button>
 					</div>
 				</div>
 			</form>
@@ -192,7 +170,7 @@ pageEncoding="utf-8"%>
 						<th>ESTADO</th>
 						<th style="text-align: center">ACCIONES</th>
 					</thead>
-					<tbody id="tablaVerActividades" onclick="CargarDatos();">
+					<tbody id="tablaVerActividades">
 						
 					</tbody>					
 				</table>
