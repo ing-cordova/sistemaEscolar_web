@@ -19,8 +19,8 @@ pageEncoding="utf-8"%>
 	String fullname = String.valueOf(sesion.getAttribute("fullnameDoc"));
 
 	if (usuSession.equals(null) || usuSession.equals("null")) {
-	response.sendRedirect("index.jsp");
-}
+		response.sendRedirect("index.jsp");
+	}
 %>
 <header class="header">
 	<div class="container">

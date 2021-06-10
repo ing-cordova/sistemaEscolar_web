@@ -45,18 +45,25 @@ public class ControllerSendAndShow_GradesTeacher extends HttpServlet {
 		Gson json = new Gson();
 		String capturarID = request.getParameter("comboID");
 		System.out.println("IdMateria por AJAX: " + capturarID);
-		
-		CLSNotas clsNotas = new CLSNotas();
-		Notas nota = new Notas();
-		nota.setIdMateria(Integer.parseInt(capturarID));
-		
-		var datos = clsNotas.NOTAS_PUBLICADAS(nota);
-		for(var iterar : datos) {
-			System.out.println(iterar.getIdNota());
+
+		if(capturarID == null || capturarID == ""){
+			System.out.println("> NO SE PERMITEN CAMPOS VACÍOS");
+		}
+		else{
+			CLSNotas clsNotas = new CLSNotas();
+			Notas nota = new Notas();
+			nota.setIdMateria(Integer.parseInt(capturarID));
+			
+			var datos = clsNotas.NOTAS_PUBLICADAS(nota);
+			for(var iterar : datos) {
+				System.out.println(iterar.getIdNota());
+			}
+			
+			response.setCharacterEncoding("UTF8");
+			//Creando una API REST consumible para enviarla y que sea consumida.
+			response.getWriter().append(json.toJson(clsNotas.NOTAS_PUBLICADAS(nota)));
 		}
 		
-		response.setCharacterEncoding("UTF8");
-		response.getWriter().append(json.toJson(clsNotas.NOTAS_PUBLICADAS(nota)));
 	}
 
 }

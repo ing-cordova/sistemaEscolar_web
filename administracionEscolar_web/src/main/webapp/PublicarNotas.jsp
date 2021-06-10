@@ -52,33 +52,38 @@
 						//Recogiendo el value del combo
 						var comboID = $("#TipoSelect").val();
 
-						$.post('ControllerSendAndShow_GradesTeacher', {
-							//Enviando variable al controlador.
-							comboID
-						}, function (response) {
+						if(comboID == 0 || comboID ==  null || comboID == ""){
+							swal('¡Seleccione una materia para comenzar!', '', 'warning');
+						}
+						else{
+							$.post('ControllerSendAndShow_GradesTeacher', {
+								//Enviando variable al controlador.
+								comboID
+							}, function (response) {
 
-							let datos = JSON.parse(response);
-							console.log(datos);
+								let datos = JSON.parse(response);
+								console.log(datos);
 
-							//validar();
+								//validar();
 
-							var tabla = document.getElementById('tablaNotasxMateria');
-							for (let iterar of datos) {
-								tabla.innerHTML +=
-									`
-							<tr>
-							<td>${iterar.idNota}</td>
-							<td style="display:none;">${iterar.idEstudiante}</td>
-							<td>${iterar.Correo_Electronico}</td>
-							<td>${iterar.Periodo1}</td>
-							<td>${iterar.Periodo2}</td>
-							<td>${iterar.Periodo3}</td>
-							<td>${iterar.NotaFinal}</td>
-							<td>${iterar.Recuperacion}</td>
-							</tr>
-							`
-							}
-						});
+								var tabla = document.getElementById('tablaNotasxMateria');
+								for (let iterar of datos) {
+									tabla.innerHTML +=
+										`
+								<tr>
+								<td>${iterar.idNota}</td>
+								<td style="display:none;">${iterar.idEstudiante}</td>
+								<td>${iterar.Correo_Electronico}</td>
+								<td>${iterar.Periodo1}</td>
+								<td>${iterar.Periodo2}</td>
+								<td>${iterar.Periodo3}</td>
+								<td>${iterar.NotaFinal}</td>
+								<td>${iterar.Recuperacion}</td>
+								</tr>
+								`
+								}
+							});
+						}
 					});
 				}
 
@@ -170,7 +175,7 @@
 						return true;
 					}
 
-					// Patron de entrada, en este caso solo acepta números y guión medio
+					// Patron de entrada, en este caso solo acepta números y punto
 					patron = /[0-9.]/;
 					tecla_final = String.fromCharCode(tecla);
 					return patron.test(tecla_final);

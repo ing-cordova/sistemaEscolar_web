@@ -28,7 +28,7 @@ pageEncoding="utf-8"%>
 			for(let iterar of datos){
 
 				if(iterar.Archivo == null || iterar.Archivo == ""){
-					iterar.Archivo = "nofiles.jsp";
+					iterar.Archivo = "DontFiles/nofiles.jsp";
 				}
 
 				tabla.innerHTML += 

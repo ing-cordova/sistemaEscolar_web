@@ -60,27 +60,32 @@ public class ControllerRegistroMateriasDocente extends HttpServlet {
 				Materias_Docentes Mmateria = new Materias_Docentes();
 				String idMateria[] = request.getParameterValues("idMateria");
 
-				for (int i = 0; i < idMateria.length; i++) {
-					System.out.println("idMateria: " + (idMateria[i]));
-
-					int idMateriaC = Integer.parseInt(idMateria[i]);
-					Mmateria.setIdDocente(ControllerLogin.envioIdDocenteeeee);
-					Mmateria.setIdMateria(idMateriaC);
-					Mmateria.setMdUltima_Modificacion(date);
-					Mmateria.setMdEstado(1);
-
-					clsMmateria.AgregarMateriaDocente(Mmateria);
-
+				if(idMateria == null || idMateria.length == 0){
+					System.out.println("Viene nuloooooooooooooooooooooooooo");
+					response.sendRedirect("RegistroMateriasDocente.jsp");
 				}
-
-				// Al momento de inscribir materias correctamente, es enviado al de notas.
-				response.sendRedirect("DashboardDocente.jsp");
+				else{
+					for (int i = 0; i < idMateria.length; i++) {
+						System.out.println("idMateria: " + (idMateria[i]));
+	
+						int idMateriaC = Integer.parseInt(idMateria[i]);
+						Mmateria.setIdDocente(ControllerLogin.envioIdDocenteeeee);
+						Mmateria.setIdMateria(idMateriaC);
+						Mmateria.setMdUltima_Modificacion(date);
+						Mmateria.setMdEstado(1);
+	
+						clsMmateria.AgregarMateriaDocente(Mmateria);
+	
+					}
+	
+					// Al momento de inscribir materias correctamente, es enviado al inicio docente.
+					response.sendRedirect("DashboardDocente.jsp");
+				}
+				
 			} catch (Exception e) {
 				System.out.println("Hubo un error en ControllerRegMatDocente " + e);
 			}
-
 		}
-
 	}
 
 	/**

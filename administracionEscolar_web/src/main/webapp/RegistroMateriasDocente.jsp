@@ -23,7 +23,7 @@
 			usuSession.equals("null")) { response.sendRedirect("index.jsp"); } %>
 			<script type="text/javascript">
 
-				//JQuery que nos devuelve todos las materias por GradoAcdemico espec�fico.
+				//JQuery que nos devuelve todos las materias por GradoAcdemico especifico.
 				$(document).ready(function () {
 					$.post('ControllerRegistroMateriasDocente', {}, function (response) {
 						let datos = JSON.parse(response);
@@ -31,13 +31,14 @@
 
 						var tabla = document.getElementById('tablaMateriasAIscribir');
 						for (let item of datos) {
+							//innerando tabla.
 							tabla.innerHTML +=
 								`
-					<tr>
-					<td>${item.idMateria}</td>
-					<td>${item.Nombre_Materia}</td>
-					</tr>
-					`
+								<tr>
+								<td>${item.idMateria}</td>
+								<td>${item.Nombre_Materia}</td>
+								</tr>
+							`
 						}
 					});
 				});

@@ -63,27 +63,33 @@ public class ControllerRegistroMateriasEstudiante extends HttpServlet {
 				Notas notas = new Notas();
 				String idMateria[] = request.getParameterValues("idMateria");
 
-				for (int i = 0; i < idMateria.length; i++) {
-					System.out.println("idMateria: " + (idMateria[i]));
-
-					int idMateriaC = Integer.parseInt(idMateria[i]);
-					notas.setIdEstudiante(enviarIdEstudiante);
-					notas.setIdMateria(idMateriaC);
-					notas.setPeriodo1(0);
-					notas.setPeriodo2(0);
-					notas.setPeriodo3(0);
-					notas.setNotaFinal(0);
-					notas.setRecuperacion(0);
-					notas.setUltima_Modificacion(date);
-					notas.setEstado(1);
-
-					clsNotas.AgregarNotas(notas);
-
+				if(idMateria == null || idMateria.length == 0){
+					System.out.println("Viene nuloooooooooooooooooooooooooo");
+					response.sendRedirect("RegistroMateriasEstudiante.jsp");
 				}
-
-				// Al momento de inscribir materias correctamente, es enviado al de notas.
-
-				response.sendRedirect("NotasEstudiante.jsp");
+				else{
+					for (int i = 0; i < idMateria.length; i++) {
+						System.out.println("idMateria: " + (idMateria[i]));
+	
+						int idMateriaC = Integer.parseInt(idMateria[i]);
+						notas.setIdEstudiante(enviarIdEstudiante);
+						notas.setIdMateria(idMateriaC);
+						notas.setPeriodo1(0);
+						notas.setPeriodo2(0);
+						notas.setPeriodo3(0);
+						notas.setNotaFinal(0);
+						notas.setRecuperacion(0);
+						notas.setUltima_Modificacion(date);
+						notas.setEstado(1);
+	
+						clsNotas.AgregarNotas(notas);
+	
+					}
+	
+					// Al momento de inscribir materias correctamente, es enviado al de notas.
+	
+					response.sendRedirect("NotasEstudiante.jsp");
+				}
 			} catch (Exception e) {
 				System.out.println("Error en ControllerRegMatEst: " + e);
 			}

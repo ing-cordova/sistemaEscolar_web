@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 
 <head>
-	<meta charset="ISO-8859-1">
+	<meta charset="utf-8">
 	<title>Inicio | Sistema Escolar</title>
 	<link rel="icon" href="Imagenes/school.ico">
 	<link rel="stylesheet" href="Styles/style_index.css">
@@ -51,8 +51,7 @@ pageEncoding="ISO-8859-1"%>
 				<img src="Imagenes/male_avatar.svg">
 				<h2 class="title">Bienvenido</h2>
 				<h3 class="title">
-					<!--Instituto Nacional <br>"Dr. Francísco Martínez Suárez" <br>Chalatenango.-->
-					By Smart Academy ©
+					By Smart Academy Â©
 				</h3>
 				<br>
 				<div class="input-div one">
@@ -73,8 +72,8 @@ pageEncoding="ISO-8859-1"%>
 						<input type="password" name="password" class="input" required>
 					</div>
 				</div>
-				<a href="Registro.jsp">Aún no soy un usuario, ¡Regístrame!</a> <input
-				type="submit" class="btn" value="Iniciar Sesión">
+				<a href="Registro.jsp">AÃºn no soy un usuario, Â¡RegÃ­strame!</a> <input
+				type="submit" class="btn" value="Iniciar SesiÃ³n">
 			</form>
 		</div>
 	</div>

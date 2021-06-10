@@ -12,6 +12,7 @@ pageEncoding="utf-8"%>
 	<link
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap"
 	rel="stylesheet">
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 <%
@@ -51,32 +52,37 @@ pageEncoding="utf-8"%>
 				
 				//Recogiendo el value del combo
 				var comboID = $("#TipoSelect").val();
-				
-				$.post('ControllerSendAndShow_AssignmentsStudents', {
+
+				if(comboID == 0 || comboID == null || comboID == ""){
+					swal('¡Seleccione una materia para comenzar!', '', 'warning');
+				}
+				else{
+					$.post('ControllerSendAndShow_AssignmentsStudents', {
 					//Enviando variable al controlador.
 					comboID
-				}, function (response) {
-					
-					let datos = JSON.parse(response);
-					console.log(datos);
-					console.log("idMateria: " + comboID);
+					}, function (response) {
+						
+						let datos = JSON.parse(response);
+						console.log(datos);
+						console.log("idMateria: " + comboID);
 
-					var tabla = document.getElementById('tablaActividades');
-					for(let iterar of datos){
-						tabla.innerHTML += 
-						`
-						<tr>
-						<td>${iterar.idActividad}</td>
-						<td>${iterar.Nombre_Actividad}</td>
-						<td>${iterar.Porcentaje}</td>
-						<td>${iterar.Fecha_Entrega}</td>
-						<td>${iterar.Estado_Actividad}</td>
-						<td><a href="AddAtachement.jsp?IdActi=${iterar.idActividad}&NombreActi=${iterar.Nombre_Actividad}&Porcent=${iterar.Porcentaje}&FechaEntrega=${iterar.Fecha_Entrega}&EstadoActiv=${iterar.Estado_Actividad}&idMateeee=${comboID}" class="btnAjuntar">AJUNTAR +</a>
-						</td>
-						</tr>
-						`
-					}
-				});
+						var tabla = document.getElementById('tablaActividades');
+						for(let iterar of datos){
+							tabla.innerHTML += 
+							`
+							<tr>
+							<td>${iterar.idActividad}</td>
+							<td>${iterar.Nombre_Actividad}</td>
+							<td>${iterar.Porcentaje}</td>
+							<td>${iterar.Fecha_Entrega}</td>
+							<td>${iterar.Estado_Actividad}</td>
+							<td><a href="AddAtachement.jsp?IdActi=${iterar.idActividad}&NombreActi=${iterar.Nombre_Actividad}&Porcent=${iterar.Porcentaje}&FechaEntrega=${iterar.Fecha_Entrega}&EstadoActiv=${iterar.Estado_Actividad}&idMateeee=${comboID}" class="btnAjuntar">AJUNTAR +</a>
+							</td>
+							</tr>
+							`
+						}
+					});
+				}
 			});
 		});
 

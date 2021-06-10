@@ -45,9 +45,10 @@ pageEncoding="utf-8"%>
 				
 			});
 		});
-		//Función de jQuery que envía el idMateria el servidor por método get
+		//Función de jQuery con AJAX que envía el idMateria al servidor por método get
 		//y nos devuelve el arreglo mediante el response.
 		$(document).ready(function () {
+			//evento change, cuando se activa, actualiza automaticamente el siguiente <select>
 			$("#TipoSelect").change(function (){
 
 				console.log("IdCombo1: " + $("#TipoSelect").val());
@@ -110,35 +111,40 @@ pageEncoding="utf-8"%>
 				var combo1 = $("#TipoSelect").val();
 				var combo2 = $("#TipoSelect2").val();
 
-				$.post('ControllerRevisarActividades', {
+				if(combo1 == 0 || combo1 == null || combo1 == "" || combo2 == 0 || combo2 == null || combo2 == ""){
+					swal('¡Alerta!', 'Tiene que seleccionar una materia y actividad', 'warning');
+				}
+				else{
+					$.post('ControllerRevisarActividades', {
 					combo1, combo2
-				}, function(response){
+					}, function(response){
 
-					let datos = JSON.parse(response);
-					console.log(datos);
+						let datos = JSON.parse(response);
+						console.log(datos);
 
-					var tabla = document.getElementById('tablaMostrarActividades');
-					for(let item of datos){
+						var tabla = document.getElementById('tablaMostrarActividades');
+						for(let item of datos){
 
-						if(item.Archivo == null || item.Archivo == ""){
-							item.Archivo = "nofiles.jsp";
+							if(item.Archivo == null || item.Archivo == ""){
+								item.Archivo = "DontFiles/nofiles.jsp";
+							}
+
+							tabla.innerHTML += 
+							`
+							<tr>
+							<td>${item.idActividadEstudiante}</td>
+							<td style="display: none;">${item.idEstudiante}</td>
+							<td>${item.Correo_Electronico}</td>
+							<td>${item.Nombre_Actividad}</td>
+							<td>${item.Porcentaje}</td>
+							<td>${item.Nota_Obtenida}</td>
+							<td>${item.Estado_Actividad}</td>
+							<td style="text-align: center"><a href="FilesPDF/${item.Archivo}" class="btnAjuntar" target="_blank"><i class="fa fa-file-pdf"></i>  ABRIR PDF</a><a href="FilesPDF/${item.Archivo}" download="${item.Nombre_Actividad}-${item.Correo_Electronico}.pdf" class="btnDownload"><i class="fa fa-cloud-download-alt"></i></a></td>
+							</tr>
+							`
 						}
-
-						tabla.innerHTML += 
-						`
-						<tr>
-						<td>${item.idActividadEstudiante}</td>
-						<td style="display: none;">${item.idEstudiante}</td>
-						<td>${item.Correo_Electronico}</td>
-						<td>${item.Nombre_Actividad}</td>
-						<td>${item.Porcentaje}</td>
-						<td>${item.Nota_Obtenida}</td>
-						<td>${item.Estado_Actividad}</td>
-						<td style="text-align: center"><a href="FilesPDF/${item.Archivo}" class="btnAjuntar" target="_blank"><i class="fa fa-file-pdf"></i>  ABRIR PDF</a><a href="FilesPDF/${item.Archivo}" download="${item.Nombre_Actividad}-${item.Correo_Electronico}.pdf" class="btnDownload"><i class="fa fa-cloud-download-alt"></i></a></td>
-						</tr>
-						`
-					}
-				});
+					});
+				}
 			});
 		}
 		
@@ -187,7 +193,7 @@ pageEncoding="utf-8"%>
 			});
 		});
 
-		//Función por AJAX que nos permite envíar todos los datos hacia nuestro Back-end.
+		//Función por jQuery and AJAX que nos permite envíar todos los datos hacia nuestro Back-end.
 		$(document).ready(function () {
 			$("#EnvioGET").click(function (){
 

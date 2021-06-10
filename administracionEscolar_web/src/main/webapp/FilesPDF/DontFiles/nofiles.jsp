@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8">
     <title>Redireccionamiento...</title>
-    <link rel="stylesheet" href="../Styles/style_error.css">
+    <link rel="stylesheet" href="../../Styles/style_error.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
   </head>

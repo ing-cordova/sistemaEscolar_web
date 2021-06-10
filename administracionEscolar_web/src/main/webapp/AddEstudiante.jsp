@@ -47,6 +47,7 @@ pageEncoding="utf-8"%>
 			});
 		});
 		
+		//jQuery que envía la información al servidor, y nos devuelve una respuesta.
 		$(document).ready(function () {
 			$("#Guardar").click(function () {
 
@@ -55,6 +56,7 @@ pageEncoding="utf-8"%>
 				var Id2 = $("#Id2").val();
 				
 				var Nombres = $("#Nombres").val();
+				//función que nos elimina los espacios que hay al inicio y al final .trim().
 				var Nombres2 = Nombres.replace(/\s+/g, " ").trim();
 
 				var Apellidos = $("#Apellidos").val();
@@ -86,8 +88,10 @@ pageEncoding="utf-8"%>
 					Email2 == "" || Email2 == null || Pass2 == "" || Pass2 == null) {
 					swal('¡Por favor llene todos los campos!', 'Esto puede deberse a los campos que contengan espacios, por favor reviselos.', 'warning');
 				}
+				//Validación para el correo electrónico que contenga @-subdominio-dominio.
 				else if (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(Email2)) {
 					$.get('ControllerEstudiante', {
+						//Variables que serán enviadas al servidor.
 						Id, Id2, Nombres2, Apellidos2, Sexo, birthdate, dui2, nit2, Email2, Pass2, GradoAcad, Guardar
 					}, function (response) {
 
@@ -111,7 +115,7 @@ pageEncoding="utf-8"%>
 				}
 			});
 		});
-		
+
 		//Función de Javascript que nos válida el ingreso de solo letras
 		function check(e) {
 			tecla = (document.all) ? e.keyCode : e.which;
@@ -143,6 +147,7 @@ pageEncoding="utf-8"%>
 		}
 		//Jquery que nos valida el NO copiado ni pegado de un texto
 		$(document).ready(function(){
+
 			$("#Nombres").on('paste copy cut', function (e) {
 				e.preventDefault();
 				swal('¡Esta accion está prohibida!', '', 'error');
@@ -177,6 +182,8 @@ pageEncoding="utf-8"%>
 	SimpleDateFormat formato = new SimpleDateFormat("dd/mm/aaaa");
 	Date castfecha = new Date();
 	
+	//Variables que recolectamos/traemos del controlador.
+	//--------------------------------------------------------------
 	String Id = request.getParameter("Id");
 	String Id2 = request.getParameter("Id2");
 	String Nombres = request.getParameter("Nombres");
@@ -193,19 +200,19 @@ pageEncoding="utf-8"%>
 	System.out.println(FechaNacimiento);
 
 	if (Id == null || Id2 == null) {
-	Id = "";
-	Id2 = "";
-	Nombres = "";
-	Apellidos = "";
-	Email ="";
-	Pass = "";
-	GradoAcad = "Seleccione una opcion";
-	IdGrado = "";
-	Sexo = "Seleccione una opcion";
-	dui = "";
-	nit = "";
-	FechaNacimiento = "";
-}
+		Id = "";
+		Id2 = "";
+		Nombres = "";
+		Apellidos = "";
+		Email ="";
+		Pass = "";
+		GradoAcad = "Seleccione una opcion";
+		IdGrado = "";
+		Sexo = "Seleccione una opcion";
+		dui = "";
+		nit = "";
+		FechaNacimiento = "";
+	}
 
 %>
 <section class="form-register">

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
 import com.unab.edu.DAO.CLSAdministrador;
 import com.unab.edu.DAO.CLSDocente;
 import com.unab.edu.DAO.CLSEstudiante;
@@ -43,13 +44,16 @@ public class ControllerLogin extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
-	 */
+	*/
+
+	//variable con nivel de acceso global en todo el sistema.
 	public static int envioIdDocenteeeee;
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// doGet(request, response);
-
+		
 		HttpSession session = request.getSession(true);
 		String error = request.getParameter("error");
 		String dashboard = request.getParameter("salir");

@@ -70,10 +70,10 @@ pageEncoding="utf-8"%>
 
 		$(function(){
 			$('#Porcent').keypress(function(e) {
-			if(isNaN(this.value + String.fromCharCode(e.charCode))) 
-				return false;
-			}).on("cut copy paste",function(e){
-			e.preventDefault();
+				if(isNaN(this.value + String.fromCharCode(e.charCode))) 
+					return false;
+				}).on("cut copy paste",function(e){
+				e.preventDefault();
 			});
 		});
 
@@ -84,6 +84,7 @@ pageEncoding="utf-8"%>
 				var IdAct = $("#IdAct").val();
 				var SubjectName = $("#TipoSelect").val();
 				var ActivitieName = $("#ActivitieName").val();
+				//Forzamos que elimine los espacios que estan al inicio y final.
 				var ActivitieName2 = ActivitieName.replace(/\s+/g, " ").trim();
 				var Porcent = $("#Porcent").val();
 				var LimitDate = $("#LimitDate").val();
@@ -91,10 +92,10 @@ pageEncoding="utf-8"%>
 				if(SubjectName == "" || SubjectName == null || ActivitieName2 == "" || ActivitieName2 == null ||
 					Porcent == "" || Porcent == null || LimitDate == "" || LimitDate == null){
 						swal('¡Por favor rellene todos los campos!', '', 'warning');
-					}
+				}
 				else{
-					if(Porcent > 100 || Porcent < 1){
-						swal("¡Solo porcentajes del 1 al 100!", "", "error");
+					if(Porcent > 100  || Porcent < 0.1){
+						swal("¡Solo porcentajes del 0.1% al 100%!", "", "error");
 					}
 					else{
 						$.get('ControllerActividadesDocente', {
