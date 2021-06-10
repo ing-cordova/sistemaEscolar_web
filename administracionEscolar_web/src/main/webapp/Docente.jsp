@@ -53,7 +53,7 @@
 					<td style="display:none;">${item.docUltima_Modificacion}</td>
 					<td style="display:none;">${item.docEstado}</td>
 					<td><a href="ControllerDocente?Id=${item.idDocente}&Eliminar=btne" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
-					<a href="AddDocente.jsp?Id=${item.idDocente}&Id2=${item.idPersona}&Nombres=${item.Nombre}&Apellidos=${item.Apellido}&Sexo=${item.Sexo}&Dui=${item.DUI}&Nit=${item.NIT}&birthdate=${item.Fecha_Nacimiento}&Correo_Electronico=${item.Correo_Electronico}&Pass=${item.Pass}&Especialidad=${item.Especialidad}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+					<a href="AddDocente.jsp?Id=${item.idDocente}&Id2=${item.idPersona}&Nombres=${item.Nombre}&Apellidos=${item.Apellido}&Sexo=${item.Sexo}&dui=${item.DUI}&nit=${item.NIT}&birthdate=${item.Fecha_Nacimiento}&Email=${item.Correo_Electronico}&Pass=${item.Pass}&Especialidad=${item.Especialidad}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
 					</td>
 					</tr>
 					`

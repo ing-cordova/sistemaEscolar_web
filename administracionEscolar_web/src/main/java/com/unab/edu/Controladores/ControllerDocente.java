@@ -36,6 +36,9 @@ public class ControllerDocente extends HttpServlet {
 		// TODO Auto-generated method stub
 		// response.getWriter().append("Served at: ").append(request.getContextPath());		
 		
+		Gson json = new Gson();
+		String mensaje = "";
+		
 		Date date = new Date();
 		CLSPersona clsPersona = new CLSPersona();
 		CLSDocente clsDoce = new CLSDocente();
@@ -48,25 +51,17 @@ public class ControllerDocente extends HttpServlet {
 
 		String Id = request.getParameter("Id");
 		String Id2 = request.getParameter("Id2");	
-		String Correo_Electronico = request.getParameter("Correo_Electronico");
-		String Pass = request.getParameter("Pass");
+		String Email = request.getParameter("Email2");
+		String Pass = request.getParameter("Pass2");
 		String Especialidad = request.getParameter("Especialidad");
 		
-		String Nombres = request.getParameter("nombres");
-		String Apellidos = request.getParameter("apellidos");
-		String Sexo = request.getParameter("sexo");
+		String Nombres = request.getParameter("Nombres2");
+		String Apellidos = request.getParameter("Apellidos2");
+		String Sexo = request.getParameter("Sexo");
 		String FechaNacimiento = request.getParameter("birthdate");
 		
-		//SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
-		/*Date fecha = null;
-		try {
-			fecha = formatoDelTexto.parse(FechaNacimiento);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		*/
-		String Dui = request.getParameter("Dui");
-		String Nit = request.getParameter("Nit");
+		String dui = request.getParameter("dui2");
+		String nit = request.getParameter("nit2");
 		int ultimo = clsPersona.RetornoLastID() + 1;
 
 		
@@ -82,13 +77,13 @@ public class ControllerDocente extends HttpServlet {
 			persona.setNombre(Nombres);
 			persona.setApellido(Apellidos);
 			persona.setSexo(Sexo);
-			persona.setDUI(Dui);
-			persona.setNIT(Nit);
+			persona.setDUI(dui);
+			persona.setNIT(nit);
 			persona.setFecha_Nacimiento(FechaNacimiento);
 			persona.setUltima_Modificacion(date);
 			persona.setEstado(1);
 			
-			Doce.setCorreo_Electronico(Correo_Electronico);
+			Doce.setCorreo_Electronico(Email);
 			Doce.setPass(Pass);
 			Doce.setEspecialidad(Especialidad);
 			Doce.setIdPersona(ultimo);
@@ -113,7 +108,9 @@ public class ControllerDocente extends HttpServlet {
 				Doce.setIdDocente(Integer.parseInt(Id));
 				Doce.setIdPersona(Integer.parseInt(Id2));
 				clsDoce.ActualizarDocente(Doce);
-				response.sendRedirect("Docente.jsp");
+				mensaje = "Actualizado";
+				response.getWriter().append(json.toJson(mensaje));
+				//response.sendRedirect("Docente.jsp");
 			}
 		}
 	}
