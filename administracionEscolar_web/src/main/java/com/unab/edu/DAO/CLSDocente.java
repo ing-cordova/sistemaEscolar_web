@@ -250,4 +250,22 @@ public class CLSDocente {
         }
         return lista;
     }
+
+    public boolean EmailValidate(String correo){
+
+        boolean validar = false;
+        try {
+            CallableStatement consulta = conectar.prepareCall("call SP_VALIDAREMAILDOCENTE(?)");
+            consulta.setString("email", correo);
+            ResultSet resultado = consulta.executeQuery();
+
+            while(resultado.next()){
+                System.out.println("=> Email existente.");
+                validar = true;
+            }
+        } catch (Exception e) {
+            System.out.println("Ha ocurrido un error en: EmailValidate" + e);
+        }
+        return validar;
+    }
 }

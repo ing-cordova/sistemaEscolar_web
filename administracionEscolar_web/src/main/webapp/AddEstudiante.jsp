@@ -229,7 +229,7 @@ pageEncoding="utf-8"%>
 		<br>
 		<label>Correo Electronico del Estudiante:</label>
 		<br>
-		<input class="controls" type="text" value="<%=Email%>" id="Email"  required>		 
+		<input class="controls" type="text" value="<%=Email%>" id="Email"  readonly required>		 
 		<br>
 		<label>Contraseña del Estudiante:</label>
 		<br>

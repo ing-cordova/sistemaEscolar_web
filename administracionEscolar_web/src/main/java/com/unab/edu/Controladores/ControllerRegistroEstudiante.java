@@ -57,30 +57,38 @@ public class ControllerRegistroEstudiante extends HttpServlet {
 		String EMAIL = request.getParameter("email2");
 		String Password = request.getParameter("pass2");
 		int ultimo = clsPersona.RetornoLastID() + 1;
+
+		var validarcorreo = clsEstudiante.EmailValidate(EMAIL);
+		System.out.println("=> ¿Encontraste el email? R//" + validarcorreo);
 		
 		String mensaje = ""; 
 		try {
-			persona.setNombre(Nombres);
-			persona.setApellido(Apellidos);
-			persona.setSexo(Sexo);
-			persona.setDUI(DUI);
-			persona.setNIT(NIT);
-			persona.setFecha_Nacimiento(String.valueOf(FechaNacimiento));
-			persona.setUltima_Modificacion(date);
-			persona.setEstado(1);
-			clsPersona.AgregarPersona(persona);
-			
-			estudiante.setCorreo_Electronico(EMAIL);
-			estudiante.setPass(Password);
-			estudiante.setIdPersona(ultimo);
-			estudiante.setIdGradoAcademico(Integer.parseInt(GradoAcademico));
-			estudiante.setEstUltima_Modificacion(date);
-			estudiante.setEstEstado(1);
-			mensaje = "Registrado";
-			response.getWriter().append(json.toJson(mensaje));
-			clsEstudiante.AgregarEstudiante(estudiante);
-			System.out.println(ultimo);
-			
+			if(validarcorreo == true){
+				mensaje = "existeemail";
+				response.getWriter().append(json.toJson(mensaje));
+			}
+			else{
+				persona.setNombre(Nombres);
+				persona.setApellido(Apellidos);
+				persona.setSexo(Sexo);
+				persona.setDUI(DUI);
+				persona.setNIT(NIT);
+				persona.setFecha_Nacimiento(String.valueOf(FechaNacimiento));
+				persona.setUltima_Modificacion(date);
+				persona.setEstado(1);
+				clsPersona.AgregarPersona(persona);
+				
+				estudiante.setCorreo_Electronico(EMAIL);
+				estudiante.setPass(Password);
+				estudiante.setIdPersona(ultimo);
+				estudiante.setIdGradoAcademico(Integer.parseInt(GradoAcademico));
+				estudiante.setEstUltima_Modificacion(date);
+				estudiante.setEstEstado(1);
+				mensaje = "Registrado";
+				response.getWriter().append(json.toJson(mensaje));
+				clsEstudiante.AgregarEstudiante(estudiante);
+				System.out.println(ultimo);
+			}
 		} catch (Exception e) {
 			mensaje = "Error";
 			response.getWriter().append(json.toJson(mensaje));

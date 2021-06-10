@@ -64,6 +64,8 @@ public class ControllerDocente extends HttpServlet {
 		String nit = request.getParameter("nit2");
 		int ultimo = clsPersona.RetornoLastID() + 1;
 
+		var validaremail = clsDoce.EmailValidate(Email);
+		System.out.println("=> ¿Encontraste el email? R//" + validaremail);
 		
 		if (Evaluar != null) {
 			if (Evaluar.equals("btne")) {
@@ -94,12 +96,18 @@ public class ControllerDocente extends HttpServlet {
 			System.out.println(Id2);
 			
 			if(Id2 == "" || Id2 == null || Id == "" || Id == null) {
-				
-				
-				clsPersona.AgregarPersona(persona);
-				clsDoce.AgregarDocente(Doce);
-				System.out.println(ultimo);
-				response.sendRedirect("Docente.jsp");
+				if(validaremail == true){
+					mensaje = "existeemail";
+					response.getWriter().append(json.toJson(mensaje));
+				}
+				else{
+					clsPersona.AgregarPersona(persona);
+					clsDoce.AgregarDocente(Doce);
+					mensaje = "Guardado";
+					response.getWriter().append(json.toJson(mensaje));
+					System.out.println(ultimo);
+					//response.sendRedirect("Docente.jsp");
+				}
 			}
 			else {
 				persona.setIdPersona(Integer.parseInt(Id2));

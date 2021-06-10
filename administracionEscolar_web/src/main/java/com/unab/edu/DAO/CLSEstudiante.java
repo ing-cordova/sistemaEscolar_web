@@ -226,6 +226,24 @@ public class CLSEstudiante {
 
         return ID;
     }
+
+    public boolean EmailValidate(String correo){
+
+        boolean validar = false;
+        try {
+            CallableStatement consulta = conectar.prepareCall("call SP_VALIDAREMAILESTUDIANTE(?)");
+            consulta.setString("email", correo);
+            ResultSet resultado = consulta.executeQuery();
+
+            while(resultado.next()){
+                System.out.println("=> Email existente.");
+                validar = true;
+            }
+        } catch (Exception e) {
+            System.out.println("Ha ocurrido un error en: EmailValidate" + e);
+        }
+        return validar;
+    }
     
     public ArrayList<Estudiante> MostrarJoinEstudiantePersona(Estudiante est){
         

@@ -68,6 +68,8 @@ public class ControllerEstudiante extends HttpServlet {
 		
 		
 		int ultimo = clsPersona.RetornoLastID() + 1;
+		var validarcorreo = clsEstudiante.EmailValidate(Email);
+		System.out.println("=> ¿Encontraste el email? R//" + validarcorreo);
 		
 		if (Evaluar != null) {
 			if (Evaluar.equals("btne")) {
@@ -78,8 +80,6 @@ public class ControllerEstudiante extends HttpServlet {
 			}
 		}
 		else if(Agregar.equals("btna")) {
-			
-			
 			persona.setNombre(Nombres);
 			persona.setApellido(Apellidos);
 			persona.setSexo(Sexo);

@@ -65,7 +65,7 @@ $(document).ready(function () {
 		
 
 		if (Nombres2 == "" || Nombres2 == null || Apellidos2 == "" || Apellidos2 == null ||
-			Sexo == 0 || Sexo == "" || Sexo == null || Especialidad == "" ||
+			Sexo == 0 || Sexo == "" || Sexo == null || Sexo == "Seleccione una Opcion" || Especialidad == "" ||
 			Especialidad == null ||
 			birthdate == null || birthdate == "" || dui2 == "" || dui2 == null || nit2 == "" || nit2 == null ||
 			Email2 == "" || Email2 == null || Pass2 == "" || Pass2 == null) {
@@ -78,9 +78,12 @@ $(document).ready(function () {
 
 				let datos = JSON.parse(response);
 
-				if (datos == "Actualizado") {
+				if(datos == "existeemail"){
+					swal('¡Email existente!', 'El correo que intentas ingresar, ya existe.', 'error');
+				}
+				else if (datos == "Guardado") {
 					swal({
-						title: "¡ Docente actualizado con éxito!",
+						title: "¡Docente guardado con éxito!",
 						text: "",
 						icon: "success",
 						timer: 3000,
@@ -88,7 +91,16 @@ $(document).ready(function () {
 							location.href = 'http://localhost:8080/administracionEscolar_web/Docente.jsp';
 					})
 				}
-				
+				else if(datos == "Actualizado"){
+					swal({
+						title: "¡Docente actualizado con éxito!",
+						text: "",
+						icon: "success",
+						timer: 3000,
+					}).then(() => {
+							location.href = 'http://localhost:8080/administracionEscolar_web/Docente.jsp';
+					})
+				}
 			});
 		}
 		else {

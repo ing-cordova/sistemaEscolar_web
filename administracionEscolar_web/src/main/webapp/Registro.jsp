@@ -71,7 +71,10 @@
 
 							let datos = JSON.parse(response);
 
-							if (datos == "Registrado") {
+							if(datos == "existeemail"){
+								swal('¡Ya existe ese correo!', 'El correo que intentas ingresar, ya existe', 'error');
+							}
+							else if (datos == "Registrado") {
 								swal('¡Estudiante registrado con éxito!', '', 'success');
 								setTimeout("location.href='index.jsp'", 1000);
 							}
