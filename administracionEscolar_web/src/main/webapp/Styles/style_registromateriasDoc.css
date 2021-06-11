@@ -85,6 +85,14 @@ body {
 	margin-bottom: 10px;
 }
 
+.out-header .cajabusca{
+	width: 25%;
+	align-items: right;
+	margin-left: 70px;
+	margin-bottom: 10px;
+	padding: 10px;
+}
+
 .out-header .tabla{
 	margin: 0 70px;
 }

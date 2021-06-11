@@ -30,6 +30,7 @@ pageEncoding="utf-8"%>
 			$.post('ControllerMateriasEstudiante', {
 			}, function (response) {
 				
+				//Consumiendo API rest (json) enviada por el server.
 				let datos = JSON.parse(response);
 				console.log(datos);
 				
@@ -58,10 +59,11 @@ pageEncoding="utf-8"%>
 				}
 				else{
 					$.post('ControllerSendAndShow_AssignmentsStudents', {
-					//Enviando variable al controlador.
-					comboID
+						//Enviando variable al controlador.
+						comboID
 					}, function (response) {
 						
+						//Consumiendo API rest (json) enviada por el server.
 						let datos = JSON.parse(response);
 						console.log(datos);
 						console.log("idMateria: " + comboID);

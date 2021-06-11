@@ -21,6 +21,7 @@ pageEncoding="utf-8"%>
 		$.post('ControllerVerActividades', {
 		}, function (response) {
 
+			//Consumir el API rest que nos envio el server.
 			let datos = JSON.parse(response);
 			console.log(datos);
 
@@ -49,9 +50,12 @@ pageEncoding="utf-8"%>
 		});
 	});
 
+	//jQuery para seleccionar los datos de la fila que queramos.
 	$(document).on("click", "#tablaVerActividades tr", function () {
+		// variables recolectoras
 		var idAct, idstudent, materia, actividad, pocent, notaObte, Estado;
 
+		// Les asignamos los datos que recogimos de la tabla 
 		idAct = $(this).find('td:first-child').html();
 		idstudent = $(this).find('td:nth-child(2)').html();
 		materia = $(this).find('td:nth-child(3)').html();

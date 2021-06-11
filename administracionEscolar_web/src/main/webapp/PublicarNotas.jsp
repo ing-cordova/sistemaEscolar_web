@@ -222,65 +222,65 @@
 						<a href="RevisarActividadesEstudiante.jsp">Revisar Acts</a>
 					</nav>
 				</div>
-				<div class="out-header">
-					<!--Formulario que envía únicamente el id de la materia seleccionada-->
-					<div class="componentes">
-						<label>Materia:</label>
-						<br>
-						<select class="controls" name="idmateria" id="TipoSelect" required>
-							<option value="" selected>Seleccione...</option>
-						</select>
-						<!-- <input type="submit" name="enviaridMateria" class="btnEnviarID" value="Mostrar notas"> -->
-						<button class="btnEnviarID" id="idMat" onclick="MostrarInformacion();">Mostrar notas</button>
-					</div>
-
-					<!--Formulario que envía los datos para ser actualizados.-->
-					<!-- <form action="ControllerPublicarNotas" method="get"> -->
-					<div class="componentes">
-						<label>E-mail:</label>
-						<label for="correoo" id="Ncorreo1"></label>
-						<br>
-						<br>
-						<input type="hidden" name="correoo" id="Ncorreo">
-						<input type="hidden" name="idNotaaa" id="NidNota">
-						<input type="hidden" name="idEstudianteeee" id="NidEstudiante">
-						<label>Periodo 1</label>
-						<input type="number" name="p1" class="controls2" id="Np1" maxlength="5" onkeypress="return checknumber(event)" min="0" max="10">
-						<label>Periodo 2</label>
-						<input type="number" name="p2" class="controls2" id="Np2" maxlength="5" onkeypress="return checknumber(event)" min="0" max="10">
-						<label>Periodo 3</label>
-						<input type="number" name="p3" class="controls2" id="Np3" maxlength="5" onkeypress="return checknumber(event)" min="0" max="10">
-						<label>Final</label>
-						<input type="text" name="pfinal" class="controls2" id="Npfinal" readonly>
-						<label>Reposición</label>
-						<input type="text" name="pRepo" class="controls2" id="NpRepo" readonly>
-						<br>
-						<div class="btEnvDa">
-							<!-- <input type="submit" name="" class="btnEnviarNotas" value="Publicar notas"> -->
-							<button class="btnLimpio" onclick="LimpiarComponentes()();">LIMPIAR</button>
-							<button id="EnvioGet" class="btnEnviarNotas" onclick="MostrarInformacion();">Publicar notas</button>
-						</div>
-					</div>
-					<!-- </form> -->
-				</div>
-				<div class="tabla">
-					<table>
-						<thead>
-							<th>ID_NOTA</th>
-							<th>E-MAIL</th>
-							<th>P1</th>
-							<th>P2</th>
-							<th>P3</th>
-							<th>FINAL</th>
-							<th>REPO</th>
-						</thead>
-						<tbody id="tablaNotasxMateria">
-							<!-- DATOS SOLO DE PRUEBA, ELIMINAR CUANDO YA SE TRAIGAN DATOS REALES -->
-
-						</tbody>
-					</table>
-				</div>
 			</header>
+			<div class="out-header">
+				<!--Formulario que envía únicamente el id de la materia seleccionada-->
+				<div class="componentes">
+					<label>Materia:</label>
+					<br>
+					<select class="controls" name="idmateria" id="TipoSelect" required>
+						<option value="" selected>Seleccione...</option>
+					</select>
+					<!-- <input type="submit" name="enviaridMateria" class="btnEnviarID" value="Mostrar notas"> -->
+					<button class="btnEnviarID" id="idMat" onclick="MostrarInformacion();">Mostrar notas</button>
+				</div>
+
+				<!--Formulario que envía los datos para ser actualizados.-->
+				<!-- <form action="ControllerPublicarNotas" method="get"> -->
+				<div class="componentes">
+					<label>E-mail:</label>
+					<label for="correoo" id="Ncorreo1"></label>
+					<br>
+					<br>
+					<input type="hidden" name="correoo" id="Ncorreo">
+					<input type="hidden" name="idNotaaa" id="NidNota">
+					<input type="hidden" name="idEstudianteeee" id="NidEstudiante">
+					<label>Periodo 1</label>
+					<input type="number" name="p1" class="controls2" id="Np1" maxlength="5" onkeypress="return checknumber(event)" min="0" max="10">
+					<label>Periodo 2</label>
+					<input type="number" name="p2" class="controls2" id="Np2" maxlength="5" onkeypress="return checknumber(event)" min="0" max="10">
+					<label>Periodo 3</label>
+					<input type="number" name="p3" class="controls2" id="Np3" maxlength="5" onkeypress="return checknumber(event)" min="0" max="10">
+					<label>Final</label>
+					<input type="text" name="pfinal" class="controls2" id="Npfinal" readonly>
+					<label>Reposición</label>
+					<input type="text" name="pRepo" class="controls2" id="NpRepo" readonly>
+					<br>
+					<div class="btEnvDa">
+						<!-- <input type="submit" name="" class="btnEnviarNotas" value="Publicar notas"> -->
+						<button class="btnLimpio" onclick="LimpiarComponentes()();">LIMPIAR</button>
+						<button id="EnvioGet" class="btnEnviarNotas" onclick="MostrarInformacion();">Publicar notas</button>
+					</div>
+				</div>
+				<!-- </form> -->
+			</div>
+			<div class="tabla">
+				<table>
+					<thead>
+						<th>ID_NOTA</th>
+						<th>E-MAIL</th>
+						<th>P1</th>
+						<th>P2</th>
+						<th>P3</th>
+						<th>FINAL</th>
+						<th>REPO</th>
+					</thead>
+					<tbody id="tablaNotasxMateria">
+						<!-- DATOS SOLO DE PRUEBA, ELIMINAR CUANDO YA SE TRAIGAN DATOS REALES -->
+
+					</tbody>
+				</table>
+			</div>
 	</body>
 
 	</html>

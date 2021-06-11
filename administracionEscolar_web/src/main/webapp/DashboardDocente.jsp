@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -21,6 +23,12 @@ pageEncoding="utf-8"%>
 	if (usuSession.equals(null) || usuSession.equals("null")) {
 		response.sendRedirect("index.jsp");
 	}
+
+	Date date = new Date();
+	SimpleDateFormat formateadorFecha = new SimpleDateFormat("yyyy");
+	System.out.println("Año desde JSP: " + formateadorFecha.format(date));
+	
+	String fechaC = formateadorFecha.format(date);
 %>
 <header class="header">
 	<div class="container">
@@ -28,7 +36,7 @@ pageEncoding="utf-8"%>
 			<img alt="" src="Imagenes/school.ico">
 		</div>
 		<div class="logo">
-			<h1>Portal Docente - <%=fullname%></h1>
+			<h1>Portal Docente | <%=fechaC%> |</h1>
 		</div>
 		<nav class="menu">
 			<a href="#">Inicio</a> <a href="RegistroMateriasDocente.jsp">Materias</a>

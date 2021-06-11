@@ -128,14 +128,16 @@ body {
 }
 
 .tabla{
-	margin: 0 70px;
+	margin: 0px 70px 15px 70px;
+	overflow-y: scroll;
+	max-height: 240px;
 }
 
 table{
 	background-color: #ffff;
 	text-align: left;
 	border-collapse: collapse;
-	width: 100%;
+	width: 100%;	
 }
 
 tbody{

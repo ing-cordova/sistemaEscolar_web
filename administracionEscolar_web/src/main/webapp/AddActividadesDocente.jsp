@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -26,12 +28,14 @@ pageEncoding="utf-8"%>
 		}
 	%>
 	<%
+		Date date = new Date();
 		String IdAct = request.getParameter("IdAct");
 		String IdMat = request.getParameter("IdMat");
 		String SubjectName = request.getParameter("SubjectName");
 		String ActivitieName = request.getParameter("ActivitieName");
 		String Porcent = request.getParameter("Porcent");
 		String LimitDate = request.getParameter("LimitDate");
+
 
 		String PorcentC = "";
 		//System.out.println("Porcentaje convertido: " + PorcentC);
@@ -47,6 +51,11 @@ pageEncoding="utf-8"%>
 		else{
 			PorcentC = String.valueOf(Math.round(Double.parseDouble(Porcent) * 100));
 		}
+
+		SimpleDateFormat formateadorFecha = new SimpleDateFormat("yyyy-MM-dd");
+		System.out.println("Fecha desde JSP: " + formateadorFecha.format(date));
+		
+		String fechaC = formateadorFecha.format(date);
 	%>
 	<script type="text/javascript">
 
@@ -153,7 +162,7 @@ pageEncoding="utf-8"%>
 		<br>
 		<label>Fecha de Entrega:</label>
 		<br>
-		<input class="controls" value="<%=LimitDate%>" id="LimitDate" type="date" required>
+		<input class="controls" value="<%=LimitDate%>" id="LimitDate" type="date" min="<%=fechaC%>" required>
 		<br>
 		<button id="btna" value="Guardar" class="boton" onclick="ENVIAR();">¡Procesar ahora!</button>
 		<p>

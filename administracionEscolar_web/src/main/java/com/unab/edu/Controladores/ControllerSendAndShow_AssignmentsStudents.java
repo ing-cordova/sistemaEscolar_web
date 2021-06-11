@@ -119,8 +119,10 @@ public class ControllerSendAndShow_AssignmentsStudents extends HttpServlet {
 		CLSActividades clsActividades = new CLSActividades();
 		Actividades act = new Actividades();
 		act.setIdMateria(Integer.parseInt(capturarID));
-
+		
+		//Modificar la codificacion de los caracteres especiales.
 		response.setCharacterEncoding("UTF8");
+		//Construimos y preparamos el API rest para ser enviado
 		response.getWriter().append(json.toJson(clsActividades.Mostrar_Tareas_By_Materia(act)));
 
 		for (var iterar : clsActividades.Mostrar_Tareas_By_Materia(act)) {
